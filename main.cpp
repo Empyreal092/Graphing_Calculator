@@ -1,3 +1,5 @@
+//this is Ryan's Dev version
+
 #include "mainwindow.h"
 #include <QApplication>
 #include <QLabel>
