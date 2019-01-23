@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
 
     //QObject::connect(button_Euler, SIGNAL(clicked()), &app, SLOT(quit()));
     QGridLayout *layout = new QGridLayout;
-    layout -> addWidget(title_prompt,0,0);
+    layout -> addWidget(title_prompt,0,0,Qt::AlignCenter);
     layout -> addWidget(button_Euler,1,0);
     layout -> addWidget(button_Bisec,2,0);
     layout -> addWidget(button_Inter,3,0);
