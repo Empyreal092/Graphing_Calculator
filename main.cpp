@@ -6,7 +6,7 @@
 
 int main(int argc, char *argv[])
 {
-    // Comment to check Slack interface
+    //For example Firat made a change
     
     QApplication app(argc, argv);
 
