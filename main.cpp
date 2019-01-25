@@ -6,8 +6,6 @@
 
 int main(int argc, char *argv[])
 {
-    //Example
-    
     QApplication app(argc, argv);
 
     //MainWindow w;
