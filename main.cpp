@@ -6,7 +6,7 @@
 
 int main(int argc, char *argv[])
 {
-    //For example Firat made a change lolllllllllllllllls
+    //For example Firat made a change lolllllllllllllllllls
     
     QApplication app(argc, argv);
 
