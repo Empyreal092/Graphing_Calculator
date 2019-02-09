@@ -24,12 +24,16 @@ private:
 
     QLabel *title_prompt;
 
+    QPushButton* button_Plot;
     QPushButton* button_Euler;
     QPushButton* button_Bisec;
-    QPushButton* button_Inter;
 
     QGridLayout *centerlayout;
     QWidget *centerpiece;
+
+public slots:
+    void MakePlotWindow();
+
 };
 
 #endif // MAINWINDOW_H

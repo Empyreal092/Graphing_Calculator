@@ -6,7 +6,7 @@
 
 QT       += core gui
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport
 
 TARGET = PIC10C_Final_Project-Graphic_Calc
 TEMPLATE = app
@@ -26,13 +26,18 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    qcustomplot.cpp \
+    functionplot.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+    qcustomplot.h \
+    functionplot.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    functionplot.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
