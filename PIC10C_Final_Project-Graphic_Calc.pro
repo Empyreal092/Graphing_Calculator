@@ -41,7 +41,8 @@ FORMS += \
     functionplot.ui
 
 # Prevents "fatal error C1128: number of sections exceeded object file format limit".
-QMAKE_CXXFLAGS += /bigobj
+win64 : QMAKE_CXXFLAGS += /bigobj
+win32 : QMAKE_CXXFLAGS += /bigobj
 
 
 # Default rules for deployment.
