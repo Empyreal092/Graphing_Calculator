@@ -42,9 +42,9 @@ MainWindow::MainWindow(QWidget *parent) :
     setWindowTitle("Main Entry Menu:"); // set window title
 
     title_prompt = new QLabel("Choose the features:"); // the prompt
-    button_Plot = new QPushButton("Plot Function"); // the plot function button
-    button_Euler = new QPushButton("Euler's method"); // the Euler's method button
-    button_Bisec = new QPushButton("Bisection"); // the Bisection window button
+    button_Plot = new QPushButton("Plot Function (Click here!)"); // the plot function button
+    button_Euler = new QPushButton("Euler's method (Do Noting)"); // the Euler's method button
+    button_Bisec = new QPushButton("Bisection (Do Noting)"); // the Bisection window button
 
     centerlayout = new QGridLayout; // layout
     centerlayout -> addWidget(title_prompt,0,0,Qt::AlignCenter); // put objects in the layout

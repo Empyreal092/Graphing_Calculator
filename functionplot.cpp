@@ -38,12 +38,17 @@
 FunctionPlot::FunctionPlot(QWidget *parent) :
     QWidget(parent), ui(new Ui::FunctionPlot), function_str(){
 
-    function_str = "25x^5 - 35x^4 - 15x^3 + 40x^2 - 15x + 1"; 
+    function_str = "10*(4/3.1415)*"
+                   "((1 /1)*sin( 2*3.1415^2*x/10)+(1 /3)*sin( 6*3.1415^2*x/10)+"
+                   " (1 /5)*sin(10*3.1415^2*x/10)+(1 /7)*sin(14*3.1415^2*x/10)+"
+                   " (1 /9)*sin(18*3.1415^2*x/10)+(1/11)*sin(22*3.1415^2*x/10))";
 	// this the an example, that the function parser works, now it is possible to take input from user and plot the function
-    initial = -1.0; // initial value
-    final = 1.0; // final value
+    initial = -5.0; // initial value
+    final = 5.0; // final value
     ui->setupUi(this);
     FunctionPlot::makeplot<double>(); // call the make plot function
+
+    setWindowTitle("Plotting Function");
 }
 
 FunctionPlot::~FunctionPlot()
