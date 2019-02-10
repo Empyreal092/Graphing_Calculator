@@ -33,11 +33,16 @@ SOURCES += \
 HEADERS += \
         mainwindow.h \
     qcustomplot.h \
-    functionplot.h
+    functionplot.h \
+    exprtk.hpp
 
 FORMS += \
         mainwindow.ui \
     functionplot.ui
+
+# Prevents "fatal error C1128: number of sections exceeded object file format limit".
+QMAKE_CXXFLAGS += /bigobj
+
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
