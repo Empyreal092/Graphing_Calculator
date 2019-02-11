@@ -100,9 +100,18 @@ public slots:
      *
      * @brief	Makes the plot window
      */
-
     void MakePlotWindow();
+    /**
+     * @fn	void MainWindow::MakeEulerWindow();
+     *
+     * @brief	Makes the Euler window
+     */
     void MakeEulerWindow();
+    /**
+     * @fn	void MainWindow::MakeBisecWindow();
+     *
+     * @brief	Makes the bisec window
+     */
     void MakeBisecWindow();
 
 };
