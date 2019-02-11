@@ -56,6 +56,12 @@ MainWindow::MainWindow(QWidget *parent) :
     centerpiece->setLayout(centerlayout);
     setCentralWidget(centerpiece);
 
+    title_prompt->setStyleSheet("font:bold");
+    button_Plot->setStyleSheet("background-color:rgb(45, 75, 190); color: white; border-style: outset; border-width: 2 px; border-color: beige; padding: 6 px;");
+    button_Euler->setStyleSheet("background-color:rgb(20, 90, 15); color: white; border-style: outset; border-width: 2 px; border-color: beige; padding: 6 px");
+    button_Bisec->setStyleSheet("background-color:rgb(60, 70, 100); color: white; border-style: outset; border-width: 2 px; border-color: beige; padding: 6 px;");
+    centerpiece->setStyleSheet("background-color:rgb(200, 220, 250);");
+
     QObject::connect(button_Plot, SIGNAL(clicked()), this, SLOT(MakePlotWindow())); // connect plot window bottom pressed to make the plot function window
     QObject::connect(button_Euler, SIGNAL(clicked()), this, SLOT(MakeEulerWindow()));
     QObject::connect(button_Bisec, SIGNAL(clicked()), this, SLOT(MakeBisecWindow()));
