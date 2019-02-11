@@ -102,6 +102,8 @@ public slots:
      */
 
     void MakePlotWindow();
+    void MakeEulerWindow();
+    void MakeBisecWindow();
 
 };
 
