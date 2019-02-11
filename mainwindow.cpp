@@ -57,6 +57,8 @@ MainWindow::MainWindow(QWidget *parent) :
     setCentralWidget(centerpiece);
 
     QObject::connect(button_Plot, SIGNAL(clicked()), this, SLOT(MakePlotWindow())); // connect plot window bottom pressed to make the plot function window
+    QObject::connect(button_Euler, SIGNAL(clicked()), this, SLOT(MakeEulerWindow()));
+    QObject::connect(button_Bisec, SIGNAL(clicked()), this, SLOT(MakeBisecWindow()));
 }
 
 MainWindow::~MainWindow()
@@ -67,4 +69,16 @@ MainWindow::~MainWindow()
 void MainWindow::MakePlotWindow(){
     FunctionPlot *p_window = new FunctionPlot(); // make the function plot window
     p_window->show(); // show the window
+}
+
+void MainWindow::MakeEulerWindow()
+{
+    QWidget* e_window = new QWidget();
+    e_window->show();
+}
+
+void MainWindow::MakeBisecWindow()
+{
+    QWidget* b_window = new QWidget();
+    b_window->show();
 }
