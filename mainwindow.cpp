@@ -56,15 +56,30 @@ MainWindow::MainWindow(QWidget *parent) :
     centerpiece->setLayout(centerlayout);
     setCentralWidget(centerpiece);
 
-    title_prompt->setStyleSheet("font:bold");
-    button_Plot->setStyleSheet("background-color:rgb(45, 75, 190); color: white; border-style: outset; border-width: 2 px; border-color: beige; padding: 6 px;");
-    button_Euler->setStyleSheet("background-color:rgb(20, 90, 15); color: white; border-style: outset; border-width: 2 px; border-color: beige; padding: 6 px");
-    button_Bisec->setStyleSheet("background-color:rgb(60, 70, 100); color: white; border-style: outset; border-width: 2 px; border-color: beige; padding: 6 px;");
-    centerpiece->setStyleSheet("background-color:rgb(200, 220, 250);");
+    title_prompt->setStyleSheet("font:bold"); // Prompt bold font
+    button_Plot->setStyleSheet("background-color:rgb(45, 75, 190); " // Plot button is blue
+                               "color: white; " // Font is white
+                               "border-style: outset; " // Outer border
+                               "border-width: 2 px; " // Border is 2 px
+                               "border-color: beige; " // Border color is beige
+                               "padding: 6 px;"); // Padding is 6 px
+    button_Euler->setStyleSheet("background-color:rgb(20, 90, 15); " // Euler button is green
+                                "color: white; " // Font is white
+                                "border-style: outset; " // Outer border
+                                "border-width: 2 px; " // Border is 2 px
+                                "border-color: beige; " // Border color is beige
+                                "padding: 6 px"); // Padding is 6 px
+    button_Bisec->setStyleSheet("background-color:rgb(60, 70, 100); " // Bisec button is navy
+                                "color: white; " // Font is white
+                                "border-style: outset; " // Outer border
+                                "border-width: 2 px; " // Border is 2 px
+                                "border-color: beige; " // Border color is beige
+                                "padding: 6 px;"); // Padding is 6 px
+    centerpiece->setStyleSheet("background-color:rgb(200, 220, 250);"); // Menu background is light blue
 
     QObject::connect(button_Plot, SIGNAL(clicked()), this, SLOT(MakePlotWindow())); // connect plot window bottom pressed to make the plot function window
-    QObject::connect(button_Euler, SIGNAL(clicked()), this, SLOT(MakeEulerWindow()));
-    QObject::connect(button_Bisec, SIGNAL(clicked()), this, SLOT(MakeBisecWindow()));
+    QObject::connect(button_Euler, SIGNAL(clicked()), this, SLOT(MakeEulerWindow())); // connect euler button to make euler window when pressed
+    QObject::connect(button_Bisec, SIGNAL(clicked()), this, SLOT(MakeBisecWindow())); // connect bisec button to make bisec window when pressed
 }
 
 MainWindow::~MainWindow()
@@ -79,12 +94,12 @@ void MainWindow::MakePlotWindow(){
 
 void MainWindow::MakeEulerWindow()
 {
-    QWidget* e_window = new QWidget();
-    e_window->show();
+    QWidget* e_window = new QWidget(); // make the euler window
+    e_window->show(); // show the window
 }
 
 void MainWindow::MakeBisecWindow()
 {
-    QWidget* b_window = new QWidget();
-    b_window->show();
+    QWidget* b_window = new QWidget(); // make the bisec window
+    b_window->show(); // show the window
 }
