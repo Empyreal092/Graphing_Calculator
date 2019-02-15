@@ -42,13 +42,72 @@ FunctionPlot::FunctionPlot(QWidget *parent) :
                    "((1 /1)*sin( 2*3.1415^2*x/10)+(1 /3)*sin( 6*3.1415^2*x/10)+"
                    " (1 /5)*sin(10*3.1415^2*x/10)+(1 /7)*sin(14*3.1415^2*x/10)+"
                    " (1 /9)*sin(18*3.1415^2*x/10)+(1/11)*sin(22*3.1415^2*x/10))";
-	// this the an example, that the function parser works, now it is possible to take input from user and plot the function
-    initial = -5.0; // initial value
-    final = 5.0; // final value
+    // default graph
+    initial = -5.0; // default initial value
+    final = 5.0; // default final value
     ui->setupUi(this);
-    FunctionPlot::makeplot<double>(); // call the make plot function
 
-    setWindowTitle("Plotting Function");
+    setWindowTitle("Plotting Function"); // set the window title
+
+    input = new QWidget(); // widget of inputs on the left of the window
+    inputlayout = new QVBoxLayout(); // the layout of the input
+    paralayout = new QGridLayout(); // layout for the initial and final
+    functionstring = new QLineEdit(); // where the user input the function
+    input_initial = new QDoubleSpinBox(); // a double spinbox for the initial
+    input_final = new QDoubleSpinBox(); // a double spinbox for the final
+
+    input_initial -> setMaximum(1000); // set max and min for initial and final spinbox
+    input_initial -> setMinimum(-1000);
+    input_final -> setMaximum(1000);
+    input_final -> setMinimum(-1000);
+
+    plotbutton = new QPushButton("Plot!"); // plot button
+
+    QObject::connect(plotbutton, SIGNAL(clicked()), this, SLOT(changefstring()));
+        // when plot pressed, change the function string
+    QObject::connect(input_initial, SIGNAL(valueChanged(double)), this, SLOT(changeini(double)));
+        // when user input new initial, change the initial value
+    QObject::connect(input_final, SIGNAL(valueChanged(double)), this, SLOT(changefinal(double)));
+        // when user input new final, change the final value
+
+    promp_function = new QLabel ("Input function here:"); // some prompt to tell the user what to do
+    promp_ini = new QLabel  ("T initial");
+    promp_final = new QLabel  ("T final");
+
+    // set the formats into the layout
+    inputlayout->addWidget(promp_function);
+    inputlayout->addWidget(functionstring);
+    paralayout->addWidget(promp_ini,0,0);
+    paralayout->addWidget(promp_final,0,1);
+    paralayout->addWidget(input_initial,1,0);
+    paralayout->addWidget(input_final,1,1);
+    inputlayout->addLayout(paralayout);
+    inputlayout->addWidget(plotbutton);
+
+    input->setLayout(inputlayout);
+    input->setMaximumWidth(250); // so that the input is not too big when the window is big
+
+    FunctionPlot::makeplot<double>(); // call the make pot to plot the default graph
+
+    ui->gridLayout->addWidget(input,0,0); // add input in the left of the window
+}
+
+void FunctionPlot::changefstring(){
+    if (initial >= final){ // if initial is larger than final, do nothing
+        return; // here should be error handeling
+    }
+    else{
+        function_str = functionstring->text(); // change the function_str according to the input
+        FunctionPlot::makeplot<double>(); // call make plot
+    }
+}
+
+void FunctionPlot::changeini(double i){
+    initial = i; // change initial
+}
+
+void FunctionPlot::changefinal(double i){
+    final = i; // change final
 }
 
 FunctionPlot::~FunctionPlot()
@@ -64,7 +123,7 @@ void FunctionPlot::makeplot(){
     typedef exprtk::expression<T>     expression_t;
     typedef exprtk::parser<T>             parser_t;
 
-    std::string expr_string = function_str; // the function string
+    QString expr_string = function_str; // the function string
 
     T x = T(initial); // initialize x
 
@@ -75,7 +134,7 @@ void FunctionPlot::makeplot(){
     expression_t expression;  
     expression.register_symbol_table(symbol_table);
 	parser_t parser;
-    parser.compile(expr_string,expression);
+    parser.compile(expr_string.toStdString(),expression);
 
     const T delta = T(1/1000.0); // the step size
 
@@ -92,11 +151,12 @@ void FunctionPlot::makeplot(){
     ui->customPlot->addGraph();
     ui->customPlot->graph(0)->setData(var, value);
     // give the axes some labels
-    ui->customPlot->xAxis->setLabel("x");
+    ui->customPlot->xAxis->setLabel("t");
     ui->customPlot->yAxis->setLabel("y");
     // set axes ranges, so we see all data
     T max = *std::max_element(value.begin(), value.end());
     T min = *std::min_element(value.begin(), value.end());
-    ui->customPlot->xAxis->setRange(T(initial)-0.1*abs(T(initial)), T(final)+0.1*abs(T(final)));
-    ui->customPlot->yAxis->setRange(min-0.1*abs(min), max+0.1*abs(max));
+    ui->customPlot->xAxis->setRange(T(initial)-0.1*abs(T(final)-T(initial)), T(final)+0.1*abs(T(final)-T(initial)));
+    ui->customPlot->yAxis->setRange(min-0.1*abs(max-min), max+0.1*abs(max-min));
+    ui->customPlot->replot(); // replot
 }

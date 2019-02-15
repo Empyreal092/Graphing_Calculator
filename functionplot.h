@@ -38,6 +38,10 @@
 #include "qcustomplot.h"
 #include "ui_functionplot.h"
 #include "exprtk.hpp"
+#include <QDialog>
+#include <QString>
+#include <QPushButton>
+#include <QDoubleSpinBox>
 
 namespace Ui {
 class FunctionPlot;
@@ -84,14 +88,61 @@ public:
     void makeplot();
 
 private:
-  /** @brief	The user interface */
-  Ui::FunctionPlot *ui;
-  /** @brief	The function string */
-  std::string function_str;
-  /** @brief	The initial value */
-  double initial;
-  /** @brief	The final value */
-  double final;
+   /** @brief	The user interface */
+   Ui::FunctionPlot *ui;
+   /** @brief	The function string */
+   QString function_str;
+   /** @brief	The initial value */
+   double initial;
+   /** @brief	The final value */
+   double final;
+
+   /** @brief	The input widget */
+   QWidget * input;
+   /** @brief	The layout for input */
+   QVBoxLayout * inputlayout;
+   /** @brief	The layout for parameters */
+   QGridLayout * paralayout;
+   /** @brief	The the function str input box */
+   QLineEdit * functionstring;
+   /** @brief	The plot button */
+   QPushButton * plotbutton;
+   /** @brief	The initial double spinbox */
+   QDoubleSpinBox * input_initial;
+   /** @brief	The final double spinbox */
+   QDoubleSpinBox * input_final;
+   /** @brief	Tell user to input function str */
+   QLabel * promp_function;
+   /** @brief	Tell user to input initial value */
+   QLabel * promp_ini;
+   /** @brief	Tell user to input final value */
+   QLabel * promp_final;
+
+public slots:
+
+   /**
+    * @fn	FunctionPlot::changefstring();
+    *
+    * @brief	Change the function string
+    */
+
+   void changefstring();
+
+   /**
+    * @fn	FunctionPlot::changeini();
+    *
+    * @brief	Change the initial value
+    */
+
+   void changeini(double);
+
+   /**
+    * @fn	FunctionPlot::changefinal();
+    *
+    * @brief	Change the final value
+    */
+
+   void changefinal(double);
 };
 
 #endif // FUNCTIONPLOT_H
