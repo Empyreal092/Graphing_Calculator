@@ -43,43 +43,49 @@ diffeqsolver::diffeqsolver(QWidget *parent) :
     QWidget * solverMenu = new QWidget;
     QVBoxLayout * menuLayout = new QVBoxLayout;
 
+    // Euler method widget
     QWidget * eulerMethod = new QWidget;
     QVBoxLayout * page1Layout = new QVBoxLayout;
     QPushButton * page1Back = new QPushButton("Go Back");
     page1Layout->addWidget(page1Back);
     eulerMethod->setLayout(page1Layout);
 
+    // Backward Euler method widget
     QWidget * backwardEuler = new QWidget;
     QVBoxLayout * page2Layout = new QVBoxLayout;
     QPushButton * page2Back = new QPushButton("Go Back");
     page2Layout->addWidget(page2Back);
     backwardEuler->setLayout(page2Layout);
 
+    // rk2 method widget
     QWidget * rk2 = new QWidget;
     QVBoxLayout * page3Layout = new QVBoxLayout;
     QPushButton * page3Back = new QPushButton("Go Back");
     page3Layout->addWidget(page3Back);
     rk2->setLayout(page3Layout);
 
+    // rk4 method widget
     QWidget * rk4 = new QWidget;
     QVBoxLayout * page4Layout = new QVBoxLayout;
     QPushButton * page4Back = new QPushButton("Go Back");
     page4Layout->addWidget(page4Back);
     rk4->setLayout(page4Layout);
 
+    // Trapezoidal method widget
     QWidget * trapezoidalMethod = new QWidget;
     QVBoxLayout * page5Layout = new QVBoxLayout;
     QPushButton * page5Back = new QPushButton("Go Back");
     page5Layout->addWidget(page5Back);
     trapezoidalMethod->setLayout(page5Layout);
 
+    // Creates buttons for each of the methods
     QPushButton * eulerMethodButton = new QPushButton("Euler Method");
     QPushButton * backwardEulerButton = new QPushButton("Backwards Euler Method");
     QPushButton * rk2Button = new QPushButton("RK2");
     QPushButton * rk4Button = new QPushButton("RK4");
     QPushButton * trapezoidalMethodButton = new QPushButton("Trapezoidal Method");
 
-
+    // Adds the buttons to menuLayout
     menuLayout->addWidget(eulerMethodButton);
     menuLayout->addWidget(backwardEulerButton);
     menuLayout->addWidget(rk2Button);
@@ -87,6 +93,7 @@ diffeqsolver::diffeqsolver(QWidget *parent) :
     menuLayout->addWidget(trapezoidalMethodButton);
     solverMenu->setLayout(menuLayout);
 
+    // Adds the method pages to the solverStackedWidget
     solverStackedWidget = new QStackedWidget;
     solverStackedWidget->addWidget(solverMenu); // Page 0
     solverStackedWidget->addWidget(eulerMethod); // Page 1
@@ -95,17 +102,21 @@ diffeqsolver::diffeqsolver(QWidget *parent) :
     solverStackedWidget->addWidget(rk4); // Page 4
     solverStackedWidget->addWidget(trapezoidalMethod); // Page 5
 
+    // Connects each method button to its own page
     connect(eulerMethodButton, SIGNAL(clicked()), this, SLOT(goToEulerMethod()));
     connect(backwardEulerButton, SIGNAL(clicked()), this, SLOT(goToBackwardEuler()));
     connect(rk2Button, SIGNAL(clicked()), this, SLOT(goToRk2()));
     connect(rk4Button, SIGNAL(clicked()), this, SLOT(goToRk4()));
     connect(trapezoidalMethodButton, SIGNAL(clicked()), this, SLOT(goToTrapezoidalMethod()));
+
+    // Connects each page's back button to go to the solver menu
     connect(page1Back, SIGNAL(clicked()), this, SLOT(goToSolverMenu()));
     connect(page2Back, SIGNAL(clicked()), this, SLOT(goToSolverMenu()));
     connect(page3Back, SIGNAL(clicked()), this, SLOT(goToSolverMenu()));
     connect(page4Back, SIGNAL(clicked()), this, SLOT(goToSolverMenu()));
     connect(page5Back, SIGNAL(clicked()), this, SLOT(goToSolverMenu()));
 
+    // Adds the solverStackedWidget to the layout
     QVBoxLayout* centrallayout = new QVBoxLayout;
     centrallayout->addWidget(solverStackedWidget);
     setLayout(centrallayout);
@@ -113,27 +124,32 @@ diffeqsolver::diffeqsolver(QWidget *parent) :
 
 void diffeqsolver::goToEulerMethod()
 {
-    solverStackedWidget->setCurrentIndex(1);
+    solverStackedWidget->setCurrentIndex(1); // Sets to Page 1 eulerMethod
 }
+
 void diffeqsolver::goToBackwardEuler()
 {
-    solverStackedWidget->setCurrentIndex(2);
+    solverStackedWidget->setCurrentIndex(2); // Sets to Page 2 backwardEuler
 }
+
 void diffeqsolver::goToRk2()
 {
-    solverStackedWidget->setCurrentIndex(3);
+    solverStackedWidget->setCurrentIndex(3); // Sets to Page 3 rk2
 }
+
 void diffeqsolver::goToRk4()
 {
-    solverStackedWidget->setCurrentIndex(4);
+    solverStackedWidget->setCurrentIndex(4); // Sets to Page 4 rk4
 }
+
 void diffeqsolver::goToTrapezoidalMethod()
 {
-    solverStackedWidget->setCurrentIndex(5);
+    solverStackedWidget->setCurrentIndex(5); // Sets to Page 5 trapezoidalMethod
 }
+
 void diffeqsolver::goToSolverMenu()
 {
-    solverStackedWidget->setCurrentIndex(0);
+    solverStackedWidget->setCurrentIndex(0); // Sets to Page 0 solverMenu
 }
 
 diffeqsolver::~diffeqsolver()
