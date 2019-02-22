@@ -34,6 +34,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "functionplot.h"
+#include "diffeqsolver.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent), ui(new Ui::MainWindow){
@@ -43,14 +44,14 @@ MainWindow::MainWindow(QWidget *parent) :
 
     title_prompt = new QLabel("Choose the features:"); // the prompt
     button_Plot = new QPushButton("Plot Function (Click here!)"); // the plot function button
-    button_Euler = new QPushButton("Euler's method (Do Noting)"); // the Euler's method button
-    button_Bisec = new QPushButton("Bisection (Do Noting)"); // the Bisection window button
+    button_ODE = new QPushButton("ODE Solver (Do Noting)"); // the Euler's method button
+    button_2ptr = new QPushButton("Two Point Boundary Value Problem (Do Noting)"); // the Bisection window button
 
     centerlayout = new QGridLayout; // layout
     centerlayout -> addWidget(title_prompt,0,0,Qt::AlignCenter); // put objects in the layout
     centerlayout -> addWidget(button_Plot,1,0);
-    centerlayout -> addWidget(button_Euler,2,0);
-    centerlayout -> addWidget(button_Bisec,3,0);
+    centerlayout -> addWidget(button_ODE,2,0);
+    centerlayout -> addWidget(button_2ptr,3,0);
 
     centerpiece = new QWidget; // set the central widget
     centerpiece->setLayout(centerlayout);
@@ -63,13 +64,13 @@ MainWindow::MainWindow(QWidget *parent) :
                                "border-width: 2 px; " // Border is 2 px
                                "border-color: beige; " // Border color is beige
                                "padding: 6 px;"); // Padding is 6 px
-    button_Euler->setStyleSheet("background-color:rgb(20, 90, 15); " // Euler button is green
+    button_ODE->setStyleSheet("background-color:rgb(20, 90, 15); " // Euler button is green
                                 "color: white; " // Font is white
                                 "border-style: outset; " // Outer border
                                 "border-width: 2 px; " // Border is 2 px
                                 "border-color: beige; " // Border color is beige
                                 "padding: 6 px"); // Padding is 6 px
-    button_Bisec->setStyleSheet("background-color:rgb(60, 70, 100); " // Bisec button is navy
+    button_2ptr->setStyleSheet("background-color:rgb(60, 70, 100); " // Bisec button is navy
                                 "color: white; " // Font is white
                                 "border-style: outset; " // Outer border
                                 "border-width: 2 px; " // Border is 2 px
@@ -78,8 +79,8 @@ MainWindow::MainWindow(QWidget *parent) :
     centerpiece->setStyleSheet("background-color:rgb(200, 220, 250);"); // Menu background is light blue
 
     QObject::connect(button_Plot, SIGNAL(clicked()), this, SLOT(MakePlotWindow())); // connect plot window bottom pressed to make the plot function window
-    QObject::connect(button_Euler, SIGNAL(clicked()), this, SLOT(MakeEulerWindow())); // connect euler button to make euler window when pressed
-    QObject::connect(button_Bisec, SIGNAL(clicked()), this, SLOT(MakeBisecWindow())); // connect bisec button to make bisec window when pressed
+    QObject::connect(button_ODE, SIGNAL(clicked()), this, SLOT(MakeODEWindow())); // connect euler button to make euler window when pressed
+    QObject::connect(button_2ptr, SIGNAL(clicked()), this, SLOT(Make2ptrcWindow())); // connect bisec button to make bisec window when pressed
 }
 
 MainWindow::~MainWindow()
@@ -92,13 +93,13 @@ void MainWindow::MakePlotWindow(){
     p_window->show(); // show the window
 }
 
-void MainWindow::MakeEulerWindow()
+void MainWindow::MakeODEWindow()
 {
-    QWidget* e_window = new QWidget(); // make the euler window
+    QWidget* e_window = new diffeqsolver(); // make the euler window
     e_window->show(); // show the window
 }
 
-void MainWindow::MakeBisecWindow()
+void MainWindow::Make2ptrcWindow()
 {
     QWidget* b_window = new QWidget(); // make the bisec window
     b_window->show(); // show the window
