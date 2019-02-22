@@ -56,10 +56,17 @@ FunctionPlot::FunctionPlot(QWidget *parent) :
     input_initial = new QDoubleSpinBox(); // a double spinbox for the initial
     input_final = new QDoubleSpinBox(); // a double spinbox for the final
 
+    input_nsteps_spin_box = new QSpinBox(); // a double spinbox for the nsteps value
+    nsteps_slider = new QSlider(Qt::Horizontal); // a double slider for the nsteps value
+
     input_initial -> setMaximum(1000); // set max and min for initial and final spinbox
     input_initial -> setMinimum(-1000);
     input_final -> setMaximum(1000);
     input_final -> setMinimum(-1000);
+
+    input_nsteps_spin_box -> setMaximum(1000); // set max and min for nsteps spinbox and nsteps slider
+    input_nsteps_spin_box -> setMinimum(-1000);
+    nsteps_slider -> setRange(-1000, 1000);
 
     plotbutton = new QPushButton("Plot!"); // plot button
 
@@ -70,17 +77,36 @@ FunctionPlot::FunctionPlot(QWidget *parent) :
     QObject::connect(input_final, SIGNAL(valueChanged(double)), this, SLOT(changefinal(double)));
         // when user input new final, change the final value
 
+    QObject::connect(input_nsteps_spin_box, SIGNAL(valueChanged(int)), this, SLOT(changensteps(int)));
+        // when user input new number of steps, change the nsteps value
+    QObject::connect(nsteps_slider, SIGNAL(valueChanged(int)), this, SLOT(changensteps(int)));
+        // when user moves slider, change the nsteps value
+    QObject::connect(nsteps_slider, SIGNAL(valueChanged(int)), input_nsteps_spin_box, SLOT(setValue(int)));
+        // when user moves slider, change the nsteps spin box value*/
+    QObject::connect(input_nsteps_spin_box, SIGNAL(valueChanged(int)), nsteps_slider, SLOT(setValue(int)));
+        // when user changes nsteps spin box, changes the nsteps slider
+
     promp_function = new QLabel ("Input function here:"); // some prompt to tell the user what to do
     promp_ini = new QLabel  ("T initial");
     promp_final = new QLabel  ("T final");
+    promp_nsteps = new QLabel ("Num of steps");
+    promp_nsteps_slider = new QLabel ("Num of steps slider");
 
     // set the formats into the layout
     inputlayout->addWidget(promp_function);
     inputlayout->addWidget(functionstring);
     paralayout->addWidget(promp_ini,0,0);
     paralayout->addWidget(promp_final,0,1);
+
+    paralayout->addWidget(promp_nsteps,0,2);
+    paralayout->addWidget(promp_nsteps_slider, 2, 2);
+
     paralayout->addWidget(input_initial,1,0);
     paralayout->addWidget(input_final,1,1);
+
+    paralayout->addWidget(input_nsteps_spin_box,1,2);
+    paralayout->addWidget(nsteps_slider, 3, 2);
+
     inputlayout->addLayout(paralayout);
     inputlayout->addWidget(plotbutton);
 
@@ -108,6 +134,10 @@ void FunctionPlot::changeini(double i){
 
 void FunctionPlot::changefinal(double i){
     final = i; // change final
+}
+
+void FunctionPlot::changensteps(int i){
+    nsteps = i; // change nsteps
 }
 
 FunctionPlot::~FunctionPlot()
