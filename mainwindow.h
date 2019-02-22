@@ -84,9 +84,9 @@ private:
     /** @brief	The button for plot function */
     QPushButton* button_Plot;
     /** @brief	The button for Euler's method, do nothing rn */
-    QPushButton* button_Euler;
+    QPushButton* button_ODE;
     /** @brief	The button for bisection method, do nothing rn */
-    QPushButton* button_Bisec;
+    QPushButton* button_2ptr;
 
     /** @brief	The centerlayout */
     QGridLayout *centerlayout;
@@ -106,13 +106,13 @@ public slots:
      *
      * @brief	Makes the Euler window
      */
-    void MakeEulerWindow();
+    void MakeODEWindow();
     /**
      * @fn	void MainWindow::MakeBisecWindow();
      *
      * @brief	Makes the bisec window
      */
-    void MakeBisecWindow();
+    void Make2ptrcWindow();
 
 };
 
