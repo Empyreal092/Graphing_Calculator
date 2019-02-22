@@ -45,6 +45,7 @@ FunctionPlot::FunctionPlot(QWidget *parent) :
     // default graph
     initial = -5.0; // default initial value
     final = 5.0; // default final value
+    nsteps = 1000;
     ui->setupUi(this);
 
     setWindowTitle("Plotting Function"); // set the window title
@@ -64,9 +65,9 @@ FunctionPlot::FunctionPlot(QWidget *parent) :
     input_final -> setMaximum(1000);
     input_final -> setMinimum(-1000);
 
-    input_nsteps_spin_box -> setMaximum(1000); // set max and min for nsteps spinbox and nsteps slider
-    input_nsteps_spin_box -> setMinimum(-1000);
-    nsteps_slider -> setRange(-1000, 1000);
+    input_nsteps_spin_box -> setMaximum(100); // set max and min for nsteps spinbox and nsteps slider
+    input_nsteps_spin_box -> setMinimum(0);
+    nsteps_slider -> setRange(0, 100);
 
     plotbutton = new QPushButton("Plot!"); // plot button
 
@@ -98,14 +99,14 @@ FunctionPlot::FunctionPlot(QWidget *parent) :
     paralayout->addWidget(promp_ini,0,0);
     paralayout->addWidget(promp_final,0,1);
 
-    paralayout->addWidget(promp_nsteps,0,2);
-    paralayout->addWidget(promp_nsteps_slider, 2, 2);
+    paralayout->addWidget(promp_nsteps,2,0);
+    paralayout->addWidget(promp_nsteps_slider, 2, 1);
 
     paralayout->addWidget(input_initial,1,0);
     paralayout->addWidget(input_final,1,1);
 
-    paralayout->addWidget(input_nsteps_spin_box,1,2);
-    paralayout->addWidget(nsteps_slider, 3, 2);
+    paralayout->addWidget(input_nsteps_spin_box,3,0);
+    paralayout->addWidget(nsteps_slider, 3, 1);
 
     inputlayout->addLayout(paralayout);
     inputlayout->addWidget(plotbutton);
@@ -166,7 +167,7 @@ void FunctionPlot::makeplot(){
 	parser_t parser;
     parser.compile(expr_string.toStdString(),expression);
 
-    const T delta = T(1/1000.0); // the step size
+    const T delta = T((final-initial)/nsteps); // the step size
 
     //plot functions
     QVector<T> var, value; // the variable and value vector
