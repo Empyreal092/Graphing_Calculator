@@ -34,6 +34,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "functionplot.h"
+#include "diffeqsolver.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent), ui(new Ui::MainWindow){
@@ -94,7 +95,7 @@ void MainWindow::MakePlotWindow(){
 
 void MainWindow::MakeEulerWindow()
 {
-    QWidget* e_window = new QWidget(); // make the euler window
+    QWidget* e_window = new diffeqsolver(); // make the euler window
     e_window->show(); // show the window
 }
 

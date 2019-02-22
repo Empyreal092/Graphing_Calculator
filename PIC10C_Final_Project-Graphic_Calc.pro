@@ -28,17 +28,20 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     qcustomplot.cpp \
-    functionplot.cpp
+    functionplot.cpp \
+    diffeqsolver.cpp
 
 HEADERS += \
         mainwindow.h \
     qcustomplot.h \
     functionplot.h \
-    exprtk.hpp
+    exprtk.hpp \
+    diffeqsolver.h
 
 FORMS += \
         mainwindow.ui \
-    functionplot.ui
+    functionplot.ui \
+    diffeqsolver.ui
 
 # Prevents "fatal error C1128: number of sections exceeded object file format limit".
 win64 : QMAKE_CXXFLAGS += /bigobj
