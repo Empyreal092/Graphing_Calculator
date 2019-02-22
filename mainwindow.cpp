@@ -35,6 +35,7 @@
 #include "ui_mainwindow.h"
 #include "functionplot.h"
 #include "diffeqsolver.h"
+#include "twoptrwindow.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent), ui(new Ui::MainWindow){
@@ -43,9 +44,9 @@ MainWindow::MainWindow(QWidget *parent) :
     setWindowTitle("Main Entry Menu:"); // set window title
 
     title_prompt = new QLabel("Choose the features:"); // the prompt
-    button_Plot = new QPushButton("Plot Function (Click here!)"); // the plot function button
-    button_ODE = new QPushButton("ODE Solver (Do Noting)"); // the Euler's method button
-    button_2ptr = new QPushButton("Two Point Boundary Value Problem (Do Noting)"); // the Bisection window button
+    button_Plot = new QPushButton("Plot Function"); // the plot function button
+    button_ODE = new QPushButton("ODE Solver"); // the Euler's method button
+    button_2ptr = new QPushButton("Two Point Boundary Value Problem"); // the Bisection window button
 
     centerlayout = new QGridLayout; // layout
     centerlayout -> addWidget(title_prompt,0,0,Qt::AlignCenter); // put objects in the layout
@@ -101,6 +102,6 @@ void MainWindow::MakeODEWindow()
 
 void MainWindow::Make2ptrcWindow()
 {
-    QWidget* b_window = new QWidget(); // make the bisec window
+    QWidget* b_window = new TwoPtrWindow(); // make the bisec window
     b_window->show(); // show the window
 }

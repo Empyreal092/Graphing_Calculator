@@ -29,14 +29,16 @@ SOURCES += \
         mainwindow.cpp \
     qcustomplot.cpp \
     functionplot.cpp \
-    diffeqsolver.cpp
+    diffeqsolver.cpp \
+    twoptrwindow.cpp
 
 HEADERS += \
         mainwindow.h \
     qcustomplot.h \
     functionplot.h \
     exprtk.hpp \
-    diffeqsolver.h
+    diffeqsolver.h \
+    twoptrwindow.h
 
 FORMS += \
         mainwindow.ui \
