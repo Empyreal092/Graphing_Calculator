@@ -30,8 +30,6 @@
  *
  * @bug No known bugs, but more features to be added
  */
-
-
 #include "diffeqsolver.h"
 #include "ui_diffeqsolver.h"
 
@@ -142,4 +140,3 @@ diffeqsolver::~diffeqsolver()
 {
     delete ui;
 }
-
