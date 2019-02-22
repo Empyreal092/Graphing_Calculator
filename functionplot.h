@@ -96,6 +96,8 @@ private:
    double initial;
    /** @brief	The final value */
    double final;
+   /** @brief	The nsteps value */
+   int nsteps;
 
    /** @brief	The input widget */
    QWidget * input;
@@ -111,12 +113,23 @@ private:
    QDoubleSpinBox * input_initial;
    /** @brief	The final double spinbox */
    QDoubleSpinBox * input_final;
+   /** @brief	The nsteps double spin box */
+
+   QSpinBox * input_nsteps_spin_box;
    /** @brief	Tell user to input function str */
+
    QLabel * promp_function;
    /** @brief	Tell user to input initial value */
    QLabel * promp_ini;
    /** @brief	Tell user to input final value */
    QLabel * promp_final;
+
+   /** @brief	Tell user to input nsteps value */
+   QLabel * promp_nsteps;
+   /** @brief	Tell user to move slider to change nsteps value */
+   QLabel * promp_nsteps_slider;
+   /** @brief	Changes nsteps value */
+   QSlider * nsteps_slider;
 
 public slots:
 
@@ -143,6 +156,14 @@ public slots:
     */
 
    void changefinal(double);
+
+   /**
+    * @fn	FunctionPlot::changensteps();
+    *
+    * @brief	Change the nsteps value
+    */
+
+   void changensteps(int);
 };
 
 #endif // FUNCTIONPLOT_H
