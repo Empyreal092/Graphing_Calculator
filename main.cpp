@@ -42,7 +42,5 @@ int main(int argc, char *argv[])
     MainWindow w;
     w.show();
 
-    //HELLO GITHUB!
-
     return app.exec();
 }
