@@ -34,6 +34,7 @@
 #include "functionplot.h"
 #include "qcustomplot.h"
 #include "ui_functionplot.h"
+#include <algorithm>
 
 FunctionPlot::FunctionPlot(QWidget *parent) :
     QWidget(parent), ui(new Ui::FunctionPlot), function_str(){
@@ -70,9 +71,12 @@ FunctionPlot::FunctionPlot(QWidget *parent) :
     nsteps_slider -> setRange(0, 100);
 
     plotbutton = new QPushButton("Plot!"); // plot button
+    clearbutton = new QPushButton("Clear!"); // clear button
 
     QObject::connect(plotbutton, SIGNAL(clicked()), this, SLOT(changefstring()));
         // when plot pressed, change the function string
+    QObject::connect(clearbutton, SIGNAL(clicked()), this, SLOT(clearstring()));
+        // when plot pressed, clear the string
     QObject::connect(input_initial, SIGNAL(valueChanged(double)), this, SLOT(changeini(double)));
         // when user input new initial, change the initial value
     QObject::connect(input_final, SIGNAL(valueChanged(double)), this, SLOT(changefinal(double)));
@@ -110,11 +114,13 @@ FunctionPlot::FunctionPlot(QWidget *parent) :
 
     inputlayout->addLayout(paralayout);
     inputlayout->addWidget(plotbutton);
+    inputlayout->addWidget(clearbutton);
 
     input->setLayout(inputlayout);
     input->setMaximumWidth(250); // so that the input is not too big when the window is big
 
-    FunctionPlot::makeplot<double>(); // call the make pot to plot the default graph
+    FunctionPlot::makepoints();
+    FunctionPlot::makeplot(); // call the make pot to plot the default graph
 
     ui->gridLayout->addWidget(input,0,0); // add input in the left of the window
 }
@@ -125,8 +131,17 @@ void FunctionPlot::changefstring(){
     }
     else{
         function_str = functionstring->text(); // change the function_str according to the input
-        FunctionPlot::makeplot<double>(); // call make plot
+        FunctionPlot::makepoints();
+        FunctionPlot::makeplot(); // call make plot
     }
+}
+
+void FunctionPlot::clearstring(){
+    vec_points_to_plot.clear();
+
+    function_str = ""; // change the function_str according to the input
+    FunctionPlot::makepoints();
+    FunctionPlot::makeplot(); // call make plot
 }
 
 void FunctionPlot::changeini(double i){
@@ -146,48 +161,80 @@ FunctionPlot::~FunctionPlot()
     delete ui;
 }
 
-template <typename T>
-void FunctionPlot::makeplot(){
-
-	// exprtk commands
-    typedef exprtk::symbol_table<T> symbol_table_t; 
-    typedef exprtk::expression<T>     expression_t;
-    typedef exprtk::parser<T>             parser_t;
+void FunctionPlot::makepoints(){
+    // exprtk commands
+    typedef exprtk::symbol_table<double> symbol_table_t;
+    typedef exprtk::expression<double>     expression_t;
+    typedef exprtk::parser<double>             parser_t;
 
     QString expr_string = function_str; // the function string
 
-    T x = T(initial); // initialize x
+    double x = initial; // initialize x
 
     symbol_table_t symbol_table;
     symbol_table.add_variable("x",x); // add x as a variable
 
-	// exprtk commands to parse the function
-    expression_t expression;  
+    // exprtk commands to parse the function
+    expression_t expression;
     expression.register_symbol_table(symbol_table);
-	parser_t parser;
+    parser_t parser;
     parser.compile(expr_string.toStdString(),expression);
 
-    const T delta = T((final-initial)/nsteps); // the step size
+    const double delta = (final-initial)/nsteps; // the step size
 
     //plot functions
-    QVector<T> var, value; // the variable and value vector
+    QVector<std::pair <double,double>> points; // the variable and value vector
 
-    for (x = T(initial); x <= T(final); x += delta) // for all value points
+    for (x = initial; x <= final; x += delta) // for all value points
     {
-       T result = expression.value(); // evaluate the result of the function string
-       var.push_back(x); // add the variable
-       value.push_back(result); // add the result 
+       double result = expression.value(); // evaluate the result of the function string
+       std::pair <double,double> data_point = std::make_pair(x,result);
+       points.push_back(data_point); // add the data point
+    }
+
+    vec_points_to_plot.push_back(points);
+}
+
+void FunctionPlot::makeplot(){
+    QVector<double> value_maxs;
+    QVector<double> value_mins;
+    QVector<double> var_maxs;
+    QVector<double> var_mins;
+    ui->customPlot->clearGraphs();
+    ui->customPlot->clearPlottables();
+    for (size_t i = 0; i < vec_points_to_plot.size(); ++i){
+        ui->customPlot->addGraph();
+        QVector<std::pair <double,double>> points = vec_points_to_plot[i];
+        QVector<double> var;
+        QVector<double> value;
+        std::transform(points.begin(), points.end(), std::back_inserter(var),
+                         (const double& (*)(const std::pair<double, double>&))std::get<0>);
+        std::transform(points.begin(), points.end(), std::back_inserter(value),
+                         (const double& (*)(const std::pair<double, double>&))std::get<1>);
+
+        double var_max = *std::max_element(var.begin(), var.end());
+        var_maxs.push_back(var_max);
+        double var_min = *std::min_element(var.begin(), var.end());
+        var_mins.push_back(var_min);
+
+        double value_max = *std::max_element(value.begin(), value.end());
+        value_maxs.push_back(value_max);
+        double value_min = *std::min_element(value.begin(), value.end());
+        value_mins.push_back(value_min);
+        ui->customPlot->graph(i)->setData(var, value);
     }
     // create graph and assign data to it
-    ui->customPlot->addGraph();
-    ui->customPlot->graph(0)->setData(var, value);
+
     // give the axes some labels
     ui->customPlot->xAxis->setLabel("t");
     ui->customPlot->yAxis->setLabel("y");
     // set axes ranges, so we see all data
-    T max = *std::max_element(value.begin(), value.end());
-    T min = *std::min_element(value.begin(), value.end());
-    ui->customPlot->xAxis->setRange(T(initial)-0.1*abs(T(final)-T(initial)), T(final)+0.1*abs(T(final)-T(initial)));
+    double min = *std::min_element(value_mins.begin(), value_mins.end());
+    double max = *std::max_element(value_maxs.begin(), value_maxs.end());
+    double ini = *std::min_element(var_mins.begin(), var_mins.end());;
+    double fin = *std::max_element(var_maxs.begin(), var_maxs.end());;
+
+    ui->customPlot->xAxis->setRange(ini-0.1*abs(fin-ini), fin+0.1*abs(fin-ini));
     ui->customPlot->yAxis->setRange(min-0.1*abs(max-min), max+0.1*abs(max-min));
     ui->customPlot->replot(); // replot
 }

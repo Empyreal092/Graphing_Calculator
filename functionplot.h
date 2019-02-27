@@ -42,6 +42,7 @@
 #include <QString>
 #include <QPushButton>
 #include <QDoubleSpinBox>
+#include <utility>
 
 namespace Ui {
 class FunctionPlot;
@@ -76,60 +77,57 @@ public:
 
     ~FunctionPlot();
 
-    /**
-     * @fn	template <typename T> void FunctionPlot::makeplot();
-     *
-     * @brief	Make the plot
-     *
-     * @tparam	T	Generic type parameter.
-     */
 
-    template <typename T>
+    void makepoints();
     void makeplot();
 
 private:
-   /** @brief	The user interface */
-   Ui::FunctionPlot *ui;
-   /** @brief	The function string */
-   QString function_str;
-   /** @brief	The initial value */
-   double initial;
-   /** @brief	The final value */
-   double final;
-   /** @brief	The nsteps value */
-   int nsteps;
+    QVector<QVector<std::pair <double,double>>> vec_points_to_plot;
 
-   /** @brief	The input widget */
-   QWidget * input;
+    /** @brief	The user interface */
+    Ui::FunctionPlot *ui;
+    /** @brief	The function string */
+    QString function_str;
+    /** @brief	The initial value */
+    double initial;
+    /** @brief	The final value */
+    double final;
+    /** @brief	The nsteps value */
+    int nsteps;
+
+    /** @brief	The input widget */
+    QWidget * input;
    /** @brief	The layout for input */
-   QVBoxLayout * inputlayout;
-   /** @brief	The layout for parameters */
-   QGridLayout * paralayout;
-   /** @brief	The the function str input box */
-   QLineEdit * functionstring;
-   /** @brief	The plot button */
-   QPushButton * plotbutton;
-   /** @brief	The initial double spinbox */
-   QDoubleSpinBox * input_initial;
-   /** @brief	The final double spinbox */
-   QDoubleSpinBox * input_final;
-   /** @brief	The nsteps double spin box */
+    QVBoxLayout * inputlayout;
+    /** @brief	The layout for parameters */
+    QGridLayout * paralayout;
+    /** @brief	The the function str input box */
+    QLineEdit * functionstring;
+    /** @brief	The plot button */
+    QPushButton * plotbutton;
+    /** @brief	The clear button */
+    QPushButton * clearbutton;
+    /** @brief	The initial double spinbox */
+    QDoubleSpinBox * input_initial;
+    /** @brief	The final double spinbox */
+    QDoubleSpinBox * input_final;
+    /** @brief	The nsteps double spin box */
 
-   QSpinBox * input_nsteps_spin_box;
-   /** @brief	Tell user to input function str */
+    QSpinBox * input_nsteps_spin_box;
+    /** @brief	Tell user to input function str */
 
-   QLabel * promp_function;
-   /** @brief	Tell user to input initial value */
-   QLabel * promp_ini;
-   /** @brief	Tell user to input final value */
-   QLabel * promp_final;
+    QLabel * promp_function;
+    /** @brief	Tell user to input initial value */
+    QLabel * promp_ini;
+    /** @brief	Tell user to input final value */
+    QLabel * promp_final;
 
-   /** @brief	Tell user to input nsteps value */
-   QLabel * promp_nsteps;
-   /** @brief	Tell user to move slider to change nsteps value */
-   QLabel * promp_nsteps_slider;
-   /** @brief	Changes nsteps value */
-   QSlider * nsteps_slider;
+    /** @brief	Tell user to input nsteps value */
+    QLabel * promp_nsteps;
+    /** @brief	Tell user to move slider to change nsteps value */
+    QLabel * promp_nsteps_slider;
+    /** @brief	Changes nsteps value */
+    QSlider * nsteps_slider;
 
 public slots:
 
@@ -140,6 +138,8 @@ public slots:
     */
 
    void changefstring();
+
+   void clearstring();
 
    /**
     * @fn	FunctionPlot::changeini();
