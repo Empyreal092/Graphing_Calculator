@@ -19,10 +19,10 @@
  * We did not copy code from anyone, student or otherwise, expect files we downloaded and have the permission to use.
  * We pledge that we have neither given nor received unauthorized assistance on making this project.
 
- * @file eulermethod.h
- * @brief The header file for the Euler Method window.
+ * @file RK2method.cpp
+ * @brief The implementation file for the RK2 Method window.
  *
- * This is the Euler Method window for the project.
+ * This is the RK2 Method window for the project.
  *
  * @author Ryan Du (Empyreal092)
  * @author Firat Taxpulat (FT-1984)
@@ -31,39 +31,12 @@
  * @bug No known bugs, but more features to be added
  */
 
+#include "RK2method.h"
 
-#ifndef EULERMETHOD_H
-#define EULERMETHOD_H
-
-#include <QWidget>
-#include "functionplot.h"
-
-namespace Ui {
-class EulerMethod;
+RK2method::RK2method(FunctionPlot *parent) :
+    FunctionPlot(parent){
 }
 
-class EulerMethod : public FunctionPlot{
-   Q_OBJECT
+RK2method::~RK2method(){
 
-public:
-
-   /**
-    * @fn	explicit TwoPtrWindow::TwoPtrWindow(FunctionPlot *parent = nullptr);
-    *
-    * @brief	Constructor
-    *
-    * @param [in,out]	parent	(Optional) If non-null, the parent.
-    */
-
-   explicit EulerMethod(FunctionPlot *parent = nullptr);
-
-   /**
-    * @fn	TwoPtrWindow::~TwoPtrWindow();
-    *
-    * @brief	Destructor
-    */
-
-   ~EulerMethod();
-};
-
-#endif // EULERMETHOD_H
+}

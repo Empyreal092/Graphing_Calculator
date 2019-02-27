@@ -19,10 +19,10 @@
  * We did not copy code from anyone, student or otherwise, expect files we downloaded and have the permission to use.
  * We pledge that we have neither given nor received unauthorized assistance on making this project.
 
- * @file eulermethod.h
- * @brief The header file for the Euler Method window.
+ * @file Backeulermethod.h
+ * @brief The header file for the Backward Euler Method window.
  *
- * This is the Euler Method window for the project.
+ * This is the Backward Euler Method window for the project.
  *
  * @author Ryan Du (Empyreal092)
  * @author Firat Taxpulat (FT-1984)
@@ -32,38 +32,24 @@
  */
 
 
-#ifndef EULERMETHOD_H
-#define EULERMETHOD_H
+#ifndef BACKEULERMETHOD_H
+#define BACKEULERMETHOD_H
 
 #include <QWidget>
 #include "functionplot.h"
 
 namespace Ui {
-class EulerMethod;
+class BackEulerMethod;
 }
 
-class EulerMethod : public FunctionPlot{
+class BackEulerMethod : public FunctionPlot{
    Q_OBJECT
 
 public:
 
-   /**
-    * @fn	explicit TwoPtrWindow::TwoPtrWindow(FunctionPlot *parent = nullptr);
-    *
-    * @brief	Constructor
-    *
-    * @param [in,out]	parent	(Optional) If non-null, the parent.
-    */
+   explicit BackEulerMethod(FunctionPlot *parent = nullptr);
 
-   explicit EulerMethod(FunctionPlot *parent = nullptr);
-
-   /**
-    * @fn	TwoPtrWindow::~TwoPtrWindow();
-    *
-    * @brief	Destructor
-    */
-
-   ~EulerMethod();
+   ~BackEulerMethod();
 };
 
-#endif // EULERMETHOD_H
+#endif // BACKEULERMETHOD_H
