@@ -36,6 +36,7 @@
 #include "functionplot.h"
 #include "diffeqsolver.h"
 #include "twoptrwindow.h"
+#include "creditswindow.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent), ui(new Ui::MainWindow){
@@ -47,12 +48,14 @@ MainWindow::MainWindow(QWidget *parent) :
     button_Plot = new QPushButton("Plot Function"); // the plot function button
     button_ODE = new QPushButton("ODE Solver"); // the Euler's method button
     button_2ptr = new QPushButton("Two Point Boundary Value Problem"); // the Bisection window button
+    credits_button = new QPushButton("Credits");
 
     centerlayout = new QGridLayout; // layout
     centerlayout -> addWidget(title_prompt,0,0,Qt::AlignCenter); // put objects in the layout
     centerlayout -> addWidget(button_Plot,1,0);
     centerlayout -> addWidget(button_ODE,2,0);
     centerlayout -> addWidget(button_2ptr,3,0);
+    centerlayout -> addWidget(credits_button, 4, 0);
 
     centerpiece = new QWidget; // set the central widget
     centerpiece->setLayout(centerlayout);
@@ -77,11 +80,18 @@ MainWindow::MainWindow(QWidget *parent) :
                                 "border-width: 2 px; " // Border is 2 px
                                 "border-color: beige; " // Border color is beige
                                 "padding: 6 px;"); // Padding is 6 px
+    credits_button->setStyleSheet("background-color:rgb(90, 40, 20); " // Credits button is dark red
+                                   "color: white; " // Font is white
+                                   "border-style: outset; " // Outer border
+                                   "border-width: 2 px; " // Border is 2 px
+                                   "border-color: beige; " // Border color is beige
+                                   "padding: 6 px"); // Padding is 6 px
     centerpiece->setStyleSheet("background-color:rgb(200, 220, 250);"); // Menu background is light blue
 
     QObject::connect(button_Plot, SIGNAL(clicked()), this, SLOT(MakePlotWindow())); // connect plot window bottom pressed to make the plot function window
     QObject::connect(button_ODE, SIGNAL(clicked()), this, SLOT(MakeODEWindow())); // connect euler button to make euler window when pressed
     QObject::connect(button_2ptr, SIGNAL(clicked()), this, SLOT(Make2ptrcWindow())); // connect bisec button to make bisec window when pressed
+    QObject::connect(credits_button, SIGNAL(clicked()), this, SLOT(MakeCreditsWindow())); // connect credits button to make credits window when pressed
 }
 
 MainWindow::~MainWindow()
@@ -104,4 +114,10 @@ void MainWindow::Make2ptrcWindow()
 {
     QWidget* b_window = new TwoPtrWindow(); // make the bisec window
     b_window->show(); // show the window
+}
+
+void MainWindow::MakeCreditsWindow()
+{
+    QWidget* c_window = new creditsWindow();
+    //c_window->show();
 }

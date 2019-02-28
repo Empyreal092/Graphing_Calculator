@@ -30,7 +30,8 @@ SOURCES += \
     qcustomplot.cpp \
     functionplot.cpp \
     diffeqsolver.cpp \
-    twoptrwindow.cpp
+    twoptrwindow.cpp \
+    creditswindow.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -38,7 +39,9 @@ HEADERS += \
     functionplot.h \
     exprtk.hpp \
     diffeqsolver.h \
-    twoptrwindow.h
+    twoptrwindow.h \
+    creditswindow.h \
+    creditswindow.h
 
 FORMS += \
         mainwindow.ui \
