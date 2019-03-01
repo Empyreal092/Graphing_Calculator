@@ -78,6 +78,10 @@ private:
     /** @brief	The user interface */
     Ui::MainWindow *ui;
 
+    /** @brief The first part of title */
+    QLabel *title1;
+    /** @brief The second part of title */
+    QLabel *title2;
     /** @brief	The title prompt */
     QLabel *title_prompt;
 

@@ -44,22 +44,37 @@ MainWindow::MainWindow(QWidget *parent) :
 
     setWindowTitle("Main Entry Menu:"); // set window title
 
-    title_prompt = new QLabel("Choose the features:"); // the prompt
+    title1 = new QLabel("Differential Equations"); // the first part of title
+    title2 = new QLabel("Solver"); // the second part of title
+    title_prompt = new QLabel("Select one of the following features:"); // the prompt
     button_Plot = new QPushButton("Plot Function"); // the plot function button
     button_ODE = new QPushButton("ODE Solver"); // the Euler's method button
     button_2ptr = new QPushButton("Two Point Boundary Value Problem"); // the Bisection window button
-    credits_button = new QPushButton("Credits");
+    credits_button = new QPushButton("Credits"); // the credits button
 
     centerlayout = new QGridLayout; // layout
-    centerlayout -> addWidget(title_prompt,0,0,Qt::AlignCenter); // put objects in the layout
-    centerlayout -> addWidget(button_Plot,1,0);
-    centerlayout -> addWidget(button_ODE,2,0);
-    centerlayout -> addWidget(button_2ptr,3,0);
-    centerlayout -> addWidget(credits_button, 4, 0);
+    centerlayout -> addWidget(title1, 0, 0, Qt::AlignCenter); // put objects in the layout
+    centerlayout -> addWidget(title2, 1, 0, Qt::AlignCenter);
+    centerlayout -> addWidget(title_prompt,2,0, Qt::AlignCenter);
+    centerlayout -> addWidget(button_Plot,3,0);
+    centerlayout -> addWidget(button_ODE,4,0);
+    centerlayout -> addWidget(button_2ptr,5,0);
+    centerlayout -> addWidget(credits_button, 6, 0);
 
     centerpiece = new QWidget; // set the central widget
     centerpiece->setLayout(centerlayout);
     setCentralWidget(centerpiece);
+
+    // Changes the font size, colors, or boldness of items in the main window
+
+    QFont arialTitle( "Arial", 30, QFont::Bold); // Font size underlined and in Arial format
+    arialTitle.setUnderline(true);
+
+    title1->setFont(arialTitle); // Set the font style of titles 1 and 2
+    title2->setFont(arialTitle);
+
+    title1->setStyleSheet("QLabel { color : purple; }"); // Set the color of titles 1 and 2
+    title2->setStyleSheet("QLabel { color : purple; }");
 
     title_prompt->setStyleSheet("font:bold"); // Prompt bold font
     button_Plot->setStyleSheet("background-color:rgb(45, 75, 190); " // Plot button is blue
@@ -81,17 +96,23 @@ MainWindow::MainWindow(QWidget *parent) :
                                 "border-color: beige; " // Border color is beige
                                 "padding: 6 px;"); // Padding is 6 px
     credits_button->setStyleSheet("background-color:rgb(90, 40, 20); " // Credits button is dark red
-                                   "color: white; " // Font is white
-                                   "border-style: outset; " // Outer border
-                                   "border-width: 2 px; " // Border is 2 px
-                                   "border-color: beige; " // Border color is beige
-                                   "padding: 6 px"); // Padding is 6 px
+                                  "color: white; " // Font is white
+                                  "border-style: outset; " // Outer border
+                                  "border-width: 2 px; " // Border is 2 px
+                                  "border-color: beige; " // Border color is beige
+                                  "padding: 6 px"); // Padding is 6 px
     centerpiece->setStyleSheet("background-color:rgb(200, 220, 250);"); // Menu background is light blue
 
     QObject::connect(button_Plot, SIGNAL(clicked()), this, SLOT(MakePlotWindow())); // connect plot window bottom pressed to make the plot function window
     QObject::connect(button_ODE, SIGNAL(clicked()), this, SLOT(MakeODEWindow())); // connect euler button to make euler window when pressed
     QObject::connect(button_2ptr, SIGNAL(clicked()), this, SLOT(Make2ptrcWindow())); // connect bisec button to make bisec window when pressed
     QObject::connect(credits_button, SIGNAL(clicked()), this, SLOT(MakeCreditsWindow())); // connect credits button to make credits window when pressed
+
+    //Changes the size of the mainwindow
+
+    int x=centerpiece->width()*1.1;
+    int y=centerpiece->height()*1.1;
+    centerpiece->setFixedSize(x,y);
 }
 
 MainWindow::~MainWindow()

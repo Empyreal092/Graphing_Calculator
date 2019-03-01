@@ -116,6 +116,20 @@ FunctionPlot::FunctionPlot(QWidget *parent) :
     inputlayout->addWidget(plotbutton);
     inputlayout->addWidget(clearbutton);
 
+    plotbutton->setStyleSheet("background-color:rgb(20, 150, 15); " // Plot button is green
+                                "color: white; " // Font is white
+                                "border-style: outset; " // Outer border
+                                "border-width: 2 px; " // Border is 2 px
+                                "border-color: beige; " // Border color is beige
+                                "padding: 6 px"); // Padding is 6 px
+
+    clearbutton->setStyleSheet("background-color:rgb(150, 20, 15); " // Clear button is red
+                                "color: white; " // Font is white
+                                "border-style: outset; " // Outer border
+                                "border-width: 2 px; " // Border is 2 px
+                                "border-color: beige; " // Border color is beige
+                                "padding: 6 px"); // Padding is 6 px
+
     input->setLayout(inputlayout);
     input->setMaximumWidth(250); // so that the input is not too big when the window is big
 
