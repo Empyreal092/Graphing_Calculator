@@ -38,6 +38,7 @@
 #include "twoptrwindow.h"
 #include "eulermethod.h"
 #include "creditswindow.h"
+#include "RK2method.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent), ui(new Ui::MainWindow){
@@ -107,7 +108,7 @@ void MainWindow::MakePlotWindow(){
 
 void MainWindow::MakeODEWindow()
 {
-    QWidget* e_window = new EulerMethod(); // make the euler window
+    QWidget* e_window = new RK2method(); // make the euler window
     e_window->show(); // show the window
 }
 

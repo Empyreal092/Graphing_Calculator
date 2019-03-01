@@ -70,7 +70,7 @@ public:
 public slots:
     void changeinicond(double);
 
-private:
+protected:
     QDoubleSpinBox * initial_condition;
     double initial_cond;
 
