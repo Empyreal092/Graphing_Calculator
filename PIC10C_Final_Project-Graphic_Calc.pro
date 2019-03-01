@@ -31,9 +31,11 @@ SOURCES += \
     functionplot.cpp \
     diffeqsolver.cpp \
     twoptrwindow.cpp \
+    creditswindow.cpp \
     eulermethod.cpp \
     RK2method.cpp \
     Backeulermethod.cpp
+
 
 HEADERS += \
         mainwindow.h \
@@ -42,6 +44,7 @@ HEADERS += \
     exprtk.hpp \
     diffeqsolver.h \
     twoptrwindow.h \
+    creditswindow.h \
     eulermethod.h \
     RK2method.h \
     Backeulermethod.h

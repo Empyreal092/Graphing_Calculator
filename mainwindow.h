@@ -87,6 +87,8 @@ private:
     QPushButton* button_ODE;
     /** @brief	The button for bisection method, do nothing rn */
     QPushButton* button_2ptr;
+    /** @brief  The button to see the credits */
+    QPushButton* credits_button;
 
     /** @brief	The centerlayout */
     QGridLayout *centerlayout;
@@ -113,7 +115,12 @@ public slots:
      * @brief	Makes the bisec window
      */
     void Make2ptrcWindow();
-
+    /**
+     * @fn	void MainWindow::MakeCreditsWindow();
+     *
+     * @brief	Makes the credits window
+     */
+    void MakeCreditsWindow();
 };
 
 #endif // MAINWINDOW_H
