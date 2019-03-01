@@ -63,7 +63,17 @@ public:
     * @brief	Destructor
     */
 
-   ~EulerMethod();
+   ~EulerMethod() override;
+
+    void makepoints() override;
+
+public slots:
+    void changeinicond(double);
+
+private:
+    QDoubleSpinBox * initial_condition;
+    double initial_cond;
+
 };
 
 #endif // EULERMETHOD_H

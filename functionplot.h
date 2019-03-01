@@ -75,13 +75,13 @@ public:
      * @brief	Destructor
      */
 
-    ~FunctionPlot();
+    virtual ~FunctionPlot();
 
 
-    void makepoints();
+    virtual void makepoints();
     void makeplot();
 
-private:
+protected:
     QVector<QVector<std::pair <double,double>>> vec_points_to_plot;
 
     /** @brief	The user interface */

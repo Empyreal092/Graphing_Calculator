@@ -39,13 +39,8 @@
 FunctionPlot::FunctionPlot(QWidget *parent) :
     QWidget(parent), ui(new Ui::FunctionPlot), function_str(){
 
-    function_str = "10*(4/3.1415)*"
-                   "((1 /1)*sin( 2*3.1415^2*x/10)+(1 /3)*sin( 6*3.1415^2*x/10)+"
-                   " (1 /5)*sin(10*3.1415^2*x/10)+(1 /7)*sin(14*3.1415^2*x/10)+"
-                   " (1 /9)*sin(18*3.1415^2*x/10)+(1/11)*sin(22*3.1415^2*x/10))";
-    // default graph
-    initial = -5.0; // default initial value
-    final = 5.0; // default final value
+    initial = 0.0; // default initial value
+    final = 10.0; // default final value
     nsteps = 1000;
     ui->setupUi(this);
 
@@ -63,10 +58,12 @@ FunctionPlot::FunctionPlot(QWidget *parent) :
 
     input_initial -> setMaximum(1000); // set max and min for initial and final spinbox
     input_initial -> setMinimum(-1000);
+    input_initial -> setValue(0);
     input_final -> setMaximum(1000);
     input_final -> setMinimum(-1000);
+    input_final -> setValue(10.0);
 
-    input_nsteps_spin_box -> setMaximum(100); // set max and min for nsteps spinbox and nsteps slider
+    input_nsteps_spin_box -> setMaximum(10000000); // set max and min for nsteps spinbox and nsteps slider
     input_nsteps_spin_box -> setMinimum(0);
     nsteps_slider -> setRange(0, 100);
 
@@ -119,8 +116,8 @@ FunctionPlot::FunctionPlot(QWidget *parent) :
     input->setLayout(inputlayout);
     input->setMaximumWidth(250); // so that the input is not too big when the window is big
 
-    FunctionPlot::makepoints();
-    FunctionPlot::makeplot(); // call the make pot to plot the default graph
+    //makepoints();
+    //makeplot(); // call the make pot to plot the default graph
 
     ui->gridLayout->addWidget(input,0,0); // add input in the left of the window
 }
@@ -131,17 +128,14 @@ void FunctionPlot::changefstring(){
     }
     else{
         function_str = functionstring->text(); // change the function_str according to the input
-        FunctionPlot::makepoints();
-        FunctionPlot::makeplot(); // call make plot
+        makepoints();
+        makeplot(); // call make plot
     }
 }
 
 void FunctionPlot::clearstring(){
     vec_points_to_plot.clear();
-
-    function_str = ""; // change the function_str according to the input
-    FunctionPlot::makepoints();
-    FunctionPlot::makeplot(); // call make plot
+    makeplot(); // call make plot
 }
 
 void FunctionPlot::changeini(double i){
