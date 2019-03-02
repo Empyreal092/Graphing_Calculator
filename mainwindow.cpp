@@ -39,6 +39,7 @@
 #include "eulermethod.h"
 #include "creditswindow.h"
 #include "RK2method.h"
+#include "Backeulermethod.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent), ui(new Ui::MainWindow){
@@ -96,8 +97,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(credits_button, SIGNAL(clicked()), this, SLOT(MakeCreditsWindow())); // connect credits button to make credits window when pressed
 }
 
-MainWindow::~MainWindow()
-{
+MainWindow::~MainWindow(){
     delete ui;
 }
 
@@ -108,7 +108,7 @@ void MainWindow::MakePlotWindow(){
 
 void MainWindow::MakeODEWindow()
 {
-    QWidget* e_window = new RK2method(); // make the euler window
+    QWidget* e_window = new BackEulerMethod(); // make the euler window
     e_window->show(); // show the window
 }
 
