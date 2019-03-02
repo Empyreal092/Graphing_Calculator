@@ -38,6 +38,8 @@
 #include "twoptrwindow.h"
 #include "eulermethod.h"
 #include "creditswindow.h"
+#include "RK2method.h"
+#include "Backeulermethod.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent), ui(new Ui::MainWindow){
@@ -116,8 +118,7 @@ MainWindow::MainWindow(QWidget *parent) :
     centerpiece->setFixedSize(x,y);
 }
 
-MainWindow::~MainWindow()
-{
+MainWindow::~MainWindow(){
     delete ui;
 }
 
@@ -128,7 +129,7 @@ void MainWindow::MakePlotWindow(){
 
 void MainWindow::MakeODEWindow()
 {
-    QWidget* e_window = new EulerMethod(); // make the euler window
+    QWidget* e_window = new BackEulerMethod(); // make the euler window
     e_window->show(); // show the window
 }
 
