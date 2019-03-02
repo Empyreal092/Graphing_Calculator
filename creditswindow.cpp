@@ -61,6 +61,10 @@ creditsWindow::creditsWindow()
                                "border-color: beige; " // Border color is beige
                                "padding: 9 px;"); // Padding is 9 px
 
+    //Sets the background to the color light blue
+
+    new_Credits_Window->setStyleSheet("background-color:rgb(200, 220, 250);"); // Menu background is light blue
+
     //Sets the centerlayout as the layout for the credits window
 
     new_Credits_Window->setWindowTitle("Credits Window");
