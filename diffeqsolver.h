@@ -87,54 +87,11 @@ public:
 public slots:
 
     /**
-    * @fn	void diffeqsolver::goToEulerMethod();
+    * @fn	void diffeqsolver::goToMethod();
     *
-    * @brief	Go to euler method
+    * @brief	Go to each of the solving methods
     */
-
    void goToMethod();
-
- /*
-   **
-    * @fn	void diffeqsolver::goToEulerMethod();
-    *
-    * @brief	Go to euler method
-    *
-
-   void goToEulerMethod();
-
-   **
-    * @fn	void diffeqsolver::goToBackwardEuler();
-    *
-    * @brief	Go to backward euler
-    *
-
-   void goToBackwardEuler();
-
-   **
-    * @fn	void diffeqsolver::goToRk2();
-    *
-    * @brief	Go to rk 2
-    *
-
-   void goToRk2();
-
-   **
-    * @fn	void diffeqsolver::goToRk4();
-    *
-    * @brief	Go to rk 4
-    *
-
-   void goToRk4();
-
-   **
-    * @fn	void diffeqsolver::goToTrapezoidalMethod();
-    *
-    * @brief	Go to trapezoidal method
-    *
-
-   void goToTrapezoidalMethod();
-*/
 
 private:
     /** @brief	The solver stacked widget */

@@ -40,7 +40,7 @@ diffeqsolver::diffeqsolver(QWidget *parent) :
 
     setWindowTitle("Differential Equations Solver");
 
-    // Creates pages for each method
+    // Creates the widgets for each method
     EulerMethod* myEulerMethod = new EulerMethod;
     BackEulerMethod* myBackEulerMethod = new BackEulerMethod;
     RK2method* myRK2Method = new RK2method;
@@ -49,11 +49,11 @@ diffeqsolver::diffeqsolver(QWidget *parent) :
 
     // Adds the method pages to the solverStackedWidget
     solverStackedWidget = new QStackedWidget;
-    solverStackedWidget->addWidget(myEulerMethod); // Page 1
-    solverStackedWidget->addWidget(myBackEulerMethod); // Page 2
-    solverStackedWidget->addWidget(myRK2Method); // Page 3
-    solverStackedWidget->addWidget(myRK4Method); // Page 4
-    solverStackedWidget->addWidget(myTrapezoidalMethod); // Page 5
+    solverStackedWidget->addWidget(myEulerMethod); // Page 0
+    solverStackedWidget->addWidget(myBackEulerMethod); // Page 1
+    solverStackedWidget->addWidget(myRK2Method); // Page 2
+    solverStackedWidget->addWidget(myRK4Method); // Page 3
+    solverStackedWidget->addWidget(myTrapezoidalMethod); // Page 4
 
     // Adds options to dropDownMenu
     dropDownMenu = new QComboBox;
