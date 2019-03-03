@@ -19,8 +19,8 @@
  * We did not copy code from anyone, student or otherwise, expect files we downloaded and have the permission to use.
  * We pledge that we have neither given nor received unauthorized assistance on making this project.
 
- * @file RK2method.cpp
- * @brief The implementation file for the RK2 Method window.
+ * @file RK2method.h
+ * @brief The header file for the RK2 Method window.
  *
  * This is the RK2 Method window for the project.
  *
@@ -31,18 +31,18 @@
  * @bug No known bugs, but more features to be added
  */
 
-#include "RK2method.h"
+#include "rk4method.h"
 
-RK2method::RK2method(EulerMethod *parent) :
+RK4method::RK4method(EulerMethod *parent) :
     EulerMethod(parent){
 
-    setWindowTitle("2nd order Runge-Kutta Method");
+    setWindowTitle("4th order Runge-Kutta Method");
 }
 
-RK2method::~RK2method(){
+RK4method::~RK4method(){
 }
 
-void RK2method::makepoints(){
+void RK4method::makepoints(){
     // exprtk commands
     typedef exprtk::symbol_table<double> symbol_table_t;
     typedef exprtk::expression<double>     expression_t;
@@ -71,11 +71,16 @@ void RK2method::makepoints(){
     for (double t = initial; t <= final; t += delta) // for all value points
     {
        x = result;
+       double xset = x;
        double deri = expression.value();
        double k1 = deri*delta;
-       x = x+k1/2;
+       x = xset+k1/2;
        double k2 = expression.value()*delta;
-       result = result+k2; // evaluate the result of the function string
+       x = xset+k2/2;
+       double k3 = expression.value()*delta;
+       x = xset+k3;
+       double k4 = expression.value()*delta;
+       result = result+(k1+2*k2+2*k3+k4)/6; // evaluate the result of the function string
        std::pair <double,double> data_point = std::make_pair(t,result);
        points.push_back(data_point); // add the data point
     }

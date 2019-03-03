@@ -43,6 +43,7 @@
 #include <QPushButton>
 #include <QDoubleSpinBox>
 #include <utility>
+#include <QKeyEvent>
 
 namespace Ui {
 class FunctionPlot;
@@ -164,6 +165,7 @@ public slots:
     */
 
    void changensteps(int);
+
 };
 
 #endif // FUNCTIONPLOT_H
