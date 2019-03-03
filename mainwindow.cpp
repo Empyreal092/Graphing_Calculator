@@ -131,7 +131,7 @@ void MainWindow::MakePlotWindow(){
 
 void MainWindow::MakeODEWindow()
 {
-    QWidget* e_window = new TrapezoidalMethod(); // make the euler window
+    QWidget* e_window = new diffeqsolver(); // make the euler window
     e_window->show(); // show the window
 }
 
