@@ -241,3 +241,11 @@ void FunctionPlot::makeplot(){
     ui->customPlot->yAxis->setRange(min-0.1*abs(max-min), max+0.1*abs(max-min));
     ui->customPlot->replot(); // replot
 }
+
+void FunctionPlot::keyPressEvent(QKeyEvent* event)
+{
+    if (event->key() == Qt::Key_Return) // When the return key is pressed, change and plot the string.
+    {
+        changefstring();
+    }
+}

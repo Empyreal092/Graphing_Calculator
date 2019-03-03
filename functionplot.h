@@ -82,6 +82,13 @@ public:
     virtual void makepoints();
     void makeplot();
 
+    /**
+     * @fn	FunctionPlot::keyPressEvent();
+     *
+     * @brief   Calls function when keys are pressed, ex. Return on keyboard has same function as Plot! button
+     */
+    void keyPressEvent(QKeyEvent* event);
+
 protected:
     QVector<QVector<std::pair <double,double>>> vec_points_to_plot;
 
