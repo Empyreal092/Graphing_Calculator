@@ -69,7 +69,7 @@ FunctionPlot::FunctionPlot(QWidget *parent) :
     input_nsteps_spin_box -> setMaximum(10000000); // set max and min for nsteps spinbox and nsteps slider
     input_nsteps_spin_box -> setMinimum(0);
     input_nsteps_spin_box -> setValue(nsteps);
-
+      
     plotbutton = new QPushButton("Plot!"); // plot button
     plotbutton -> setToolTip("Plot the funciton");
     clearbutton = new QPushButton("Clear!"); // clear button

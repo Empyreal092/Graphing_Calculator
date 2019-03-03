@@ -123,12 +123,28 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(credits_button, SIGNAL(clicked()), this, SLOT(MakeCreditsWindow())); // connect credits button to make credits window when pressed
     QObject::connect(help_button, SIGNAL(clicked()), this, SLOT(MakeHelpWindow())); // connect help button to make help window when pressed
 
-
     //Changes the size of the mainwindow
 
     int x=centerpiece->width()*1.1;
     int y=centerpiece->height()*1.1;
-    centerpiece->setFixedSize(x,y);
+    centerpiece->setMinimumSize(x,y);
+
+    //Added instructions button and credits button in QMenu
+
+    menuBar = new QMenuBar();
+    helpMenu = new QMenu("Help?");
+    creditsButton = new QMenu("About");
+
+    menuBar->addMenu(helpMenu);
+    menuBar->addMenu(creditsButton);
+
+    helpMenu->addAction("Instructions");
+    creditsButton->addAction("Credits");
+
+    QObject::connect(creditsButton, SIGNAL(triggered(QAction*)), this, SLOT(MakeCreditsWindow())); // connect credits button to make credits window when pressed
+    QObject::connect(helpMenu, SIGNAL(triggered(QAction*)), this, SLOT(MakeHelpWindow())); // connect help button to make help window when pressed
+
+    this->setMenuBar(menuBar);
 }
 
 MainWindow::~MainWindow(){
