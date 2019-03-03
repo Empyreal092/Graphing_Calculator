@@ -42,7 +42,13 @@
 #include <QString>
 #include <QPushButton>
 #include <QDoubleSpinBox>
+#include <QComboBox>
 #include "functionplot.h"
+#include "eulermethod.h"
+#include "Backeulermethod.h"
+#include "RK2method.h"
+#include "rk4method.h"
+#include "trapezoidalmethod.h"
 
 namespace Ui {
 class diffeqsolver;
@@ -80,57 +86,61 @@ public:
 
 public slots:
 
-   /**
+    /**
     * @fn	void diffeqsolver::goToEulerMethod();
     *
     * @brief	Go to euler method
     */
 
+   void goToMethod();
+
+ /*
+   **
+    * @fn	void diffeqsolver::goToEulerMethod();
+    *
+    * @brief	Go to euler method
+    *
+
    void goToEulerMethod();
 
-   /**
+   **
     * @fn	void diffeqsolver::goToBackwardEuler();
     *
     * @brief	Go to backward euler
-    */
+    *
 
    void goToBackwardEuler();
 
-   /**
+   **
     * @fn	void diffeqsolver::goToRk2();
     *
     * @brief	Go to rk 2
-    */
+    *
 
    void goToRk2();
 
-   /**
+   **
     * @fn	void diffeqsolver::goToRk4();
     *
     * @brief	Go to rk 4
-    */
+    *
 
    void goToRk4();
 
-   /**
+   **
     * @fn	void diffeqsolver::goToTrapezoidalMethod();
     *
     * @brief	Go to trapezoidal method
-    */
+    *
 
    void goToTrapezoidalMethod();
-
-   /**
-    * @fn	void diffeqsolver::goToSolverMenu();
-    *
-    * @brief	Go to solver menu
-    */
-
-   void goToSolverMenu();
+*/
 
 private:
     /** @brief	The solver stacked widget */
     QStackedWidget * solverStackedWidget;
+    /** @brief The drop down menu */
+    QComboBox * dropDownMenu;
     /** @brief	The user interface */
     Ui::diffeqsolver *ui;
 };
