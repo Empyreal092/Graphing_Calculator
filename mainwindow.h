@@ -93,6 +93,8 @@ private:
     QPushButton* button_2ptr;
     /** @brief  The button to see the credits */
     QPushButton* credits_button;
+    /** @brief  The button to see the credits */
+    QPushButton* help_button;
 
     /** @brief	The centerlayout */
     QGridLayout *centerlayout;
@@ -125,6 +127,12 @@ public slots:
      * @brief	Makes the credits window
      */
     void MakeCreditsWindow();
+    /**
+     * @fn	void MainWindow::MakeHelpWindow();
+     *
+     * @brief	Makes the help window
+     */
+    void MakeHelpWindow();
 };
 
 #endif // MAINWINDOW_H

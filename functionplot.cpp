@@ -87,9 +87,9 @@ FunctionPlot::FunctionPlot(QWidget *parent) :
     QObject::connect(input_nsteps_spin_box, SIGNAL(valueChanged(int)), this, SLOT(changensteps(int)));
         // when user input new number of steps, change the nsteps value
 
-    promp_function = new QLabel ("Input function here:"); // some prompt to tell the user what to do
-    promp_ini = new QLabel  ("T initial");
-    promp_final = new QLabel  ("T final");
+    promp_function = new QLabel ("Input function here (Only use either x\nor y as your variables):"); // some prompt to tell the user what to do
+    promp_ini = new QLabel  ("t initial");
+    promp_final = new QLabel  ("t final");
     promp_nsteps = new QLabel ("Num of steps");
 
     // set the formats into the layout
@@ -241,4 +241,17 @@ void FunctionPlot::makeplot(){
     ui->customPlot->xAxis->setRange(ini-0.1*abs(fin-ini), fin+0.1*abs(fin-ini));
     ui->customPlot->yAxis->setRange(min-0.1*abs(max-min), max+0.1*abs(max-min));
     ui->customPlot->replot(); // replot
+}
+
+void FunctionPlot::keyPressEvent(QKeyEvent* event)
+{
+    if (event->key() == Qt::Key_Return) // When the return key is pressed, change and plot the string.
+    {
+        changefstring();
+
+        if (event->modifiers() & Qt::ControlModifier) // When the return and control keys are pressed, clear the plot.
+        {
+            clearstring();
+        }
+    }
 }

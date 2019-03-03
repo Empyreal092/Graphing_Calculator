@@ -42,6 +42,7 @@
 #include "Backeulermethod.h"
 #include "rk4method.h"
 #include "trapezoidalmethod.h"
+#include "helpwindow.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent), ui(new Ui::MainWindow){
@@ -56,6 +57,7 @@ MainWindow::MainWindow(QWidget *parent) :
     button_ODE = new QPushButton("ODE Solver"); // the Euler's method button
     button_2ptr = new QPushButton("Two Point Boundary Value Problem"); // the Bisection window button
     credits_button = new QPushButton("Credits"); // the credits button
+    help_button = new QPushButton("Help?"); // the help button
 
     centerlayout = new QGridLayout; // layout
     centerlayout -> addWidget(title1, 0, 0, Qt::AlignCenter); // put objects in the layout
@@ -65,6 +67,7 @@ MainWindow::MainWindow(QWidget *parent) :
     centerlayout -> addWidget(button_ODE,4,0);
     centerlayout -> addWidget(button_2ptr,5,0);
     centerlayout -> addWidget(credits_button, 6, 0);
+    centerlayout -> addWidget(help_button, 7, 0);
 
     centerpiece = new QWidget; // set the central widget
     centerpiece->setLayout(centerlayout);
@@ -106,12 +109,20 @@ MainWindow::MainWindow(QWidget *parent) :
                                   "border-width: 2 px; " // Border is 2 px
                                   "border-color: beige; " // Border color is beige
                                   "padding: 6 px"); // Padding is 6 px
+    help_button->setStyleSheet("background-color:rgb(20, 40, 20); " // Help button is black
+                                  "color: white; " // Font is white
+                                  "border-style: outset; " // Outer border
+                                  "border-width: 2 px; " // Border is 2 px
+                                  "border-color: beige; " // Border color is beige
+                                  "padding: 6 px"); // Padding is 6 px
     centerpiece->setStyleSheet("background-color:rgb(200, 220, 250);"); // Menu background is light blue
 
     QObject::connect(button_Plot, SIGNAL(clicked()), this, SLOT(MakePlotWindow())); // connect plot window bottom pressed to make the plot function window
     QObject::connect(button_ODE, SIGNAL(clicked()), this, SLOT(MakeODEWindow())); // connect euler button to make euler window when pressed
     QObject::connect(button_2ptr, SIGNAL(clicked()), this, SLOT(Make2ptrcWindow())); // connect bisec button to make bisec window when pressed
     QObject::connect(credits_button, SIGNAL(clicked()), this, SLOT(MakeCreditsWindow())); // connect credits button to make credits window when pressed
+    QObject::connect(help_button, SIGNAL(clicked()), this, SLOT(MakeHelpWindow())); // connect help button to make help window when pressed
+
 
     //Changes the size of the mainwindow
 
@@ -144,5 +155,11 @@ void MainWindow::Make2ptrcWindow()
 void MainWindow::MakeCreditsWindow()
 {
     QWidget* c_window = new creditsWindow();
+    //c_window->show();
+}
+
+void MainWindow::MakeHelpWindow()
+{
+    QWidget* h_window = new helpWindow();
     //c_window->show();
 }
