@@ -39,6 +39,8 @@
 #include <QLabel>
 #include <QPushButton>
 #include <QGridLayout>
+#include <QToolBar>
+#include <QToolButton>
 
 namespace Ui {
 class MainWindow;
@@ -93,6 +95,14 @@ private:
     QPushButton* button_2ptr;
     /** @brief  The button to see the credits */
     QPushButton* credits_button;
+    /** @brief  The button to see the credits */
+    QPushButton* help_button;
+    /** @brief  The menubar for the main window */
+    QMenuBar* menuBar;
+    /** @brief  The button to see the credits */
+    QMenu* creditsButton;
+    /** @brief  The button to see the credits */
+    QMenu* helpMenu;
 
     /** @brief	The centerlayout */
     QGridLayout *centerlayout;
@@ -125,6 +135,12 @@ public slots:
      * @brief	Makes the credits window
      */
     void MakeCreditsWindow();
+    /**
+     * @fn	void MainWindow::MakeHelpWindow();
+     *
+     * @brief	Makes the help window
+     */
+    void MakeHelpWindow();
 };
 
 #endif // MAINWINDOW_H

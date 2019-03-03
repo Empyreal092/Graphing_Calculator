@@ -61,14 +61,15 @@ FunctionPlot::FunctionPlot(QWidget *parent) :
 
     input_initial -> setMaximum(1000); // set max and min for initial and final spinbox
     input_initial -> setMinimum(-1000);
-    input_initial -> setValue(0);
+    input_initial -> setValue(initial);
     input_final -> setMaximum(1000);
     input_final -> setMinimum(-1000);
-    input_final -> setValue(10.0);
+    input_final -> setValue(final);
 
     input_nsteps_spin_box -> setMaximum(10000000); // set max and min for nsteps spinbox and nsteps slider
     input_nsteps_spin_box -> setMinimum(0);
-
+    input_nsteps_spin_box -> setValue(nsteps);
+      
     plotbutton = new QPushButton("Plot!"); // plot button
     plotbutton -> setToolTip("Plot the funciton");
     clearbutton = new QPushButton("Clear!"); // clear button
@@ -86,9 +87,9 @@ FunctionPlot::FunctionPlot(QWidget *parent) :
     QObject::connect(input_nsteps_spin_box, SIGNAL(valueChanged(int)), this, SLOT(changensteps(int)));
         // when user input new number of steps, change the nsteps value
 
-    promp_function = new QLabel ("Input function here:"); // some prompt to tell the user what to do
-    promp_ini = new QLabel  ("T initial");
-    promp_final = new QLabel  ("T final");
+    promp_function = new QLabel ("Input function here (Only use either x\nor y as your variables):"); // some prompt to tell the user what to do
+    promp_ini = new QLabel  ("t initial");
+    promp_final = new QLabel  ("t final");
     promp_nsteps = new QLabel ("Num of steps");
 
     // set the formats into the layout
