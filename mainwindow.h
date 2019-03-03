@@ -39,6 +39,8 @@
 #include <QLabel>
 #include <QPushButton>
 #include <QGridLayout>
+#include <QToolBar>
+#include <QToolButton>
 
 namespace Ui {
 class MainWindow;
@@ -95,6 +97,12 @@ private:
     QPushButton* credits_button;
     /** @brief  The button to see the credits */
     QPushButton* help_button;
+    /** @brief  The menubar for the main window */
+    QMenuBar* menuBar;
+    /** @brief  The button to see the credits */
+    QMenu* creditsButton;
+    /** @brief  The button to see the credits */
+    QMenu* helpMenu;
 
     /** @brief	The centerlayout */
     QGridLayout *centerlayout;
