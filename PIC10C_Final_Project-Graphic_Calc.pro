@@ -36,7 +36,8 @@ SOURCES += \
     RK2method.cpp \
     Backeulermethod.cpp \
     rk4method.cpp \
-    trapezoidalmethod.cpp
+    trapezoidalmethod.cpp \
+    helpwindow.cpp
 
 
 HEADERS += \
@@ -51,7 +52,8 @@ HEADERS += \
     RK2method.h \
     Backeulermethod.h \
     rk4method.h \
-    trapezoidalmethod.h
+    trapezoidalmethod.h \
+    helpwindow.h
 
 FORMS += \
         mainwindow.ui \
