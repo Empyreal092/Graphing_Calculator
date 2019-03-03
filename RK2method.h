@@ -36,20 +36,22 @@
 #define RK2METHOD_H
 
 #include <QWidget>
-#include "functionplot.h"
+#include "eulermethod.h"
 
 namespace Ui {
 class RK2method;
 }
 
-class RK2method : public FunctionPlot{
+class RK2method : public EulerMethod{
    Q_OBJECT
 
 public:
 
-   explicit RK2method(FunctionPlot *parent = nullptr);
+   explicit RK2method(EulerMethod *parent = nullptr);
 
-   ~RK2method();
+   ~RK2method() override;
+
+    void makepoints() override;
 };
 
 #endif // RK2METHOD_H

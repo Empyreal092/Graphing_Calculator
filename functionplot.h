@@ -43,6 +43,7 @@
 #include <QPushButton>
 #include <QDoubleSpinBox>
 #include <utility>
+#include <QKeyEvent>
 
 namespace Ui {
 class FunctionPlot;
@@ -115,7 +116,6 @@ protected:
 
     QSpinBox * input_nsteps_spin_box;
     /** @brief	Tell user to input function str */
-
     QLabel * promp_function;
     /** @brief	Tell user to input initial value */
     QLabel * promp_ini;
@@ -124,8 +124,6 @@ protected:
 
     /** @brief	Tell user to input nsteps value */
     QLabel * promp_nsteps;
-    /** @brief	Tell user to move slider to change nsteps value */
-    QLabel * promp_nsteps_slider;
     /** @brief	Changes nsteps value */
     QSlider * nsteps_slider;
 
@@ -164,6 +162,7 @@ public slots:
     */
 
    void changensteps(int);
+
 };
 
 #endif // FUNCTIONPLOT_H
