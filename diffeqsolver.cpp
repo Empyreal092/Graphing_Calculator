@@ -38,7 +38,7 @@ diffeqsolver::diffeqsolver(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    setWindowTitle("Differential Equations Solver");
+    setWindowTitle("Euler's Method");
 
     // Creates the widgets for each method
     EulerMethod* myEulerMethod = new EulerMethod;
