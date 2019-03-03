@@ -69,7 +69,21 @@ public:
      * @brief	Destructor
      */
 
-    ~TwoPtrWindow();
+    ~TwoPtrWindow() override;
+
+    void makepoints() override;
+
+public slots:
+    void changeinicond1(double);
+    void changeinicond2(double);
+
+protected:
+    QDoubleSpinBox * initial_condition1;
+    QDoubleSpinBox * initial_condition2;
+    QLabel * inicprompt1;
+    QLabel * inicprompt2;
+    double initial_cond1;
+    double initial_cond2;
 };
 
 
