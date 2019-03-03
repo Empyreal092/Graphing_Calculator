@@ -36,7 +36,12 @@
 #include "functionplot.h"
 #include "diffeqsolver.h"
 #include "twoptrwindow.h"
+#include "eulermethod.h"
 #include "creditswindow.h"
+#include "RK2method.h"
+#include "Backeulermethod.h"
+#include "rk4method.h"
+#include "trapezoidalmethod.h"
 #include "helpwindow.h"
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -126,8 +131,7 @@ MainWindow::MainWindow(QWidget *parent) :
     centerpiece->setFixedSize(x,y);
 }
 
-MainWindow::~MainWindow()
-{
+MainWindow::~MainWindow(){
     delete ui;
 }
 

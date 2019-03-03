@@ -36,6 +36,7 @@
 #define EULERMETHOD_H
 
 #include <QWidget>
+#include <QLabel>
 #include "functionplot.h"
 
 namespace Ui {
@@ -63,7 +64,18 @@ public:
     * @brief	Destructor
     */
 
-   ~EulerMethod();
+   ~EulerMethod() override;
+
+    void makepoints() override;
+
+public slots:
+    void changeinicond(double);
+
+protected:
+    QDoubleSpinBox * initial_condition;
+    QLabel * inicprompt;
+    double initial_cond;
+
 };
 
 #endif // EULERMETHOD_H

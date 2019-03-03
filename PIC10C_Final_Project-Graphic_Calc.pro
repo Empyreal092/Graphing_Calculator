@@ -35,6 +35,8 @@ SOURCES += \
     eulermethod.cpp \
     RK2method.cpp \
     Backeulermethod.cpp \
+    rk4method.cpp \
+    trapezoidalmethod.cpp \
     helpwindow.cpp
 
 
@@ -49,6 +51,8 @@ HEADERS += \
     eulermethod.h \
     RK2method.h \
     Backeulermethod.h \
+    rk4method.h \
+    trapezoidalmethod.h \
     helpwindow.h
 
 FORMS += \

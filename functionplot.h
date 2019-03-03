@@ -43,6 +43,7 @@
 #include <QPushButton>
 #include <QDoubleSpinBox>
 #include <utility>
+#include <QKeyEvent>
 
 namespace Ui {
 class FunctionPlot;
@@ -75,13 +76,20 @@ public:
      * @brief	Destructor
      */
 
-    ~FunctionPlot();
+    virtual ~FunctionPlot();
 
 
-    void makepoints();
+    virtual void makepoints();
     void makeplot();
 
-private:
+    /**
+     * @fn	FunctionPlot::keyPressEvent();
+     *
+     * @brief   Calls function when keys are pressed, ex. Return on keyboard has same function as Plot! button
+     */
+    void keyPressEvent(QKeyEvent* event);
+
+protected:
     QVector<QVector<std::pair <double,double>>> vec_points_to_plot;
 
     /** @brief	The user interface */
@@ -115,7 +123,6 @@ private:
 
     QSpinBox * input_nsteps_spin_box;
     /** @brief	Tell user to input function str */
-
     QLabel * promp_function;
     /** @brief	Tell user to input initial value */
     QLabel * promp_ini;
@@ -124,8 +131,6 @@ private:
 
     /** @brief	Tell user to input nsteps value */
     QLabel * promp_nsteps;
-    /** @brief	Tell user to move slider to change nsteps value */
-    QLabel * promp_nsteps_slider;
     /** @brief	Changes nsteps value */
     QSlider * nsteps_slider;
 
@@ -164,6 +169,7 @@ public slots:
     */
 
    void changensteps(int);
+
 };
 
 #endif // FUNCTIONPLOT_H

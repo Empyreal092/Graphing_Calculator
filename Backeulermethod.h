@@ -36,20 +36,22 @@
 #define BACKEULERMETHOD_H
 
 #include <QWidget>
-#include "functionplot.h"
+#include "eulermethod.h"
 
 namespace Ui {
 class BackEulerMethod;
 }
 
-class BackEulerMethod : public FunctionPlot{
+class BackEulerMethod : public EulerMethod{
    Q_OBJECT
 
 public:
 
-   explicit BackEulerMethod(FunctionPlot *parent = nullptr);
+   explicit BackEulerMethod(EulerMethod *parent = nullptr);
 
-   ~BackEulerMethod();
+   ~BackEulerMethod () override;
+
+   void makepoints() override;
 };
 
 #endif // BACKEULERMETHOD_H

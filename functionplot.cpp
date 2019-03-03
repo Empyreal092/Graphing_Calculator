@@ -39,13 +39,8 @@
 FunctionPlot::FunctionPlot(QWidget *parent) :
     QWidget(parent), ui(new Ui::FunctionPlot), function_str(){
 
-    function_str = "10*(4/3.1415)*"
-                   "((1 /1)*sin( 2*3.1415^2*x/10)+(1 /3)*sin( 6*3.1415^2*x/10)+"
-                   " (1 /5)*sin(10*3.1415^2*x/10)+(1 /7)*sin(14*3.1415^2*x/10)+"
-                   " (1 /9)*sin(18*3.1415^2*x/10)+(1/11)*sin(22*3.1415^2*x/10))";
-    // default graph
-    initial = -5.0; // default initial value
-    final = 5.0; // default final value
+    initial = 0.0; // default initial value
+    final = 10.0; // default final value
     nsteps = 1000;
     ui->setupUi(this);
 
@@ -55,23 +50,29 @@ FunctionPlot::FunctionPlot(QWidget *parent) :
     inputlayout = new QVBoxLayout(); // the layout of the input
     paralayout = new QGridLayout(); // layout for the initial and final
     functionstring = new QLineEdit(); // where the user input the function
+    functionstring -> setToolTip("The function you want to plot");
     input_initial = new QDoubleSpinBox(); // a double spinbox for the initial
+    input_initial -> setToolTip("In initial t");
     input_final = new QDoubleSpinBox(); // a double spinbox for the final
+    input_final -> setToolTip("The final t");
 
     input_nsteps_spin_box = new QSpinBox(); // a double spinbox for the nsteps value
-    nsteps_slider = new QSlider(Qt::Horizontal); // a double slider for the nsteps value
+    input_nsteps_spin_box -> setToolTip("The number of steps");
 
     input_initial -> setMaximum(1000); // set max and min for initial and final spinbox
     input_initial -> setMinimum(-1000);
+    input_initial -> setValue(0);
     input_final -> setMaximum(1000);
     input_final -> setMinimum(-1000);
+    input_final -> setValue(10.0);
 
-    input_nsteps_spin_box -> setMaximum(100); // set max and min for nsteps spinbox and nsteps slider
+    input_nsteps_spin_box -> setMaximum(10000000); // set max and min for nsteps spinbox and nsteps slider
     input_nsteps_spin_box -> setMinimum(0);
-    nsteps_slider -> setRange(0, 100);
 
     plotbutton = new QPushButton("Plot!"); // plot button
+    plotbutton -> setToolTip("Plot the funciton");
     clearbutton = new QPushButton("Clear!"); // clear button
+    clearbutton -> setToolTip("Clear the plots");
 
     QObject::connect(plotbutton, SIGNAL(clicked()), this, SLOT(changefstring()));
         // when plot pressed, change the function string
@@ -84,18 +85,11 @@ FunctionPlot::FunctionPlot(QWidget *parent) :
 
     QObject::connect(input_nsteps_spin_box, SIGNAL(valueChanged(int)), this, SLOT(changensteps(int)));
         // when user input new number of steps, change the nsteps value
-    QObject::connect(nsteps_slider, SIGNAL(valueChanged(int)), this, SLOT(changensteps(int)));
-        // when user moves slider, change the nsteps value
-    QObject::connect(nsteps_slider, SIGNAL(valueChanged(int)), input_nsteps_spin_box, SLOT(setValue(int)));
-        // when user moves slider, change the nsteps spin box value*/
-    QObject::connect(input_nsteps_spin_box, SIGNAL(valueChanged(int)), nsteps_slider, SLOT(setValue(int)));
-        // when user changes nsteps spin box, changes the nsteps slider
 
     promp_function = new QLabel ("Input function here (Only use either x\nor y as your variables):"); // some prompt to tell the user what to do
     promp_ini = new QLabel  ("t initial");
     promp_final = new QLabel  ("t final");
     promp_nsteps = new QLabel ("Num of steps");
-    promp_nsteps_slider = new QLabel ("Num of steps slider");
 
     // set the formats into the layout
     inputlayout->addWidget(promp_function);
@@ -104,13 +98,11 @@ FunctionPlot::FunctionPlot(QWidget *parent) :
     paralayout->addWidget(promp_final,0,1);
 
     paralayout->addWidget(promp_nsteps,2,0);
-    paralayout->addWidget(promp_nsteps_slider, 2, 1);
 
     paralayout->addWidget(input_initial,1,0);
     paralayout->addWidget(input_final,1,1);
 
     paralayout->addWidget(input_nsteps_spin_box,3,0);
-    paralayout->addWidget(nsteps_slider, 3, 1);
 
     inputlayout->addLayout(paralayout);
     inputlayout->addWidget(plotbutton);
@@ -133,8 +125,8 @@ FunctionPlot::FunctionPlot(QWidget *parent) :
     input->setLayout(inputlayout);
     input->setMaximumWidth(250); // so that the input is not too big when the window is big
 
-    FunctionPlot::makepoints();
-    FunctionPlot::makeplot(); // call the make pot to plot the default graph
+    //makepoints();
+    //makeplot(); // call the make pot to plot the default graph
 
     ui->gridLayout->addWidget(input,0,0); // add input in the left of the window
 }
@@ -145,17 +137,14 @@ void FunctionPlot::changefstring(){
     }
     else{
         function_str = functionstring->text(); // change the function_str according to the input
-        FunctionPlot::makepoints();
-        FunctionPlot::makeplot(); // call make plot
+        makepoints();
+        makeplot(); // call make plot
     }
 }
 
 void FunctionPlot::clearstring(){
     vec_points_to_plot.clear();
-
-    function_str = ""; // change the function_str according to the input
-    FunctionPlot::makepoints();
-    FunctionPlot::makeplot(); // call make plot
+    makeplot(); // call make plot
 }
 
 void FunctionPlot::changeini(double i){
@@ -251,4 +240,17 @@ void FunctionPlot::makeplot(){
     ui->customPlot->xAxis->setRange(ini-0.1*abs(fin-ini), fin+0.1*abs(fin-ini));
     ui->customPlot->yAxis->setRange(min-0.1*abs(max-min), max+0.1*abs(max-min));
     ui->customPlot->replot(); // replot
+}
+
+void FunctionPlot::keyPressEvent(QKeyEvent* event)
+{
+    if (event->key() == Qt::Key_Return) // When the return key is pressed, change and plot the string.
+    {
+        changefstring();
+
+        if (event->modifiers() & Qt::ControlModifier) // When the return and control keys are pressed, clear the plot.
+        {
+            clearstring();
+        }
+    }
 }
