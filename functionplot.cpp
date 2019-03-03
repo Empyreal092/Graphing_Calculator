@@ -247,5 +247,10 @@ void FunctionPlot::keyPressEvent(QKeyEvent* event)
     if (event->key() == Qt::Key_Return) // When the return key is pressed, change and plot the string.
     {
         changefstring();
+
+        if (event->modifiers() & Qt::ControlModifier) // When the return and control keys are pressed, clear the plot.
+        {
+            clearstring();
+        }
     }
 }
