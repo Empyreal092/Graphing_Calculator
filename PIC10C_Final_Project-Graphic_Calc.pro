@@ -34,7 +34,8 @@ SOURCES += \
     creditswindow.cpp \
     eulermethod.cpp \
     RK2method.cpp \
-    Backeulermethod.cpp
+    Backeulermethod.cpp \
+    helpwindow.cpp
 
 
 HEADERS += \
@@ -47,7 +48,8 @@ HEADERS += \
     creditswindow.h \
     eulermethod.h \
     RK2method.h \
-    Backeulermethod.h
+    Backeulermethod.h \
+    helpwindow.h
 
 FORMS += \
         mainwindow.ui \

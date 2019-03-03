@@ -91,9 +91,9 @@ FunctionPlot::FunctionPlot(QWidget *parent) :
     QObject::connect(input_nsteps_spin_box, SIGNAL(valueChanged(int)), nsteps_slider, SLOT(setValue(int)));
         // when user changes nsteps spin box, changes the nsteps slider
 
-    promp_function = new QLabel ("Input function here:"); // some prompt to tell the user what to do
-    promp_ini = new QLabel  ("T initial");
-    promp_final = new QLabel  ("T final");
+    promp_function = new QLabel ("Input function here (Only use either x\nor y as your variables):"); // some prompt to tell the user what to do
+    promp_ini = new QLabel  ("t initial");
+    promp_final = new QLabel  ("t final");
     promp_nsteps = new QLabel ("Num of steps");
     promp_nsteps_slider = new QLabel ("Num of steps slider");
 
