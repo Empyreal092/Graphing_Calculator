@@ -36,6 +36,7 @@
 #define EULERMETHOD_H
 
 #include <QWidget>
+#include <QLabel>
 #include "functionplot.h"
 
 namespace Ui {
@@ -72,6 +73,7 @@ public slots:
 
 protected:
     QDoubleSpinBox * initial_condition;
+    QLabel * inicprompt;
     double initial_cond;
 
 };
