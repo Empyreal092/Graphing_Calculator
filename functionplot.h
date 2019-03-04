@@ -134,6 +134,11 @@ protected:
     /** @brief	Changes nsteps value */
     QSlider * nsteps_slider;
 
+    /** @brief  The menubar for the functionplot window */
+    QMenuBar* menuBar;
+    /** @brief  The button to see the credits */
+    QMenu* helpMenuButton;
+
 public slots:
 
    /**
@@ -169,6 +174,13 @@ public slots:
     */
 
    void changensteps(int);
+
+   /**
+    * @fn   void FunctionPlot::MakeHelpWindow();
+    *
+    * @brief    Makes the help window
+    */
+   void MakeHelpWindow();
 
 };
 
