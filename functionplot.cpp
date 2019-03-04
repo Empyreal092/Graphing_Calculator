@@ -31,10 +31,12 @@
  * @bug No known bugs, but more features to be added
  */
 
+#include "helpwindow.h"
 #include "functionplot.h"
 #include "qcustomplot.h"
 #include "ui_functionplot.h"
 #include <algorithm>
+#include <QPalette>
 
 FunctionPlot::FunctionPlot(QWidget *parent) :
     QWidget(parent), ui(new Ui::FunctionPlot), function_str(){
@@ -126,9 +128,16 @@ FunctionPlot::FunctionPlot(QWidget *parent) :
     input->setLayout(inputlayout);
     input->setMaximumWidth(250); // so that the input is not too big when the window is big
 
+    //Sets the helpMenuButton for QMenuBar
+    menuBar = new QMenuBar();
+    helpMenuButton = new QMenu("Help?");
+    menuBar->addMenu(helpMenuButton);
+    helpMenuButton->addAction("Instructions");
+    QObject::connect(helpMenuButton, SIGNAL(triggered(QAction*)), this, SLOT(MakeHelpWindow())); // connect help button to make help window when pressed
+    ui->gridLayout->setMenuBar(menuBar);
+    menuBar->setStyleSheet("background-color:rgb(240, 240, 240);"); // Sets background color to original grey color
     //makepoints();
     //makeplot(); // call the make pot to plot the default graph
-
     ui->gridLayout->addWidget(input,0,0); // add input in the left of the window
 }
 
@@ -254,4 +263,10 @@ void FunctionPlot::keyPressEvent(QKeyEvent* event)
             clearstring();
         }
     }
+}
+
+void FunctionPlot::MakeHelpWindow()
+{
+    QWidget* h_window = new helpWindow();
+    //c_window->show();
 }
