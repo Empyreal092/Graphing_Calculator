@@ -35,8 +35,7 @@
 
 RK4method::RK4method(ODESolverBase *parent) :
     ODESolverBase(parent){
-
-    setWindowTitle("4th order Runge-Kutta Method");
+    setWindowTitle("4th order Runge-Kutta Method"); // rename the window
 }
 
 RK4method::~RK4method(){
@@ -53,7 +52,7 @@ void RK4method::makepoints(){
     double x = initial; // initialize x
 
     symbol_table_t symbol_table;
-    symbol_table.add_variable("y",x); // add x as a variable
+    symbol_table.add_variable("y",x); // add y in string as x, a variable
 
     // exprtk commands to parse the function
     expression_t expression;
@@ -66,24 +65,39 @@ void RK4method::makepoints(){
     //plot functions
     QVector<std::pair <double,double>> points; // the variable and value vector
 
-    double result = initial_cond;
+    double result = initial_cond; // initialize the result first as the initial condition
 
+    std::pair <double,double> data_point = std::make_pair(initial,result); // initial point
+    points.push_back(data_point); // add the data point
     for (double t = initial; t <= final; t += delta) // for all value points
     {
-       x = result;
-       double xset = x;
-       double deri = expression.value();
-       double k1 = deri*delta;
-       x = xset+k1/2;
-       double k2 = expression.value()*delta;
-       x = xset+k2/2;
-       double k3 = expression.value()*delta;
-       x = xset+k3;
-       double k4 = expression.value()*delta;
-       result = result+(k1+2*k2+2*k3+k4)/6; // evaluate the result of the function string
-       std::pair <double,double> data_point = std::make_pair(t,result);
+       x = result; // set x as the result
+       double xset = result; // save the result for later use in the method
+       double deri = expression.value(); // evaluate the derivative
+       double k1 = deri*delta; // calculate k1 in RK4
+       x = xset+k1/2;  // set x as xset+k1/2
+       double k2 = expression.value()*delta; // calculate k2 in RK4
+       x = xset+k2/2; // set x as xset+k2/2
+       double k3 = expression.value()*delta; // calculate k3 in RK4
+       x = xset+k3; // set x as xset+k3
+       double k4 = expression.value()*delta; // calculate k4 in RK4
+       result = result+(k1+2*k2+2*k3+k4)/6; // evaluate the result via RK4
+       std::pair <double,double> data_point = std::make_pair(t,result); // make the data point
        points.push_back(data_point); // add the data point
     }
 
-    vec_points_to_plot.push_back(points);
+    vec_points_to_plot.push_back(points); // save the plots
+    funstr_vec.push_back(function_str); // save the function string in a vetor
+
+    int r; int g; int b; // rgb paramaters
+    do{ // randomize
+        r = QRandomGenerator::global()->bounded(0, 255);
+        g = QRandomGenerator::global()->bounded(0, 255);
+        b = QRandomGenerator::global()->bounded(0, 255);
+    }
+    while (r+g+b<300); // if the color is too light do it again
+
+    reds.push_back(r); // save the color int to vectors
+    greens.push_back(g);
+    blues.push_back(b);
 }
