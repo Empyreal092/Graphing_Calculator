@@ -2,18 +2,18 @@
 #define TRAPEZOIDALMETHOD_H
 
 #include <QWidget>
-#include "eulermethod.h"
+#include "odesolverbase.h"
 
 namespace Ui {
 class TrapezoidalMethod;
 }
 
-class TrapezoidalMethod : public EulerMethod{
+class TrapezoidalMethod : public ODESolverBase{
    Q_OBJECT
 
 public:
 
-   explicit TrapezoidalMethod(EulerMethod *parent = nullptr);
+   explicit TrapezoidalMethod(ODESolverBase *parent = nullptr);
 
    ~TrapezoidalMethod () override;
 

@@ -33,10 +33,11 @@
 
 #include "Backeulermethod.h"
 
-BackEulerMethod::BackEulerMethod(EulerMethod *parent) :
-    EulerMethod(parent){
+BackEulerMethod::BackEulerMethod(ODESolverBase *parent) :
+    ODESolverBase(parent){
 
     setWindowTitle("Backward Euler Method");
+    this->setMinimumSize(1080,880);
 }
 
 BackEulerMethod::~BackEulerMethod(){
@@ -54,7 +55,7 @@ void BackEulerMethod::makepoints(){
     double x = initial; // initialize x
 
     symbol_table_t symbol_table;
-    symbol_table.add_variable("x",x); // add x as a variable
+    symbol_table.add_variable("y",x); // add x as a variable
 
     // exprtk commands to parse the function
     expression_t expression;

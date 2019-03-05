@@ -36,46 +36,22 @@
 #define EULERMETHOD_H
 
 #include <QWidget>
-#include <QLabel>
-#include "functionplot.h"
+#include "odesolverbase.h"
 
 namespace Ui {
 class EulerMethod;
 }
 
-class EulerMethod : public FunctionPlot{
+class EulerMethod : public ODESolverBase{
    Q_OBJECT
 
 public:
 
-   /**
-    * @fn	explicit TwoPtrWindow::TwoPtrWindow(FunctionPlot *parent = nullptr);
-    *
-    * @brief	Constructor
-    *
-    * @param [in,out]	parent	(Optional) If non-null, the parent.
-    */
-
-   explicit EulerMethod(FunctionPlot *parent = nullptr);
-
-   /**
-    * @fn	TwoPtrWindow::~TwoPtrWindow();
-    *
-    * @brief	Destructor
-    */
+   explicit EulerMethod(ODESolverBase *parent = nullptr);
 
    ~EulerMethod() override;
 
-    void makepoints() override;
-
-public slots:
-    void changeinicond(double);
-
-protected:
-    QDoubleSpinBox * initial_condition;
-    QLabel * inicprompt;
-    double initial_cond;
-
+   void makepoints() override;
 };
 
 #endif // EULERMETHOD_H

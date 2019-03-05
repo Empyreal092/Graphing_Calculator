@@ -37,7 +37,8 @@ SOURCES += \
     Backeulermethod.cpp \
     rk4method.cpp \
     trapezoidalmethod.cpp \
-    helpwindow.cpp
+    helpwindow.cpp \
+    odesolverbase.cpp
 
 
 HEADERS += \
@@ -53,7 +54,8 @@ HEADERS += \
     Backeulermethod.h \
     rk4method.h \
     trapezoidalmethod.h \
-    helpwindow.h
+    helpwindow.h \
+    odesolverbase.h
 
 FORMS += \
         mainwindow.ui \

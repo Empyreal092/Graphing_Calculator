@@ -36,18 +36,18 @@
 #define BACKEULERMETHOD_H
 
 #include <QWidget>
-#include "eulermethod.h"
+#include "odesolverbase.h"
 
 namespace Ui {
 class BackEulerMethod;
 }
 
-class BackEulerMethod : public EulerMethod{
+class BackEulerMethod : public ODESolverBase{
    Q_OBJECT
 
 public:
 
-   explicit BackEulerMethod(EulerMethod *parent = nullptr);
+   explicit BackEulerMethod(ODESolverBase *parent = nullptr);
 
    ~BackEulerMethod () override;
 

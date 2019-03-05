@@ -2,18 +2,18 @@
 #define RK4METHOD_H
 
 #include <QWidget>
-#include "eulermethod.h"
+#include "odesolverbase.h"
 
 namespace Ui {
 class RK4method;
 }
 
-class RK4method : public EulerMethod{
+class RK4method : public ODESolverBase{
     Q_OBJECT
 
 public:
 
-    explicit RK4method(EulerMethod *parent = nullptr);
+    explicit RK4method(ODESolverBase *parent = nullptr);
 
     ~RK4method() override;
 
