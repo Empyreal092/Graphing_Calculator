@@ -90,13 +90,6 @@ public:
     ~diffeqsolver();
 
 public slots:
-
-    /**
-    * @fn	void diffeqsolver::goToMethod();
-    *
-    * @brief	Go to each of the solving methods
-    */
-   // void goToMethod();
    /**
    * @fn	void diffeqsolver::goToMethod0();
    *
@@ -139,8 +132,6 @@ private:
     QStackedWidget * solverStackedWidget;
     /** @brief  The ode solver menu */
     QMenu * odeSolver;
-    /** @brief The drop down menu */
-    // QComboBox * dropDownMenu;
     /** @brief	The user interface */
     Ui::diffeqsolver *ui;
     /** @brief  The differential equation solver drop-down menu bar */

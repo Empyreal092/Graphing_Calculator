@@ -55,23 +55,8 @@ diffeqsolver::diffeqsolver(QWidget *parent) :
     solverStackedWidget->addWidget(myRK4Method); // Page 3
     solverStackedWidget->addWidget(myTrapezoidalMethod); // Page 4
 
-    /*
-    // Adds options to dropDownMenu, currently in QMenuBar
-    dropDownMenu = new QComboBox;
-    dropDownMenu->insertItem(0, "Euler's Method"); // Item 0
-    dropDownMenu->insertItem(1, "Backwards Euler Method"); // Item 1
-    dropDownMenu->insertItem(2, "2nd order Runge-Kutta Method"); // Item 2
-    dropDownMenu->insertItem(3, "4th order Runge-Kutta Method"); // Item 3
-    dropDownMenu->insertItem(4, "Trapezoidal Method"); // Item 4
-    dropDownMenu->setCurrentIndex(0); // Sets default method to Euler's Method
-    connect(dropDownMenu, SIGNAL(currentIndexChanged(int)), this, SLOT(goToMethod()));
-    */
-
-    // Adds the solverStackedWidget and dropDownMenu to the layout
+    // Adds the solverStackedWidget to the layout
     QVBoxLayout* menuLayout = new QVBoxLayout;
-    // QLabel* methodPrompt = new QLabel("Choose a method:");
-    // menuLayout->addWidget(methodPrompt, 0, 0, 1, 2);
-    // menuLayout->addWidget(dropDownMenu, 0, 2, 1, 5);
     menuLayout->addWidget(solverStackedWidget);
 
     setMinimumSize(800, 600);
@@ -130,15 +115,6 @@ diffeqsolver::diffeqsolver(QWidget *parent) :
 
     this->setMinimumSize(1080,880+40);
 }
-
-/* dropDownMenu method
-void diffeqsolver::goToMethod()
-{
-    int index = dropDownMenu->currentIndex();
-    solverStackedWidget->setCurrentIndex(index); // Sets to current page
-    setWindowTitle(dropDownMenu->currentText()); // Sets the page title to the current text
-}
-*/
 
 void diffeqsolver::goToMethod0()
 {
