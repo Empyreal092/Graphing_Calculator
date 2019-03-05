@@ -68,18 +68,21 @@ diffeqsolver::diffeqsolver(QWidget *parent) :
     */
 
     // Adds the solverStackedWidget and dropDownMenu to the layout
-    QGridLayout* menuLayout = new QGridLayout;
+    QVBoxLayout* menuLayout = new QVBoxLayout;
     // QLabel* methodPrompt = new QLabel("Choose a method:");
     // menuLayout->addWidget(methodPrompt, 0, 0, 1, 2);
     // menuLayout->addWidget(dropDownMenu, 0, 2, 1, 5);
-    menuLayout->addWidget(solverStackedWidget, 2, 0, 11, 16);
+    menuLayout->addWidget(solverStackedWidget);
 
     setMinimumSize(800, 600);
 
-    // Creates new menu odeSolver in new menu bar odeMenuBar
+    // Creates new menus odeSolver and helpButtonODE in new menu bar odeMenuBar
     QMenuBar* odeMenuBar = new QMenuBar;
-    QMenu* odeSolver = new QMenu("Differential Equations Solver");
+    QMenu* helpButtonODE = new QMenu("Help?");
+    odeSolver = new QMenu("Method Selection");
     odeMenuBar->addMenu(odeSolver);
+    odeMenuBar->addMenu(helpButtonODE);
+    odeMenuBar->setStyleSheet("background-color:rgb(240, 240, 240);");
 
     // Creates the actions for each solving method and sets the checkmark
     QAction* eul = new QAction("Euler's Method");
@@ -109,12 +112,16 @@ diffeqsolver::diffeqsolver(QWidget *parent) :
     odeSolver->addAction(rk4);
     odeSolver->addAction(trap);
 
+    helpButtonODE->addAction("Instructions");
+
     // Connects each action to its method page
     QObject::connect(eul, SIGNAL(triggered()), this, SLOT(goToMethod0()));
     QObject::connect(backEul, SIGNAL(triggered()), this, SLOT(goToMethod1()));
     QObject::connect(rk2, SIGNAL(triggered()), this, SLOT(goToMethod2()));
     QObject::connect(rk4, SIGNAL(triggered()), this, SLOT(goToMethod3()));
     QObject::connect(trap, SIGNAL(triggered()), this, SLOT(goToMethod4()));
+
+    QObject::connect(helpButtonODE, SIGNAL(triggered(QAction*)), this, SLOT(MakeHelpWindow()));
 
     // Sets the menu bar to odeMenuBar
     menuLayout->setMenuBar(odeMenuBar);
@@ -165,6 +172,12 @@ void diffeqsolver::goToMethod4()
 {
     solverStackedWidget->setCurrentIndex(4);
     setWindowTitle("Trapezoidal Method");
+}
+
+void diffeqsolver::MakeHelpWindow()
+{
+    QWidget* h_window = new helpWindow();
+    //c_window->show();
 }
 
 diffeqsolver::~diffeqsolver()
