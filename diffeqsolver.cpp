@@ -56,10 +56,8 @@ diffeqsolver::diffeqsolver(QWidget *parent) :
     solverStackedWidget->addWidget(myTrapezoidalMethod); // Page 4
 
     // Adds the solverStackedWidget to the layout
-    QVBoxLayout* menuLayout = new QVBoxLayout;
-    menuLayout->addWidget(solverStackedWidget);
-
-    setMinimumSize(800, 600);
+    QGridLayout* menuLayout = new QGridLayout;
+    menuLayout->addWidget(solverStackedWidget,0,0);
 
     // Creates new menus odeSolver and helpButtonODE in new menu bar odeMenuBar
     QMenuBar* odeMenuBar = new QMenuBar;
@@ -112,8 +110,9 @@ diffeqsolver::diffeqsolver(QWidget *parent) :
     menuLayout->setMenuBar(odeMenuBar);
 
     setLayout(menuLayout);
+    menuLayout->setMargin(0);
 
-    this->setMinimumSize(1080,880+40);
+    this->setMinimumSize(1080,880);
 }
 
 void diffeqsolver::goToMethod0()

@@ -28,7 +28,7 @@
  * @author Firat Taxpulat (FT-1984)
  * @author Anita Chen (achen1105)
  *
- * @bug No known bugs, but more features to be added
+ * @bug No known bugs
  */
 
 
@@ -42,14 +42,40 @@ namespace Ui {
 class RK2method;
 }
 
+/**
+ * @class	RK2method
+ *
+ * @brief	The RK4 Method window.
+ */
+
 class RK2method : public ODESolverBase{
    Q_OBJECT
 
 public:
 
+   /**
+    * @fn	explicit RK2method::RK2method(ODESolverBase *parent = nullptr);
+    *
+    * @brief	Constructor
+    *
+    * @param [in,out]	parent	(Optional) If non-null, the parent.
+    */
+
    explicit RK2method(ODESolverBase *parent = nullptr);
 
+   /**
+    * @fn	RK2method::~RK2method() override;
+    *
+    * @brief	Destructor
+    */
+
    ~RK2method() override;
+
+    /**
+     * @fn	void RK2method::makepoints() override;
+     *
+     * @brief	Make the points for the graph
+     */
 
     void makepoints() override;
 };
