@@ -46,6 +46,9 @@ TwoPtrWindow::TwoPtrWindow(FunctionPlot *parent) :
 
     functionstring -> setToolTip("The function to solve"); // reset the tooltip
 
+    inputf_t -> setText("d2y/dt2 := ");
+    inputf_t -> setMaximumWidth(50);
+
     initial_condition1 = new QDoubleSpinBox; // make double spinbix for left inicond
     initial_condition1 -> setMaximum(1000); // set max and min for initial and final spinbox
     initial_condition1 -> setMinimum(-1000);
@@ -132,7 +135,7 @@ void TwoPtrWindow::makepoints(){
     double x = initial; // initialize x
 
     symbol_table_t symbol_table;
-    symbol_table.add_variable("x",x); // add x as a variable
+    symbol_table.add_variable("t",x); // add x as a variable
 
     // exprtk commands to parse the function
     expression_t expression;
