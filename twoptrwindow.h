@@ -28,7 +28,7 @@
  * @author Firat Taxpulat (FT-1984)
  * @author Anita Chen (achen1105)
  *
- * @bug No known bugs, but more features to be added
+ * @bug No known bugs
  */
 
 
@@ -71,21 +71,49 @@ public:
 
     ~TwoPtrWindow() override;
 
+    /**
+     * @fn	void TwoPtrWindow::makepoints() override;
+     *
+     * @brief	Make the points for the graph
+     */
+
     void makepoints() override;
 
 public slots:
+
+    /**
+     * @fn	void TwoPtrWindow::changeinicond1(double);
+     *
+     * @brief	Change left initial condition
+     *
+     * @param	parameter1	The double user inputted.
+     */
+
     void changeinicond1(double);
+
+    /**
+     * @fn	void TwoPtrWindow::changeinicond2(double);
+     *
+     * @brief	Change right initial condition
+     *
+     * @param	parameter1	The double user inputted.
+     */
+
     void changeinicond2(double);
 
 protected:
+    /** @brief	The left initial condition DoubleSpinBox */
     QDoubleSpinBox * initial_condition1;
+    /** @brief	The right initial condition DoubleSpinBox */
     QDoubleSpinBox * initial_condition2;
+    /** @brief	The left initial condition prompt */
     QLabel * inicprompt1;
+	/** @brief	The right initial condition prompt */
     QLabel * inicprompt2;
+    /** @brief	The left initial condition value */
     double initial_cond1;
+    /** @brief	The right initial condition value */
     double initial_cond2;
 };
-
-
 
 #endif // TWOPTRWINDOW_H

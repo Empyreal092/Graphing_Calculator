@@ -28,7 +28,7 @@
  * @author Firat Taxpulat (FT-1984)
  * @author Anita Chen (achen1105)
  *
- * @bug No known bugs, but more features to be added
+ * @bug No known bugs
  */
 
 
@@ -42,14 +42,40 @@ namespace Ui {
 class BackEulerMethod;
 }
 
+/**
+ * @class	BackEulerMethod
+ *
+ * @brief	The Backward Euler Method window.
+ */
+
 class BackEulerMethod : public ODESolverBase{
    Q_OBJECT
 
 public:
 
+   /**
+    * @fn	explicit BackEulerMethod::BackEulerMethod(ODESolverBase *parent = nullptr);
+    *
+    * @brief	Constructor
+    *
+    * @param [in,out]	parent	(Optional) If non-null, the parent.
+    */
+
    explicit BackEulerMethod(ODESolverBase *parent = nullptr);
 
+   /**
+    * @fn	BackEulerMethod::~BackEulerMethod () override;
+    *
+    * @brief	Destructor
+    */
+
    ~BackEulerMethod () override;
+
+   /**
+    * @fn	void BackEulerMethod::makepoints() override;
+    *
+    * @brief	Make the points in the graph
+    */
 
    void makepoints() override;
 };
