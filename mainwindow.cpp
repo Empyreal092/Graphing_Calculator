@@ -48,10 +48,9 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent), ui(new Ui::MainWindow){
     ui->setupUi(this);
 
-    setWindowTitle("Main Entry Menu:"); // set window title
+    setWindowTitle("Graphing Calculator Main Window"); // set window title
 
-    title1 = new QLabel("Differential Equations"); // the first part of title
-    title2 = new QLabel("Solver"); // the second part of title
+    title1 = new QLabel("Graphing Calculator"); // the first part of title
     title_prompt = new QLabel("Select one of the following features:"); // the prompt
     button_Plot = new QPushButton("Plot Function"); // the plot function button
     button_ODE = new QPushButton("ODE Solver"); // the Euler's method button
@@ -61,7 +60,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     centerlayout = new QGridLayout; // layout
     centerlayout -> addWidget(title1, 0, 0, Qt::AlignCenter); // put objects in the layout
-    centerlayout -> addWidget(title2, 1, 0, Qt::AlignCenter);
     centerlayout -> addWidget(title_prompt,2,0, Qt::AlignCenter);
     centerlayout -> addWidget(button_Plot,3,0);
     centerlayout -> addWidget(button_ODE,4,0);
@@ -79,10 +77,8 @@ MainWindow::MainWindow(QWidget *parent) :
     arialTitle.setUnderline(true);
 
     title1->setFont(arialTitle); // Set the font style of titles 1 and 2
-    title2->setFont(arialTitle);
 
     title1->setStyleSheet("QLabel { color : purple; }"); // Set the color of titles 1 and 2
-    title2->setStyleSheet("QLabel { color : purple; }");
 
     title_prompt->setStyleSheet("font:bold"); // Prompt bold font
     button_Plot->setStyleSheet("background-color:rgb(45, 75, 190); " // Plot button is blue
@@ -125,9 +121,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //Changes the size of the mainwindow
 
-    int x=centerpiece->width()*1.1;
-    int y=centerpiece->height()*1.1;
-    centerpiece->setMinimumSize(x,y);
+    this->setMinimumSize(600,400);
 
     //Added instructions button and credits button in QMenu
 

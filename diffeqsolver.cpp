@@ -73,6 +73,7 @@ diffeqsolver::diffeqsolver(QWidget *parent) :
     // menuLayout->addWidget(methodPrompt, 0, 0, 1, 2);
     // menuLayout->addWidget(dropDownMenu, 0, 2, 1, 5);
     menuLayout->addWidget(solverStackedWidget, 2, 0, 11, 16);
+
     setMinimumSize(800, 600);
 
     // Creates new menu odeSolver in new menu bar odeMenuBar
@@ -117,7 +118,10 @@ diffeqsolver::diffeqsolver(QWidget *parent) :
 
     // Sets the menu bar to odeMenuBar
     menuLayout->setMenuBar(odeMenuBar);
+
     setLayout(menuLayout);
+
+    this->setMinimumSize(1080,880+40);
 }
 
 /* dropDownMenu method

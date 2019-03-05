@@ -90,7 +90,7 @@ FunctionPlot::FunctionPlot(QWidget *parent) :
     QObject::connect(input_nsteps_spin_box, SIGNAL(valueChanged(int)), this, SLOT(changensteps(int)));
         // when user input new number of steps, change the nsteps value
 
-    promp_function = new QLabel ("Input function here (Only use either x\nor y as your variables):"); // some prompt to tell the user what to do
+    promp_function = new QLabel ("Input the function you want to plot here \n(Only use x as your variables):"); // some prompt to tell the user what to do
     promp_ini = new QLabel  ("t initial");
     promp_final = new QLabel  ("t final");
     promp_nsteps = new QLabel ("Num of steps");
@@ -159,6 +159,8 @@ FunctionPlot::FunctionPlot(QWidget *parent) :
     //makepoints();
     //makeplot(); // call the make pot to plot the default graph
     ui->gridLayout->addWidget(input,0,0); // add input in the left of the window
+
+    this->setMinimumSize(1080,880);
 }
 
 void FunctionPlot::changefstring(){
@@ -235,7 +237,7 @@ void FunctionPlot::makeplot(){
     QVector<double> var_mins;
     ui->customPlot->clearGraphs();
     ui->customPlot->clearPlottables();
-    for (size_t i = 0; i < vec_points_to_plot.size(); ++i){
+    for (size_t i = 0; i < vec_points_to_plot.size()    ; ++i){
         ui->customPlot->addGraph();
         QVector<std::pair <double,double>> points = vec_points_to_plot[i];
         QVector<double> var;
