@@ -128,22 +128,24 @@ FunctionPlot::FunctionPlot(QWidget *parent) :
                                 "padding: 6 px"); // Padding is 6 px
 
     // Spacing for the user input
-    inputlayout->insertStretch(0);
-    inputlayout->setAlignment(promp_function, Qt::AlignTop);
-    inputlayout->setAlignment(functionstring, Qt::AlignTop);
-    inputlayout->insertStretch(3);
-    inputlayout->insertStretch(5);
-    inputlayout->setAlignment(plotbutton, Qt::AlignBottom);
-    inputlayout->setAlignment(clearbutton, Qt::AlignBottom);
+    inputlayout->setAlignment(promp_function, Qt::AlignTop); // 0
+    inputlayout->setAlignment(functionstring, Qt::AlignTop); // 1
+    // 2 is the gridboxlayout
+    inputlayout->insertStretch(3); // Space in the middle
+    inputlayout->setAlignment(plotbutton, Qt::AlignTop); // 4
+    inputlayout->setAlignment(clearbutton, Qt::AlignTop); // 5
+    inputlayout->insertStretch(6);
+    inputlayout->insertStretch(7);
+    inputlayout->insertStretch(8);
+    inputlayout->insertStretch(9);
+    inputlayout->insertStretch(10);
+    inputlayout->insertStretch(11);
+    inputlayout->insertStretch(12);
+    inputlayout->insertStretch(13);
+    inputlayout->insertStretch(14);
     inputlayout->addStretch();
     inputlayout->setMargin(0);
     paralayout->setMargin(0);
-    // promp_function->setMaximumSize(250, 30);
-    // promp_ini->setMaximumSize(120, 20);
-    // promp_final->setMaximumSize(120, 20);
-    // promp_nsteps->setMaximumSize(120, 20);
-    // inputlayout->setSpacing(0);
-    // paralayout->setSpacing(0);
 
     input->setLayout(inputlayout);
     input->setMaximumWidth(250); // so that the input is not too big when the window is big

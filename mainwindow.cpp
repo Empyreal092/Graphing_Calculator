@@ -152,7 +152,7 @@ void MainWindow::MakePlotWindow(){
 
 void MainWindow::MakeODEWindow()
 {
-    QWidget* e_window = new diffeqsolver(); // make the euler window
+    diffeqsolver* e_window = new diffeqsolver(); // make the euler window
     e_window->show(); // show the window
 }
 
