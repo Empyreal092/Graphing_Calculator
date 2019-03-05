@@ -160,7 +160,7 @@ FunctionPlot::FunctionPlot(QWidget *parent) :
     menuBar->addMenu(helpMenuButton);
     helpMenuButton->addAction("Instructions");
     QObject::connect(helpMenuButton, SIGNAL(triggered(QAction*)), this, SLOT(MakeHelpWindow())); // connect help button to make help window when pressed
-    ui->gridLayout->setMenuBar(menuBar);
+    // ui->gridLayout->setMenuBar(menuBar);
     menuBar->setStyleSheet("background-color:rgb(240, 240, 240);"); // Sets background color to original grey color
     //makepoints();
     //makeplot(); // call the make pot to plot the default graph
@@ -312,6 +312,11 @@ void FunctionPlot::keyPressEvent(QKeyEvent* event)
             clearstring();
         }
     }
+}
+
+QMenuBar* FunctionPlot::getfplotMenuBar()
+{
+    return menuBar;
 }
 
 void FunctionPlot::MakeHelpWindow()

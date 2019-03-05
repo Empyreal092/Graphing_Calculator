@@ -200,9 +200,14 @@ public slots:
     *
     * @brief	Change the nsteps value
     */
-
    void changensteps(int);
 
+   /**
+    * @fn   void FunctionPlot::getfplotMenuBar();
+    *
+    * @brief    Returns the function plot menu bar
+    */
+   QMenuBar* getfplotMenuBar();
    /**
     * @fn   void FunctionPlot::MakeHelpWindow();
     *

@@ -129,18 +129,21 @@ MainWindow::~MainWindow(){
 
 void MainWindow::MakePlotWindow(){
     FunctionPlot *p_window = new FunctionPlot(); // make the function plot window
+    menuBar = p_window->getfplotMenuBar();
     p_window->show(); // show the window
 }
 
 void MainWindow::MakeODEWindow()
 {
     diffeqsolver* e_window = new diffeqsolver(); // make the euler window
+    menuBar = e_window->getodeMenuBar();
     e_window->show(); // show the window
 }
 
 void MainWindow::Make2ptrcWindow()
 {
-    QWidget* b_window = new TwoPtrWindow(); // make the bisec window
+    TwoPtrWindow* b_window = new TwoPtrWindow(); // make the bisec window
+    menuBar = b_window->getfplotMenuBar();
     b_window->show(); // show the window
 }
 
