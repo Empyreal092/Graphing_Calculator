@@ -13,13 +13,12 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
- 
+
  * We declare that this work is our own.
  * We did this work honestly and can fully stand behind everything that we have written.
  * We did not copy code from anyone, student or otherwise, expect files we downloaded and have the permission to use.
  * We pledge that we have neither given nor received unauthorized assistance on making this project.
-
- * @file mainwindow.h  
+ * @file mainwindow.h
  * @brief The header file for the entry main window.
  *
  * This is the entry window for the project.
@@ -27,7 +26,7 @@
  * @author Ryan Du (Empyreal092)
  * @author Firat Taxpulat (FT-1984)
  * @author Anita Chen (achen1105)
- *  		 
+ *
  * @bug No known bugs, but more features to be added
  */
 
