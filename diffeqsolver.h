@@ -53,6 +53,7 @@
 #include "RK2method.h"
 #include "rk4method.h"
 #include "trapezoidalmethod.h"
+#include "helpwindow.h"
 
 namespace Ui {
 class diffeqsolver;
@@ -89,13 +90,6 @@ public:
     ~diffeqsolver();
 
 public slots:
-
-    /**
-    * @fn	void diffeqsolver::goToMethod();
-    *
-    * @brief	Go to each of the solving methods
-    */
-   // void goToMethod();
    /**
    * @fn	void diffeqsolver::goToMethod0();
    *
@@ -103,36 +97,41 @@ public slots:
    */
    void goToMethod0();
    /**
-   * @fn	void diffeqsolver::goToMethod0();
+   * @fn	void diffeqsolver::goToMethod1();
    *
    * @brief  Go to method 1
    */
    void goToMethod1();
    /**
-   * @fn	void diffeqsolver::goToMethod0();
+   * @fn	void diffeqsolver::goToMethod2();
    *
    * @brief  Go to method 2
    */
    void goToMethod2();
    /**
-   * @fn	void diffeqsolver::goToMethod0();
+   * @fn	void diffeqsolver::goToMethod3();
    *
    * @brief  Go to method 3
    */
    void goToMethod3();
    /**
-   * @fn	void diffeqsolver::goToMethod0();
+   * @fn	void diffeqsolver::goToMethod4();
    *
    * @brief  Go to method 4
    */
    void goToMethod4();
-
+   /**
+   * @fn	void diffeqsolver::MakeHelpWindow();
+   *
+   * @brief Makes a new help window.
+   */
+   void MakeHelpWindow();
 
 private:
     /** @brief	The solver stacked widget */
     QStackedWidget * solverStackedWidget;
-    /** @brief The drop down menu */
-    // QComboBox * dropDownMenu;
+    /** @brief  The ode solver menu */
+    QMenu * odeSolver;
     /** @brief	The user interface */
     Ui::diffeqsolver *ui;
     /** @brief  The differential equation solver drop-down menu bar */
