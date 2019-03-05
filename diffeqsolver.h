@@ -43,6 +43,10 @@
 #include <QPushButton>
 #include <QDoubleSpinBox>
 #include <QComboBox>
+#include <QMenu>
+#include <QMenuBar>
+#include <QAction>
+#include <QActionGroup>
 #include "functionplot.h"
 #include "eulermethod.h"
 #include "Backeulermethod.h"
@@ -91,15 +95,48 @@ public slots:
     *
     * @brief	Go to each of the solving methods
     */
-   void goToMethod();
+   // void goToMethod();
+   /**
+   * @fn	void diffeqsolver::goToMethod0();
+   *
+   * @brief  Go to method 0
+   */
+   void goToMethod0();
+   /**
+   * @fn	void diffeqsolver::goToMethod0();
+   *
+   * @brief  Go to method 1
+   */
+   void goToMethod1();
+   /**
+   * @fn	void diffeqsolver::goToMethod0();
+   *
+   * @brief  Go to method 2
+   */
+   void goToMethod2();
+   /**
+   * @fn	void diffeqsolver::goToMethod0();
+   *
+   * @brief  Go to method 3
+   */
+   void goToMethod3();
+   /**
+   * @fn	void diffeqsolver::goToMethod0();
+   *
+   * @brief  Go to method 4
+   */
+   void goToMethod4();
+
 
 private:
     /** @brief	The solver stacked widget */
     QStackedWidget * solverStackedWidget;
     /** @brief The drop down menu */
-    QComboBox * dropDownMenu;
+    // QComboBox * dropDownMenu;
     /** @brief	The user interface */
     Ui::diffeqsolver *ui;
+    /** @brief  The differential equation solver drop-down menu bar */
+    QMenuBar* odeMenuBar;
 };
 
 #endif // DIFFEQSOLVER_H

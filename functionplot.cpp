@@ -51,6 +51,7 @@ FunctionPlot::FunctionPlot(QWidget *parent) :
     input = new QWidget(); // widget of inputs on the left of the window
     inputlayout = new QVBoxLayout(); // the layout of the input
     paralayout = new QGridLayout(); // layout for the initial and final
+
     functionstring = new QLineEdit(); // where the user input the function
     functionstring -> setToolTip("The function you want to plot");
     input_initial = new QDoubleSpinBox(); // a double spinbox for the initial
@@ -94,6 +95,7 @@ FunctionPlot::FunctionPlot(QWidget *parent) :
     promp_final = new QLabel  ("t final");
     promp_nsteps = new QLabel ("Num of steps");
 
+
     // set the formats into the layout
     inputlayout->addWidget(promp_function);
     inputlayout->addWidget(functionstring);
@@ -124,6 +126,24 @@ FunctionPlot::FunctionPlot(QWidget *parent) :
                                 "border-width: 2 px; " // Border is 2 px
                                 "border-color: beige; " // Border color is beige
                                 "padding: 6 px"); // Padding is 6 px
+
+    // Spacing for the user input
+    inputlayout->insertStretch(0);
+    inputlayout->setAlignment(promp_function, Qt::AlignTop);
+    inputlayout->setAlignment(functionstring, Qt::AlignTop);
+    inputlayout->insertStretch(3);
+    inputlayout->insertStretch(5);
+    inputlayout->setAlignment(plotbutton, Qt::AlignBottom);
+    inputlayout->setAlignment(clearbutton, Qt::AlignBottom);
+    inputlayout->addStretch();
+    inputlayout->setMargin(0);
+    paralayout->setMargin(0);
+    // promp_function->setMaximumSize(250, 30);
+    // promp_ini->setMaximumSize(120, 20);
+    // promp_final->setMaximumSize(120, 20);
+    // promp_nsteps->setMaximumSize(120, 20);
+    // inputlayout->setSpacing(0);
+    // paralayout->setSpacing(0);
 
     input->setLayout(inputlayout);
     input->setMaximumWidth(250); // so that the input is not too big when the window is big

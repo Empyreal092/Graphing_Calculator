@@ -55,7 +55,8 @@ diffeqsolver::diffeqsolver(QWidget *parent) :
     solverStackedWidget->addWidget(myRK4Method); // Page 3
     solverStackedWidget->addWidget(myTrapezoidalMethod); // Page 4
 
-    // Adds options to dropDownMenu
+    /*
+    // Adds options to dropDownMenu, currently in QMenuBar
     dropDownMenu = new QComboBox;
     dropDownMenu->insertItem(0, "Euler's Method"); // Item 0
     dropDownMenu->insertItem(1, "Backwards Euler Method"); // Item 1
@@ -64,23 +65,106 @@ diffeqsolver::diffeqsolver(QWidget *parent) :
     dropDownMenu->insertItem(4, "Trapezoidal Method"); // Item 4
     dropDownMenu->setCurrentIndex(0); // Sets default method to Euler's Method
     connect(dropDownMenu, SIGNAL(currentIndexChanged(int)), this, SLOT(goToMethod()));
+    */
 
     // Adds the solverStackedWidget and dropDownMenu to the layout
     QGridLayout* menuLayout = new QGridLayout;
-    QLabel* methodPrompt = new QLabel("Choose a method:");
-    menuLayout->addWidget(methodPrompt, 0, 0, 1, 2);
-    menuLayout->addWidget(dropDownMenu, 0, 2, 1, 5);
+    // QLabel* methodPrompt = new QLabel("Choose a method:");
+    // menuLayout->addWidget(methodPrompt, 0, 0, 1, 2);
+    // menuLayout->addWidget(dropDownMenu, 0, 2, 1, 5);
     menuLayout->addWidget(solverStackedWidget, 2, 0, 11, 16);
+
+    setMinimumSize(800, 600);
+
+    // Creates new menu odeSolver in new menu bar odeMenuBar
+    QMenuBar* odeMenuBar = new QMenuBar;
+    QMenu* odeSolver = new QMenu("Differential Equations Solver");
+    odeMenuBar->addMenu(odeSolver);
+
+    // Creates the actions for each solving method and sets the checkmark
+    QAction* eul = new QAction("Euler's Method");
+    eul->setCheckable(true);
+    QAction* backEul = new QAction("Backwards Euler's Method");
+    backEul->setCheckable(true);
+    QAction* rk2 = new QAction("2nd Order Runge-Kutta Method");
+    rk2->setCheckable(true);
+    QAction* rk4 = new QAction("4th Order Runge-Kutta Method");
+    rk4->setCheckable(true);
+    QAction* trap = new QAction("Trapezoidal Method");
+    trap->setCheckable(true);
+
+    // Adds the actions to a methodsGroup so only one method is checked at a time
+    QActionGroup* methodsGroup = new QActionGroup(this);
+    methodsGroup->addAction(eul);
+    methodsGroup->addAction(backEul);
+    methodsGroup->addAction(rk2);
+    methodsGroup->addAction(rk4);
+    methodsGroup->addAction(trap);
+    eul->setChecked(true);
+
+    // Adds the actions to the odeSolver menu
+    odeSolver->addAction(eul);
+    odeSolver->addAction(backEul);
+    odeSolver->addAction(rk2);
+    odeSolver->addAction(rk4);
+    odeSolver->addAction(trap);
+
+    // Connects each action to its method page
+    QObject::connect(eul, SIGNAL(triggered()), this, SLOT(goToMethod0()));
+    QObject::connect(backEul, SIGNAL(triggered()), this, SLOT(goToMethod1()));
+    QObject::connect(rk2, SIGNAL(triggered()), this, SLOT(goToMethod2()));
+    QObject::connect(rk4, SIGNAL(triggered()), this, SLOT(goToMethod3()));
+    QObject::connect(trap, SIGNAL(triggered()), this, SLOT(goToMethod4()));
+
+    // Sets the menu bar to odeMenuBar
+    menuLayout->setMenuBar(odeMenuBar);
+
     setLayout(menuLayout);
 
     this->setMinimumSize(1080,880+40);
 }
 
+/* dropDownMenu method
 void diffeqsolver::goToMethod()
 {
     int index = dropDownMenu->currentIndex();
     solverStackedWidget->setCurrentIndex(index); // Sets to current page
     setWindowTitle(dropDownMenu->currentText()); // Sets the page title to the current text
+}
+*/
+
+void diffeqsolver::goToMethod0()
+{
+    solverStackedWidget->setCurrentIndex(0);
+    setWindowTitle("Euler's Method");
+}
+
+
+void diffeqsolver::goToMethod1()
+{
+    solverStackedWidget->setCurrentIndex(1);
+    setWindowTitle("Backwards Euler's Method");
+}
+
+
+void diffeqsolver::goToMethod2()
+{
+    solverStackedWidget->setCurrentIndex(2);
+    setWindowTitle("2nd Order Runge-Kutta Method");
+}
+
+
+void diffeqsolver::goToMethod3()
+{
+    solverStackedWidget->setCurrentIndex(3);
+    setWindowTitle("4th Order Runge-Kutta Method");
+}
+
+
+void diffeqsolver::goToMethod4()
+{
+    solverStackedWidget->setCurrentIndex(4);
+    setWindowTitle("Trapezoidal Method");
 }
 
 diffeqsolver::~diffeqsolver()
