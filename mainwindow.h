@@ -92,15 +92,11 @@ private:
     QPushButton* button_ODE;
     /** @brief	The button for bisection method, do nothing rn */
     QPushButton* button_2ptr;
-    /** @brief  The button to see the credits */
-    QPushButton* credits_button;
-    /** @brief  The button to see the credits */
-    QPushButton* help_button;
     /** @brief  The menubar for the main window */
     QMenuBar* menuBar;
     /** @brief  The button to see the credits */
     QMenu* creditsButton;
-    /** @brief  The button to see the credits */
+    /** @brief  The button to see the instructions */
     QMenu* helpMenu;
 
     /** @brief	The centerlayout */
