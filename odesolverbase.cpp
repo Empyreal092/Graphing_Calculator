@@ -16,6 +16,9 @@ ODESolverBase::ODESolverBase(FunctionPlot *parent) :
     initial_condition -> setMinimum(-1000);
     initial_condition -> setToolTip("Input the initial condition here");
 
+    inputf_t -> setText("dy/dt := ");
+    inputf_t -> setMaximumWidth(50);
+
     inicprompt = new QLabel("Initial Condition");
 
     QObject::connect(initial_condition, SIGNAL(valueChanged(double)), this, SLOT(changeinicond(double)));
