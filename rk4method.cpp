@@ -33,8 +33,8 @@
 
 #include "rk4method.h"
 
-RK4method::RK4method(EulerMethod *parent) :
-    EulerMethod(parent){
+RK4method::RK4method(ODESolverBase *parent) :
+    ODESolverBase(parent){
 
     setWindowTitle("4th order Runge-Kutta Method");
 }
@@ -53,7 +53,7 @@ void RK4method::makepoints(){
     double x = initial; // initialize x
 
     symbol_table_t symbol_table;
-    symbol_table.add_variable("x",x); // add x as a variable
+    symbol_table.add_variable("y",x); // add x as a variable
 
     // exprtk commands to parse the function
     expression_t expression;

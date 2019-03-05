@@ -33,8 +33,8 @@
 
 #include "RK2method.h"
 
-RK2method::RK2method(EulerMethod *parent) :
-    EulerMethod(parent){
+RK2method::RK2method(ODESolverBase *parent) :
+    ODESolverBase(parent){
 
     setWindowTitle("2nd order Runge-Kutta Method");
 }
@@ -53,7 +53,7 @@ void RK2method::makepoints(){
     double x = initial; // initialize x
 
     symbol_table_t symbol_table;
-    symbol_table.add_variable("x",x); // add x as a variable
+    symbol_table.add_variable("y",x); // add x as a variable
 
     // exprtk commands to parse the function
     expression_t expression;
