@@ -133,6 +133,8 @@ protected:
     QGridLayout * paralayout;
     /** @brief	The the function str input box */
     QLineEdit * functionstring;
+    QHBoxLayout * fstrlayout;
+    QLabel * inputf_t;
     /** @brief	The plot button */
     QPushButton * plotbutton;
     /** @brief	The clear button */

@@ -54,6 +54,12 @@ FunctionPlot::FunctionPlot(QWidget *parent) :
     paralayout = new QGridLayout(); // layout for the initial and final
 
     functionstring = new QLineEdit(); // where the user input the function
+    inputf_t = new QLabel("y(t) := ");
+    inputf_t -> setMaximumWidth(50);
+    fstrlayout = new QHBoxLayout;
+    fstrlayout -> addWidget(inputf_t);
+    fstrlayout -> addWidget(functionstring);
+
     functionstring -> setToolTip("The function you want to plot"); // set the tooltip
     input_initial = new QDoubleSpinBox(); // a double spinbox for the initial
     input_initial -> setToolTip("In initial t"); // set the tooltip
@@ -91,7 +97,7 @@ FunctionPlot::FunctionPlot(QWidget *parent) :
     QObject::connect(input_nsteps_spin_box, SIGNAL(valueChanged(int)), this, SLOT(changensteps(int)));
         // when user input new number of steps, change the nsteps value
 
-    promp_function = new QLabel ("Input the function you want to plot here \n(Only use x as your variables):"); // some prompt to tell the user what to do
+    promp_function = new QLabel ("Input the function you want to plot here \n(Only use t as your variables):"); // some prompt to tell the user what to do
     promp_ini = new QLabel  ("t initial");
     promp_final = new QLabel  ("t final");
     promp_nsteps = new QLabel ("Num of steps");
@@ -99,7 +105,7 @@ FunctionPlot::FunctionPlot(QWidget *parent) :
 
     // set the formats into the layout
     inputlayout->addWidget(promp_function);
-    inputlayout->addWidget(functionstring);
+    inputlayout->addLayout(fstrlayout);
     paralayout->addWidget(promp_ini,0,0);
     paralayout->addWidget(promp_final,0,1);
 
@@ -218,7 +224,7 @@ void FunctionPlot::makepoints(){
     double x = initial; // initialize x
 
     symbol_table_t symbol_table;
-    symbol_table.add_variable("x",x); // add x as a variable
+    symbol_table.add_variable("t",x); // add x as a variable
 
     // exprtk commands to parse the function
     expression_t expression;
