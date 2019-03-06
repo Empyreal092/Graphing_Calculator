@@ -78,6 +78,18 @@ TwoPtrWindow::TwoPtrWindow(FunctionPlot *parent) :
     input_nsteps_spin_box -> setMaximum(100); // set max and min for nsteps spinbox and nsteps slider
     input_nsteps_spin_box -> setMinimum(0);
     input_nsteps_spin_box -> setValue(50); // set default to 50
+
+    //Sets the helpMenuButton for QMenuBar
+    menuBar = new QMenuBar();
+    helpMenuButton = new QMenu("Help?");
+    menuBar->addMenu(helpMenuButton);
+    helpMenuButton->addAction("Instructions");
+    QObject::connect(helpMenuButton, SIGNAL(triggered(QAction*)), this, SLOT(MakeHelpWindow())); // connect help button to make help window when pressed
+    ui->gridLayout->setMenuBar(menuBar);
+    menuBar->setStyleSheet("background-color:rgb(240, 240, 240);"); // Sets background color to original grey color
+
+    this->setMinimumSize(1080,880);
+    showMaximized();
 }
 
 TwoPtrWindow::~TwoPtrWindow(){
