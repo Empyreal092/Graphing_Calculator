@@ -37,13 +37,14 @@
 #include "ui_functionplot.h"
 #include <algorithm>
 #include <QPalette>
+#include <QRandomGenerator>
 
 FunctionPlot::FunctionPlot(QWidget *parent) :
     QWidget(parent), ui(new Ui::FunctionPlot), function_str(){
 
     initial = 0.0; // default initial value
     final = 10.0; // default final value
-    nsteps = 1000;
+    nsteps = 1000; // default step number
     ui->setupUi(this);
 
     setWindowTitle("Plotting Function"); // set the window title
@@ -51,15 +52,22 @@ FunctionPlot::FunctionPlot(QWidget *parent) :
     input = new QWidget(); // widget of inputs on the left of the window
     inputlayout = new QVBoxLayout(); // the layout of the input
     paralayout = new QGridLayout(); // layout for the initial and final
+
     functionstring = new QLineEdit(); // where the user input the function
-    functionstring -> setToolTip("The function you want to plot");
+    inputf_t = new QLabel("y(t) := ");
+    inputf_t -> setMaximumWidth(50);
+    fstrlayout = new QHBoxLayout;
+    fstrlayout -> addWidget(inputf_t);
+    fstrlayout -> addWidget(functionstring);
+
+    functionstring -> setToolTip("The function you want to plot"); // set the tooltip
     input_initial = new QDoubleSpinBox(); // a double spinbox for the initial
-    input_initial -> setToolTip("In initial t");
+    input_initial -> setToolTip("In initial t"); // set the tooltip
     input_final = new QDoubleSpinBox(); // a double spinbox for the final
-    input_final -> setToolTip("The final t");
+    input_final -> setToolTip("The final t"); // set the tooltip
 
     input_nsteps_spin_box = new QSpinBox(); // a double spinbox for the nsteps value
-    input_nsteps_spin_box -> setToolTip("The number of steps");
+    input_nsteps_spin_box -> setToolTip("The number of steps"); // set the tooltip
 
     input_initial -> setMaximum(1000); // set max and min for initial and final spinbox
     input_initial -> setMinimum(-1000);
@@ -89,14 +97,15 @@ FunctionPlot::FunctionPlot(QWidget *parent) :
     QObject::connect(input_nsteps_spin_box, SIGNAL(valueChanged(int)), this, SLOT(changensteps(int)));
         // when user input new number of steps, change the nsteps value
 
-    promp_function = new QLabel ("Input the function you want to plot here \n(Only use x as your variables):"); // some prompt to tell the user what to do
+    promp_function = new QLabel ("Input the function you want to plot here \n(Only use t as your variables):"); // some prompt to tell the user what to do
     promp_ini = new QLabel  ("t initial");
     promp_final = new QLabel  ("t final");
     promp_nsteps = new QLabel ("Num of steps");
 
+
     // set the formats into the layout
     inputlayout->addWidget(promp_function);
-    inputlayout->addWidget(functionstring);
+    inputlayout->addLayout(fstrlayout);
     paralayout->addWidget(promp_ini,0,0);
     paralayout->addWidget(promp_final,0,1);
 
@@ -124,6 +133,29 @@ FunctionPlot::FunctionPlot(QWidget *parent) :
                                 "border-width: 2 px; " // Border is 2 px
                                 "border-color: beige; " // Border color is beige
                                 "padding: 6 px"); // Padding is 6 px
+
+    // Spacing for the user input
+    inputlayout->insertStretch(0);
+    inputlayout->setAlignment(promp_function, Qt::AlignTop); // 1
+    inputlayout->setAlignment(functionstring, Qt::AlignTop); // 2
+    // 3 is the gridboxlayout
+    inputlayout->insertStretch(4); // Space in the middle
+    inputlayout->setAlignment(plotbutton, Qt::AlignTop); // 5
+    inputlayout->setAlignment(clearbutton, Qt::AlignTop); // 6
+    inputlayout->insertStretch(7);
+    inputlayout->insertStretch(8);
+    inputlayout->insertStretch(9);
+    inputlayout->insertStretch(10);
+    inputlayout->insertStretch(11);
+    inputlayout->insertStretch(12);
+    inputlayout->insertStretch(13);
+    inputlayout->insertStretch(14);
+    inputlayout->insertStretch(15);
+    inputlayout->insertStretch(16);
+    inputlayout->insertStretch(17);
+    inputlayout->addStretch();
+    inputlayout->setMargin(0);
+    paralayout->setMargin(0);
 
     input->setLayout(inputlayout);
     input->setMaximumWidth(250); // so that the input is not too big when the window is big
@@ -155,8 +187,14 @@ void FunctionPlot::changefstring(){
 }
 
 void FunctionPlot::clearstring(){
+    // clear all the data saved
     vec_points_to_plot.clear();
+    funstr_vec.clear();
+    reds.clear();
+    greens.clear();
+    blues.clear();
     makeplot(); // call make plot
+
 }
 
 void FunctionPlot::changeini(double i){
@@ -171,8 +209,7 @@ void FunctionPlot::changensteps(int i){
     nsteps = i; // change nsteps
 }
 
-FunctionPlot::~FunctionPlot()
-{
+FunctionPlot::~FunctionPlot(){
     delete ui;
 }
 
@@ -187,7 +224,7 @@ void FunctionPlot::makepoints(){
     double x = initial; // initialize x
 
     symbol_table_t symbol_table;
-    symbol_table.add_variable("x",x); // add x as a variable
+    symbol_table.add_variable("t",x); // add x as a variable
 
     // exprtk commands to parse the function
     expression_t expression;
@@ -207,38 +244,55 @@ void FunctionPlot::makepoints(){
        points.push_back(data_point); // add the data point
     }
 
-    vec_points_to_plot.push_back(points);
+    vec_points_to_plot.push_back(points); // add the points of the graph to the vector of graphs to plot
+    funstr_vec.push_back(function_str); // save the function string in a vetor
+
+    int r; int g; int b; // rgb paramaters
+    do{ // randomize
+        r = QRandomGenerator::global()->bounded(0, 255);
+        g = QRandomGenerator::global()->bounded(0, 255);
+        b = QRandomGenerator::global()->bounded(0, 255);
+    }
+    while (r+g+b<300); // if the color is too light do it again
+
+    reds.push_back(r); // save the color int to vectors
+    greens.push_back(g);
+    blues.push_back(b);
 }
 
 void FunctionPlot::makeplot(){
-    QVector<double> value_maxs;
+    QVector<double> value_maxs; // the max and min of value and var for setting limit later
     QVector<double> value_mins;
     QVector<double> var_maxs;
     QVector<double> var_mins;
-    ui->customPlot->clearGraphs();
+
+    ui->customPlot->clearGraphs(); // clear graph first
     ui->customPlot->clearPlottables();
-    for (size_t i = 0; i < vec_points_to_plot.size()    ; ++i){
-        ui->customPlot->addGraph();
-        QVector<std::pair <double,double>> points = vec_points_to_plot[i];
-        QVector<double> var;
+    ui->customPlot->legend->setVisible(true); // the graph has legends
+    for (size_t i = 0; i < vec_points_to_plot.size(); ++i){ // for all the saved graph data, plot
+        ui->customPlot->addGraph(); // add graph
+        QVector<std::pair <double,double>> points = vec_points_to_plot[i]; // take the saved data points
+        QVector<double> var; // the vector of variables and values
         QVector<double> value;
+        // transform the vector of pairs to vector of value
         std::transform(points.begin(), points.end(), std::back_inserter(var),
                          (const double& (*)(const std::pair<double, double>&))std::get<0>);
         std::transform(points.begin(), points.end(), std::back_inserter(value),
                          (const double& (*)(const std::pair<double, double>&))std::get<1>);
 
-        double var_max = *std::max_element(var.begin(), var.end());
+        double var_max = *std::max_element(var.begin(), var.end()); // get the max and min
         var_maxs.push_back(var_max);
         double var_min = *std::min_element(var.begin(), var.end());
         var_mins.push_back(var_min);
-
         double value_max = *std::max_element(value.begin(), value.end());
         value_maxs.push_back(value_max);
         double value_min = *std::min_element(value.begin(), value.end());
         value_mins.push_back(value_min);
-        ui->customPlot->graph(i)->setData(var, value);
+
+        ui->customPlot->graph(i)->setData(var, value); // set the data of the graph
+        ui->customPlot->graph(i)->setPen(QPen(QColor(reds[i],greens[i],blues[i]))); // set the color
+        ui->customPlot->graph(i)->setName(funstr_vec[i]); // set the name
     }
-    // create graph and assign data to it
 
     // give the axes some labels
     ui->customPlot->xAxis->setLabel("t");
@@ -248,7 +302,6 @@ void FunctionPlot::makeplot(){
     double max = *std::max_element(value_maxs.begin(), value_maxs.end());
     double ini = *std::min_element(var_mins.begin(), var_mins.end());;
     double fin = *std::max_element(var_maxs.begin(), var_maxs.end());;
-
     ui->customPlot->xAxis->setRange(ini-0.1*abs(fin-ini), fin+0.1*abs(fin-ini));
     ui->customPlot->yAxis->setRange(min-0.1*abs(max-min), max+0.1*abs(max-min));
     ui->customPlot->replot(); // replot

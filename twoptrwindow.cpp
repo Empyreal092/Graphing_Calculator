@@ -37,80 +37,93 @@
 TwoPtrWindow::TwoPtrWindow(FunctionPlot *parent) :
     FunctionPlot(parent){
 
-    initial_cond1 = 0;
-    initial_cond2 = 0;
+    initial_cond1 = 0; // set default left initial condition as 0
+    initial_cond2 = 0; // set default right initial condition as 0
 
-    setWindowTitle("Two Point Boundry Value Problem Solver");
-    plotbutton->setText("Solve!");
-    plotbutton -> setToolTip("Solve the Two Point Boundry Value Problem");
+    setWindowTitle("Two Point Boundry Value Problem Solver"); // rename the window
+    plotbutton->setText("Solve!"); // rename the button
+    plotbutton -> setToolTip("Solve the Two Point Boundry Value Problem"); // reset the tooltip
 
-    functionstring -> setToolTip("The function to solve");
+    functionstring -> setToolTip("The function to solve"); // reset the tooltip
 
-    initial_condition1 = new QDoubleSpinBox;
+    inputf_t -> setText("d2y/dt2 := ");
+    inputf_t -> setMaximumWidth(50);
+
+    initial_condition1 = new QDoubleSpinBox; // make double spinbix for left inicond
     initial_condition1 -> setMaximum(1000); // set max and min for initial and final spinbox
     initial_condition1 -> setMinimum(-1000);
-    initial_condition1 -> setValue(initial_cond1);
-    initial_condition1 -> setToolTip("Input the right initial condition here");
+    initial_condition1 -> setValue(initial_cond1); // set value as 0
+    initial_condition1 -> setToolTip("Input the right initial condition here"); // tooltip
 
-    initial_condition2 = new QDoubleSpinBox;
+    initial_condition2 = new QDoubleSpinBox; // make double spinbix for left inicond
     initial_condition2 -> setMaximum(1000); // set max and min for initial and final spinbox
     initial_condition2 -> setMinimum(-1000);
-    initial_condition2 -> setValue(initial_cond2);
-    initial_condition2 -> setToolTip("Input the left initial condition here");
+    initial_condition2 -> setValue(initial_cond2); // set value as 0
+    initial_condition2 -> setToolTip("Input the left initial condition here"); // tooltip
 
-    inicprompt1 = new QLabel("Left Initial Value");
+    inicprompt1 = new QLabel("Left Initial Value"); // prompt for the initial values
     inicprompt2 = new QLabel("Right Initial Value");
 
+    // connect the double spinbox to the values
     QObject::connect(initial_condition1, SIGNAL(valueChanged(double)), this, SLOT(changeinicond1(double)));
     QObject::connect(initial_condition2, SIGNAL(valueChanged(double)), this, SLOT(changeinicond2(double)));
 
+    // add the new component to layout
     paralayout->addWidget(initial_condition1, 5, 0);
     paralayout->addWidget(initial_condition2, 5, 1);
     paralayout->addWidget(inicprompt1, 4, 0);
     paralayout->addWidget(inicprompt2, 4, 1);
 
+    // reset max and min of how many set you can take (the methods takes a long time for step size higher than this)
     input_nsteps_spin_box -> setMaximum(100); // set max and min for nsteps spinbox and nsteps slider
     input_nsteps_spin_box -> setMinimum(0);
-    input_nsteps_spin_box -> setValue(50);
+    input_nsteps_spin_box -> setValue(50); // set default to 50
 }
 
 TwoPtrWindow::~TwoPtrWindow(){
-
 }
 
 void TwoPtrWindow::changeinicond1(double i){
-    initial_cond1 = i; // change final
+    initial_cond1 = i; // change left initial cond
 }
 
 void TwoPtrWindow::changeinicond2(double i){
-    initial_cond2 = i; // change final
+    initial_cond2 = i; // change right initial cond
 }
 
-//////////////////////
-double hsprt2norm(QVector<QVector<double>>A, QVector<double>u, QVector<double>v, double h){
-    int size = u.size();
-    QVector<double> mult(size);
+/**
+ * @fn	double hsprt2norm(QVector<QVector<double>>A, QVector<double>u, QVector<double>v, double h)
+ *
+ * @brief	Helper function, H2 norm of (A*u-v)
+ *
+ * @param	A		The matrix A.
+ * @param	u		The vector u.
+ * @param	v		The vector v.
+ * @param	h	  	The stepsize.
+ *
+ * @return	A double that is the h,2 norm of (A*u-v).
+ */
 
-    for (int j = 0; j < size; ++j)
+double hsprt2norm(QVector<QVector<double>>A, QVector<double>u, QVector<double>v, double h){
+    int size = u.size(); // The size of all the matrix and vector
+    double temp = 0; // temp for the loop
+    QVector<double> result(size); // create a result vector for A*u-v
+    for (int j = 0; j < size; ++j){ // calculate A*u
         for(int k = 0; k < size; ++k)
         {
-            mult[j] += u[k] * A[k][j];
+            temp += u[k] * A[k][j];
         }
-    QVector<double> result(size);
-    for (int i = 0; i < size; ++i){
-        result[i] = mult[i] - v[i];
+        result[j] = temp - v[j];
     }
-    double normsquar = 0;
-    for (int i = 0; i < size; ++i){
+    double normsquar = 0; // initialize norm^2
+    for (int i = 0; i < size; ++i){ // calculate norm^2
         normsquar += pow(abs(result[i]),2);
     }
-    double norm = sqrt(normsquar);
-    norm = norm*sqrt(h);
-    return norm;
+    double norm = sqrt(normsquar); // calculate norm
+    norm = norm*sqrt(h); // calculate h norm
+    return norm; // return the vale
 }
-/////////////////////////
-/// \brief TwoPtrWindow::makepoints
-///
+
 void TwoPtrWindow::makepoints(){
     // exprtk commands
     typedef exprtk::symbol_table<double> symbol_table_t;
@@ -122,7 +135,7 @@ void TwoPtrWindow::makepoints(){
     double x = initial; // initialize x
 
     symbol_table_t symbol_table;
-    symbol_table.add_variable("x",x); // add x as a variable
+    symbol_table.add_variable("t",x); // add x as a variable
 
     // exprtk commands to parse the function
     expression_t expression;
@@ -133,39 +146,44 @@ void TwoPtrWindow::makepoints(){
     const double delta = (final-initial)/nsteps; // the step size
 
     QVector<QVector<double>> MatrixA(nsteps-1, QVector<double>(nsteps-1));
-    double fac = 1/(delta*delta);
+    // matrix A in the algorithm
+    double fac = 1/(delta*delta); // fac = 1/delta^2
 
+    // set the value of matrix A
     MatrixA[0][0] = -2*fac;
     MatrixA[0][1] = 1*fac;
     MatrixA[nsteps-2][nsteps-2] = -2*fac;
     MatrixA[nsteps-2][nsteps-3] = 1*fac;
-
     for (int i = 1; i < nsteps-2; ++i){
         MatrixA[i][i] = -2*fac;
         MatrixA[i][i-1] = 1*fac;
         MatrixA[i][i+1] = 1*fac;
     }
 
-    QVector<double> vec_x;
-    for (int i = 0; i<nsteps-1; ++i){
+    QVector<double> vec_x; // vector of value of x
+    for (int i = 0; i<nsteps-1; ++i){ // set the value of vec_x
         vec_x.push_back(initial+(i+1)*delta);
     }
 
-    QVector<double> vec_f;
-    for (int i = 0; i<nsteps-1; ++i){
+    QVector<double> vec_f; // vector of value of f
+    for (int i = 0; i<nsteps-1; ++i){ // set the value of vec_f
         x = vec_x[i];
-        vec_f.push_back(expression.value());
+        vec_f.push_back(expression.value()); // evaluated at x in the right position
     }
 
-    vec_f[0] -= initial_cond1*fac;
+    vec_f[0] -= initial_cond1*fac; // minus the initial conditions as the alg goes
     vec_f[nsteps-2] -= initial_cond2*fac;
 
-    QVector<double> results = QVector<double>(nsteps-1,0);
-    int count = 0;
+    QVector<double> results = QVector<double>(nsteps-1,0); // initialize the reulst to solve the matrix
+    int count = 0; // the interation counter
 
-    while (hsprt2norm(MatrixA, results, vec_f, delta)>0.05 && count <1000){
-        QVector<double> results_prev = results;
-        for (int i = 0; i < nsteps-1; ++i){
+    // Gauss–Seidel method
+    constexpr int MAX_ITER= 1000; // max iteration the root finder can take
+    constexpr double TOLERANCE = 0.01; // the tolerane of the root finder
+    while (hsprt2norm(MatrixA, results, vec_f, delta)>TOLERANCE && count <MAX_ITER){
+        // if the hnorn is large the the interation number is not exceeding the max
+        QVector<double> results_prev = results; // save the previous result
+        for (int i = 0; i < nsteps-1; ++i){ // do the Gauss–Seidel iteration
             results[i] = vec_f[i];
             for (int j = 0; j < i; ++j){
                 results[i] -= MatrixA[i][j]*results[j];
@@ -175,23 +193,35 @@ void TwoPtrWindow::makepoints(){
             }
             results[i] = results[i]/MatrixA[i][i];
         }
-        ++count;
+        ++count; // add to the counter
     }
 
-    //plot functions
     QVector<std::pair <double,double>> points; // the variable and value vector
 
     std::pair <double,double> data_point;
-    data_point = std::make_pair(initial,initial_cond1);
+    data_point = std::make_pair(initial,initial_cond1); // make the initial point
     points.push_back(data_point); // add the data point
     for (int i = 0; i < nsteps-1; ++i){
-        data_point = std::make_pair(vec_x[i],results[i]);
+        data_point = std::make_pair(vec_x[i],results[i]); // make the points in the middle
         points.push_back(data_point); // add the data point
     }
-    data_point = std::make_pair(final,initial_cond2);
+    data_point = std::make_pair(final,initial_cond2); // make the final point
     points.push_back(data_point); // add the data point
 
-    vec_points_to_plot.push_back(points);
+    vec_points_to_plot.push_back(points); // add the points of the graph to the vector of graphs to plot
+    funstr_vec.push_back(function_str); // save the function string in a vetor
+
+    int r; int g; int b; // rgb paramaters
+    do{ // randomize
+        r = QRandomGenerator::global()->bounded(0, 255);
+        g = QRandomGenerator::global()->bounded(0, 255);
+        b = QRandomGenerator::global()->bounded(0, 255);
+    }
+    while (r+g+b<300); // if the color is too light do it again
+
+    reds.push_back(r); // save the color int to vectors
+    greens.push_back(g);
+    blues.push_back(b);
 }
 
 

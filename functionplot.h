@@ -78,8 +78,20 @@ public:
 
     virtual ~FunctionPlot();
 
+    /**
+     * @fn	virtual void makepoints();
+     *
+     * @brief	Make the points for the graph
+     */
 
     virtual void makepoints();
+
+    /**
+     * @fn	void makeplot();
+     *
+     * @brief	Plot the graph from the points from makepoints()
+     */
+
     void makeplot();
 
     /**
@@ -87,10 +99,20 @@ public:
      *
      * @brief   Calls function when keys are pressed, ex. Return on keyboard has same function as Plot! button
      */
+
     void keyPressEvent(QKeyEvent* event);
 
 protected:
+    /** @brief	The vector of points to plot */
     QVector<QVector<std::pair <double,double>>> vec_points_to_plot;
+    /** @brief	The function string vector */
+    QVector<QString> funstr_vec;
+    /** @brief	The reds for color of the graph */
+    QVector<int> reds;
+    /** @brief	The greens for color of the graph */
+    QVector<int> greens;
+    /** @brief	The blues for color of the graph */
+    QVector<int> blues;
 
     /** @brief	The user interface */
     Ui::FunctionPlot *ui;
@@ -105,12 +127,14 @@ protected:
 
     /** @brief	The input widget */
     QWidget * input;
-   /** @brief	The layout for input */
+    /** @brief	The layout for input */
     QVBoxLayout * inputlayout;
     /** @brief	The layout for parameters */
     QGridLayout * paralayout;
     /** @brief	The the function str input box */
     QLineEdit * functionstring;
+    QHBoxLayout * fstrlayout;
+    QLabel * inputf_t;
     /** @brief	The plot button */
     QPushButton * plotbutton;
     /** @brief	The clear button */
@@ -142,12 +166,18 @@ protected:
 public slots:
 
    /**
-    * @fn	FunctionPlot::changefstring();
+    * @fn	void changefstring();
     *
     * @brief	Change the function string
     */
 
    void changefstring();
+
+   /**
+    * @fn	void clearstring();
+    *
+    * @brief	Clear the saved graph data this object
+    */
 
    void clearstring();
 
