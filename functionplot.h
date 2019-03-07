@@ -103,16 +103,8 @@ public:
     void keyPressEvent(QKeyEvent* event);
 
 protected:
-    /** @brief	The vector of points to plot */
-    QVector<QVector<std::pair <double,double>>> vec_points_to_plot;
-    /** @brief	The function string vector */
-    QVector<QString> funstr_vec;
-    /** @brief	The reds for color of the graph */
-    QVector<int> reds;
-    /** @brief	The greens for color of the graph */
-    QVector<int> greens;
-    /** @brief	The blues for color of the graph */
-    QVector<int> blues;
+    int num_graph;
+    QVector<std::pair <double,double>> points;
 
     /** @brief	The user interface */
     Ui::FunctionPlot *ui;

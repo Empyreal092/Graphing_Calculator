@@ -63,7 +63,7 @@ void EulerMethod::makepoints(){
     const double delta = (final-initial)/nsteps; // the step size
 
     //plot functions
-    QVector<std::pair <double,double>> points; // the variable and value vector
+    points.clear(); // clear the points vector
 
     double result = initial_cond; // initialize the result first as the initial condition
 
@@ -77,19 +77,5 @@ void EulerMethod::makepoints(){
        std::pair <double,double> data_point = std::make_pair(t,result); // make the data point
        points.push_back(data_point); // add the data point
     }
-
-    vec_points_to_plot.push_back(points); // save the plots
-    funstr_vec.push_back(function_str); // save the function string in a vetor
-
-    int r; int g; int b; // rgb paramaters
-    do{ // randomize
-        r = QRandomGenerator::global()->bounded(0, 255);
-        g = QRandomGenerator::global()->bounded(0, 255);
-        b = QRandomGenerator::global()->bounded(0, 255);
-    }
-    while (r+g+b<300); // if the color is too light do it again
-
-    reds.push_back(r); // save the color int to vectors
-    greens.push_back(g);
-    blues.push_back(b);
+    ++num_graph;
 }
