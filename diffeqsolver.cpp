@@ -150,6 +150,11 @@ void diffeqsolver::goToMethod4()
     setWindowTitle("Trapezoidal Method");
 }
 
+QMenuBar* diffeqsolver::getodeMenuBar()
+{
+    return odeMenuBar;
+}
+
 void diffeqsolver::MakeHelpWindow()
 {
     QWidget* h_window = new helpWindow();
