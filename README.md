@@ -33,9 +33,9 @@ Tested using Qt 5.12.0 MSVC 2017 64 bits
 
 ## Authors
 
-- Ryan Du ([Empyreal092])(https://github.com/Empyreal092)
-- Firat Taxpulat ([FT-1984])(https://github.com/FT-1984)
-- Anita Chen ([achen1105])(https://github.com/achen1105)
+- Ryan Du ([Empyreal092](https://github.com/Empyreal092))
+- Firat Taxpulat ([FT-1984](https://github.com/FT-1984))
+- Anita Chen ([achen1105](https://github.com/achen1105))
 
 ## Acknowledgments
 
