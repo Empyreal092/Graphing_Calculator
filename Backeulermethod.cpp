@@ -34,9 +34,7 @@
 #include "Backeulermethod.h"
 
 BackEulerMethod::BackEulerMethod(ODESolverBase *parent) :
-    ODESolverBase(parent){
-    setWindowTitle("Backward Euler Method"); // rename the window
-}
+    ODESolverBase(parent){}
 
 BackEulerMethod::~BackEulerMethod(){
 }
