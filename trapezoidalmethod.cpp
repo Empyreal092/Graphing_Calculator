@@ -25,7 +25,25 @@ void TrapezoidalMethod::makepoints(){
     expression_t expression;
     expression.register_symbol_table(symbol_table);
     parser_t parser;
-    parser.compile(expr_string.toStdString(),expression);
+
+    bool iffuncvalid = parser.compile(expr_string.toStdString(),expression); // check if the parser failed
+    if (iffuncvalid){
+        error->setText("Function Parser: No Error");
+    }
+    if (!iffuncvalid) // if it failed
+    {
+        errormsg = "Function Parser: "; // save the error messages
+        for (std::size_t i = 0; i < parser.error_count(); ++i)
+              {
+                 typedef exprtk::parser_error::type error_t;
+
+                 error_t error = parser.get_error(i);
+                 errormsg.append(error.diagnostic.c_str());
+                 errormsg.append("  ");
+              }
+        error->setText(errormsg); // print the error message
+        return; // do not plot the erroruous function
+    }
 
     const double delta = (final-initial)/nsteps; // the step size
 
@@ -73,4 +91,5 @@ void TrapezoidalMethod::makepoints(){
     }
 
     ++num_graph;
+    makeplot();
 }

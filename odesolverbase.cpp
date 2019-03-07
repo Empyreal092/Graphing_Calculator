@@ -7,6 +7,8 @@ ODESolverBase::ODESolverBase(FunctionPlot *parent) :
     plotbutton->setText("Solve!");
     plotbutton -> setToolTip("Solve the ODE");
 
+    initial_cond = 0.1; // default value
+
     functionstring -> setToolTip("The function to solve");
 
     promp_function -> setText("Input function you want to solve here \n(Only use y as your variables):"); // some prompt to tell the user what to do
@@ -14,6 +16,7 @@ ODESolverBase::ODESolverBase(FunctionPlot *parent) :
     initial_condition = new QDoubleSpinBox;
     initial_condition -> setMaximum(1000); // set max and min for initial and final spinbox
     initial_condition -> setMinimum(-1000);
+    initial_condition -> setValue(initial_cond); // set default value
     initial_condition -> setToolTip("Input the initial condition here (y(t initial))");
 
     inputf_t -> setText("dy/dt := ");
