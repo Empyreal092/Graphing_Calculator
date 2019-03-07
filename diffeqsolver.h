@@ -121,9 +121,15 @@ public slots:
    */
    void goToMethod4();
    /**
+   * @fn	void diffeqsolver::getMenuBar();
+   *
+   * @brief Returns the odeMenuBar.
+   */
+   QMenuBar* getodeMenuBar();
+   /**
    * @fn	void diffeqsolver::MakeHelpWindow();
    *
-   * @brief Makes a new help window.
+   * @brief Create the help window.
    */
    void MakeHelpWindow();
 

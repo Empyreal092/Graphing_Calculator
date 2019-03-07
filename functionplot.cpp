@@ -312,6 +312,11 @@ void FunctionPlot::keyPressEvent(QKeyEvent* event)
     }
 }
 
+QMenuBar* FunctionPlot::getfplotMenuBar()
+{
+    return menuBar;
+}
+
 void FunctionPlot::MakeHelpWindow()
 {
     QWidget* h_window = new helpWindow();
