@@ -70,7 +70,7 @@ diffeqsolver::diffeqsolver(QWidget *parent) :
     // Creates the actions for each solving method and sets the checkmark
     QAction* eul = new QAction("Euler's Method");
     eul->setCheckable(true);
-    QAction* backEul = new QAction("Backwards Euler's Method");
+    QAction* backEul = new QAction("Backward Euler Method");
     backEul->setCheckable(true);
     QAction* rk2 = new QAction("2nd Order Runge-Kutta Method");
     rk2->setCheckable(true);
@@ -113,6 +113,7 @@ diffeqsolver::diffeqsolver(QWidget *parent) :
     menuLayout->setMargin(0);
 
     this->setMinimumSize(1080,900);
+    showMaximized();
 }
 
 void diffeqsolver::goToMethod0()

@@ -163,8 +163,6 @@ FunctionPlot::FunctionPlot(QWidget *parent) :
     //makepoints();
     //makeplot(); // call the make pot to plot the default graph
     ui->gridLayout->addWidget(input,0,0); // add input in the left of the window
-
-    this->setMinimumSize(1080,880);
 }
 
 void FunctionPlot::changefstring(){

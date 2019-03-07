@@ -1,8 +1,9 @@
 #ifndef HELPWINDOW_H
 #define HELPWINDOW_H
 
-
 #include <QWidget>
+#include <QLabel>
+#include <QFile>
 
 /**
  * @class	helpWindow
@@ -24,6 +25,13 @@ public:
      */
 
     helpWindow();
+
+
+private:
+
+QFile* instructionsTextFile;
+QLabel* instructionsText;
+QString* instructionsReadLine;
 };
 
 #endif // HELPWINDOW_H
