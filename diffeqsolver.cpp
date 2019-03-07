@@ -113,6 +113,7 @@ diffeqsolver::diffeqsolver(QWidget *parent) :
     menuLayout->setMargin(0);
 
     this->setMinimumSize(1080,900);
+    showMaximized();
 }
 
 void diffeqsolver::goToMethod0()
