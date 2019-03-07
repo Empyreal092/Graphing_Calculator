@@ -1,0 +1,148 @@
+Graphing Calculator Instructions
+------------------------------------------------
+Table of Contents
+
+1. Main Window
+
+2. Plot Function
+
+3. ODE Solver
+
+4. Two Point Boundary Value Problem
+------------------------------------------------
+Main Window
+
+• The main window has three features that users can select from
+
+   1. Plot Function
+
+   2. ODE Solver
+
+   3. Two Point Boundary Value Problem
+
+   - After selecting one of these buttons, a new window corresponding to the selected feature will appear
+
+• On the top of the main window is a menu bar that contains two menu buttons, "Help?" and "About"
+   
+   - The "Help?" button allows you to click on the "Instructions" button which will display a text file with 
+     the instructions for this program
+
+   - The "About" buttons allows you to click on the "Credits" button which will display a credits window
+     that shows the contributors of the "Graphing Calculator" program
+------------------------------------------------
+Plot Function
+
+• The "Plotting Function" window allows users to plot a regular function in terms of t.
+
+• On the top of the "Plotting Function" window is a menu bar that contains the menu button, "Help?"
+
+  - The "Help?" button in the menu bar allows you to click on the "Instructions" button which will 
+    display a text file with the instructions for this program
+
+• In order to plot a function, follow the steps below:
+
+   1. Input a function in terms of t into the white box on the left side of the graph with the text "y(t) := " 
+       to the left of the white box
+
+   2. Enter the initial and final values of t using the increment and decrement buttons on the "t initial" 
+       box, and the "t final" box or manually enter the initial and final values of t into the "t initial" box and 
+       the "t final" box
+
+       - This will set the range of the t axis on the graph
+
+   3. Enter the number of steps used for the graph using the increment and decrement buttons on the 
+       "Num of steps" box, or manually enter the number of steps used for the graph into the "Num of 
+       steps" box.
+
+   4. Click on the green "Plot!" button or press "Enter" on the keyboard to plot the graph.
+
+       - The graph of the inputted function will have a random color and a legend will apear on the graph 
+         that represents which color corresponds to which function on the graph. This allows for multiple
+         functions to be graphed.
+
+   5. Click on the red "Clear!" button or press "CTRL + Enter" on the keyboard to clear all graphs from
+       the graph
+------------------------------------------------
+ODE (Ordinary Differential Equation) Solver
+
+• The ODE solver contains five different methods to plot a first-order ordinary differential equation in 
+   terms of y
+   
+   1. Euler's Method
+
+   2. Backward Euler's Method
+
+   3. 2nd Order Runge-Kutta Method
+   
+   4. 4th Order Runge-Kutta Method
+   
+   5. Trapezoidal Method
+
+• The ODE solver starts with the "Euler's Method" window
+
+• On the top of the "Euler's Method" window is a menu bar that contains two menu buttons, "Method
+  Selection" and "Help?"
+
+   - The "Method Selection" button contains the five different methods used to plot an ordinary
+      differential equation and users can select one of the five different methods to use the chosen method 
+     
+   - The "Help?" button in the menu bar allows you to click on the "Instructions" button which will 
+     display a text file with the instructions for this program
+
+• After selecting one of the methods to plot a first-order ordinary differential equation, follow the steps 
+  below:
+
+   1. Input a first-order ordinary differential equation in terms of y into the white box on the left side of 
+       the graph with the text "dy/dt := " to the left of the white box
+
+   2. Enter the initial and final values of t using the increment and decrement buttons on the "t initial" 
+       box, and the "t final" box or manually enter the initial and final values of t into the "t initial" box and 
+       the "t final" box
+
+       - This will set the range of the t axis on the graph
+
+   3. Enter the number of steps used for the graph using the increment and decrement buttons on the 
+       "Num of steps" box, or manually enter the number of steps used for the graph into the "Num of 
+       steps" box.
+
+   4. /* Initial Condition Instructions */
+
+   5. Click on the green "Plot!" button or press "Enter" on the keyboard to plot the graph.
+
+       - The graph of the inputted function will have a random color and a legend will apear on the graph 
+         that represents which color corresponds to which first-order ordinary differential equation on the 
+         graph. This allows for multiple functions to be graphed.
+
+   6. Click on the red "Clear!" button or press "CTRL + Enter" on the keyboard to clear all graphs from
+       the graph
+------------------------------------------------
+Two Point Boundary Value Problem
+
+• The "Two Point Boundary Value Problem Solver" window allows users to plot a second-order ordinary
+   differential equation in terms of t.
+
+• In order to plot a second-order ordinary differential equation, follow the steps below:
+
+   1. Input a second-order ordinary differential equation in terms of t into the white box on the left side of 
+       the graph with the text "d2y/dt2 := " to the left of the white box
+
+   2. Enter the initial and final values of t using the increment and decrement buttons on the "t initial" 
+       box, and the "t final" box or manually enter the initial and final values of t into the "t initial" box and 
+       the "t final" box
+
+       - This will set the range of the t axis on the graph
+
+   3. Enter the number of steps used for the graph using the increment and decrement buttons on the 
+       "Num of steps" box, or manually enter the number of steps used for the graph into the "Num of 
+       steps" box.
+
+   4. /* Initial Condition Instructions */
+
+   5. Click on the green "Plot!" button or press "Enter" on the keyboard to plot the graph.
+
+       - The graph of the inputted function will have a random color and a legend will apear on the graph 
+         that represents which color corresponds to which function on the graph. This allows for multiple
+         functions to be graphed.
+
+   6. Click on the red "Clear!" button or press "CTRL + Enter" on the keyboard to clear all graphs from
+       the graph

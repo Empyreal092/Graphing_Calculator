@@ -113,6 +113,7 @@ diffeqsolver::diffeqsolver(QWidget *parent) :
     menuLayout->setMargin(0);
 
     this->setMinimumSize(1080,900);
+    showMaximized();
 }
 
 void diffeqsolver::goToMethod0()
@@ -147,6 +148,11 @@ void diffeqsolver::goToMethod4()
 {
     solverStackedWidget->setCurrentIndex(4);
     setWindowTitle("Trapezoidal Method");
+}
+
+QMenuBar* diffeqsolver::getodeMenuBar()
+{
+    return odeMenuBar;
 }
 
 void diffeqsolver::MakeHelpWindow()

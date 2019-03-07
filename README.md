@@ -1,25 +1,51 @@
-# PIC10C Final Project: Graphic Calculator
+# Graphic Calculator
 
-Our project will be a graphing calculator. 
+This application is a graphic calculator. It can solve Ordinary Differential Equations and Two Point Boundary Value Problems.
 
-The calculator will be able to graph functions of one variable. Based on that, we plan to implement the graphical representation of Euler’s method to solve an Ordinary Differential Equation, Newton’s method to find the root of a function, and Polynomial Interpolation. We may include more basic calculator functions later. 
+## Motivation
 
-At the start of the application, users will be greeted by a welcome page and asked to choose from three of the functionalities (Sketch 1). After users make their choice, they will be brought to the graphics calculator interface. The left of the window is where users will input the function and parameters, and the right of the window is where the graph will be drawn (Sketch 2). Users will input the functions and parameters like endpoints and step size (parameters will be different for different method) and the program will show the graphical representation of the numerical methods based on those inputs. Users have the ability to set graphics options like background color and line color. Users will also be able to hold graph and draw new graphs on the old one to compare graphs. 
+It has three main functionalities:
+ - Plotting Function
+ - Graphically solving (Autonomous) Ordinary Differential Equation (ODE)
+ - Graphically solving Two Point Boundary Value Problem
+ 
+## Screenshots
 
-**A Temporary Schedule:**
+## Features
 
-Week 3: Sketch the design of the program and Welcome page (Buttons for three functionalities)
+- Plotting Function
+- Graphically solving (Autonomous) Ordinary Differential Equation (ODE) with the folloing methods
+  - Euler’s Method
+  - Backward Euler Method
+  - 2nd Order Runge-Kutta Method
+  - 4th Order Runge-Kutta Method
+  - Trapezoidal Method
+- Graphically solving Two Point Boundary Value Problem (with  Dirichlet boundary conditions)
 
-Week 4: Calculator interface (Basic input reading and graphing function)
+## Prerequisites
 
-Week 5: Calculator interface (More user input and graphics options)
+Tested using Qt 5.12.0 MSVC 2017 64 bits
 
-Week 6: Implement Euler’s method 
+## Packages used
+ 
+- [Exprtk](https://github.com/ArashPartow/exprtk)
+- [QCustomPlot](https://www.qcustomplot.com/)
 
-Week 7: Implement Newton’s method
+## Authors
 
-Week 8: Implement polynomial interpolation
+- Ryan Du ([Empyreal092](https://github.com/Empyreal092))
+- Firat Taxpulat ([FT-1984](https://github.com/FT-1984))
+- Anita Chen ([achen1105](https://github.com/achen1105))
 
-Week 9: Final check
+## Acknowledgments
 
-Week 10: Presentations
+This project is the Final Project for PIC 10C. Advanced Programming in UCLA. 
+
+We declare that this work is our own. We did this work honestly and can fully stand behind everything that we have written. We did not copy code from anyone, student or otherwise, expect files we downloaded and have the permission to use. We pledge that we have neither given nor received unauthorized assistance on making this project.
+
+
+## License
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with this program.  If not, see <https://www.gnu.org/licenses/>.
