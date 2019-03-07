@@ -75,4 +75,4 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
-    Graphing Calculator Instructions Text File.txt
+    Graphing_Calculator_Instructions_Text_File.txt

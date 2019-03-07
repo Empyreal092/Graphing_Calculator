@@ -6,7 +6,7 @@ helpWindow::helpWindow()
 {
     //Reads the instructions text file
 
-    instructionsTextFile = new QFile("C:/Users/fax21/Desktop/UCLA_Classes/PIC_10C/Final_Project/PIC10C_Final_Project-Graphic_Calc/Graphing Calculator Instructions Text File.txt");
+    instructionsTextFile = new QFile("Graphing_Calculator_Instructions_Text_File.txt");
     //instructionsTextFile->open("Graphing Calculator Instructions Text File.txt")
     instructionsText = new QLabel;
     instructionsReadLine = new QString;
