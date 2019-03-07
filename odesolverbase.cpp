@@ -14,7 +14,7 @@ ODESolverBase::ODESolverBase(FunctionPlot *parent) :
     initial_condition = new QDoubleSpinBox;
     initial_condition -> setMaximum(1000); // set max and min for initial and final spinbox
     initial_condition -> setMinimum(-1000);
-    initial_condition -> setToolTip("Input the initial condition here");
+    initial_condition -> setToolTip("Input the initial condition here (y(t initial))");
 
     inputf_t -> setText("dy/dt := ");
     inputf_t -> setMaximumWidth(50);
