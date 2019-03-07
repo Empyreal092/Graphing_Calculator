@@ -20,7 +20,7 @@ It has three main functionalities:
   - 2nd Order Runge-Kutta Method
   - 4th Order Runge-Kutta Method
   - Trapezoidal Method
-- Graphically solving Two Point Boundary Value Problem
+- Graphically solving Two Point Boundary Value Problem (with  Dirichlet boundary conditions)
 
 ## Prerequisites
 
