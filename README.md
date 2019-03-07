@@ -31,11 +31,18 @@ Tested using Qt 5.12.0 MSVC 2017 64 bits
 - [Exprtk](https://github.com/ArashPartow/exprtk)
 - [QCustomPlot](https://www.qcustomplot.com/)
 
-## Credits
+## Authors
 
-Ryan Du [(Empyreal092)](https://github.com/Empyreal092)
-Firat Taxpulat [(FT-1984)](https://github.com/FT-1984)
-Anita Chen [(achen1105)](https://github.com/achen1105)
+- Ryan Du ([Empyreal092])(https://github.com/Empyreal092)
+- Firat Taxpulat ([FT-1984])(https://github.com/FT-1984)
+- Anita Chen ([achen1105])(https://github.com/achen1105)
+
+## Acknowledgments
+
+This project is the Final Project for PIC 10C. Advanced Programming in UCLA. 
+
+We declare that this work is our own. We did this work honestly and can fully stand behind everything that we have written. We did not copy code from anyone, student or otherwise, expect files we downloaded and have the permission to use. We pledge that we have neither given nor received unauthorized assistance on making this project.
+
 
 ## License
 
