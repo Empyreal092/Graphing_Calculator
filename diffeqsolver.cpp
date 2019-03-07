@@ -126,7 +126,7 @@ void diffeqsolver::goToMethod0()
 void diffeqsolver::goToMethod1()
 {
     solverStackedWidget->setCurrentIndex(1);
-    setWindowTitle("Backwards Euler's Method");
+    setWindowTitle("Backward Euler Method");
 }
 
 
