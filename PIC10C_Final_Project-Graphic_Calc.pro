@@ -39,8 +39,14 @@ SOURCES += \
     trapezoidalmethod.cpp \
     helpwindow.cpp \
     odesolverbase.cpp \
-    graphingwindow.cpp
-
+    graphingwindow.cpp \
+    Backeulermethod.cpp \
+    creditswindow.cpp \
+    diffeqsolver.cpp \
+    eulermethod.cpp \
+    functionplot.cpp \
+    graphingwindow.cpp \
+    helpwindow.cpp \
 
 HEADERS += \
         mainwindow.h \
@@ -57,12 +63,20 @@ HEADERS += \
     trapezoidalmethod.h \
     helpwindow.h \
     odesolverbase.h \
-    graphingwindow.h
+    graphingwindow.h \
+    Backeulermethod.h \
+    creditswindow.h \
+    diffeqsolver.h \
+    eulermethod.h \
+    exprtk.hpp \
+    functionplot.h \
+    graphingwindow.h \
+    helpwindow.h \
 
 FORMS += \
         mainwindow.ui \
     functionplot.ui \
-    diffeqsolver.ui
+    diffeqsolver.ui \
 
 # Prevents "fatal error C1128: number of sections exceeded object file format limit".
 win64 : QMAKE_CXXFLAGS += /bigobj
@@ -75,4 +89,9 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
+    LICENSE.md \
+    README.md \
     Graphing_Calculator_Instructions_Text_File.txt
+
+SUBDIRS += \
+    PIC10C_Final_Project-Graphic_Calc.pro
