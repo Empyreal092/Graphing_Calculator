@@ -47,6 +47,21 @@ SOURCES += \
     functionplot.cpp \
     graphingwindow.cpp \
     helpwindow.cpp \
+    Backeulermethod.cpp \
+    creditswindow.cpp \
+    diffeqsolver.cpp \
+    eulermethod.cpp \
+    functionplot.cpp \
+    graphingwindow.cpp \
+    helpwindow.cpp \
+    main.cpp \
+    mainwindow.cpp \
+    odesolverbase.cpp \
+    qcustomplot.cpp \
+    RK2method.cpp \
+    rk4method.cpp \
+    trapezoidalmethod.cpp \
+    twoptrwindow.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -72,6 +87,21 @@ HEADERS += \
     functionplot.h \
     graphingwindow.h \
     helpwindow.h \
+    Backeulermethod.h \
+    creditswindow.h \
+    diffeqsolver.h \
+    eulermethod.h \
+    exprtk.hpp \
+    functionplot.h \
+    graphingwindow.h \
+    helpwindow.h \
+    mainwindow.h \
+    odesolverbase.h \
+    qcustomplot.h \
+    RK2method.h \
+    rk4method.h \
+    trapezoidalmethod.h \
+    twoptrwindow.h
 
 FORMS += \
         mainwindow.ui \
@@ -91,7 +121,10 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 DISTFILES += \
     LICENSE.md \
     README.md \
-    Graphing_Calculator_Instructions_Text_File.txt
+    Graphing_Calculator_Instructions_Text_File.txt \
+    Screenshot/EulerMethod.png \
+    Screenshot/GraphingWindow.png \
+    Screenshot/TwoPtrWindow.png
 
 SUBDIRS += \
     PIC10C_Final_Project-Graphic_Calc.pro
