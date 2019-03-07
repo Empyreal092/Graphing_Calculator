@@ -106,21 +106,29 @@ MainWindow::MainWindow(QWidget *parent) :
 
     this->setMinimumSize(600,400);
 
-    //Added instructions button and credits button in QMenu
+    //Added instructions button, credits button, and sound button in QMenu
 
     menuBar = new QMenuBar();
     helpMenu = new QMenu("Help?");
     creditsButton = new QMenu("About");
+    QMenu* soundMenu = new QMenu("Sound");
+
+    QAction* mute = new QAction("Mute");
+    mute->setCheckable(true);
+    mute->setChecked(false);
 
     menuBar->addMenu(helpMenu);
     menuBar->addMenu(creditsButton);
+    menuBar->addMenu(soundMenu);
 
     helpMenu->addAction("Instructions");
     creditsButton->addAction("Credits");
+    soundMenu->addAction(mute);
 
     QObject::connect(creditsButton, SIGNAL(triggered(QAction*)), this, SLOT(MakeCreditsWindow())); // connect credits button to make credits window when pressed
     QObject::connect(helpMenu, SIGNAL(triggered(QAction*)), this, SLOT(MakeHelpWindow())); // connect help button to make help window when pressed    
-\
+    QObject::connect(mute, SIGNAL(triggered()), this, SLOT(changeSound())); // connects mute button to mute the sound
+
     this->setMenuBar(menuBar);
 }
 
@@ -157,4 +165,9 @@ void MainWindow::MakeHelpWindow()
 {
     QWidget* h_window = new helpWindow();
     //c_window->show();
+}
+
+void MainWindow::changeSound()
+{
+
 }

@@ -136,6 +136,12 @@ public slots:
      * @brief	Makes the help window
      */
     void MakeHelpWindow();
+    /**
+     * @fn	void MainWindow::changeSound();
+     *
+     * @brief	Mutes or unmutes the program's sound
+     */
+    void changeSound();
 };
 
 #endif // MAINWINDOW_H
