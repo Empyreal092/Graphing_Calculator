@@ -48,6 +48,7 @@ FunctionPlot::FunctionPlot(QWidget *parent) :
     ui->setupUi(this);
 
     setWindowTitle("Plotting Function"); // set the window title
+    num_graph = -1;
 
     input = new QWidget(); // widget of inputs on the left of the window
     inputlayout = new QVBoxLayout(); // the layout of the input
@@ -178,13 +179,11 @@ void FunctionPlot::changefstring(){
 
 void FunctionPlot::clearstring(){
     // clear all the data saved
-    vec_points_to_plot.clear();
-    funstr_vec.clear();
-    reds.clear();
-    greens.clear();
-    blues.clear();
+    points.clear();
+    ui->customPlot->clearGraphs(); // clear graph first
+    ui->customPlot->clearPlottables();
+    num_graph = -1;
     makeplot(); // call make plot
-
 }
 
 void FunctionPlot::changeini(double i){
@@ -224,30 +223,14 @@ void FunctionPlot::makepoints(){
 
     const double delta = (final-initial)/nsteps; // the step size
 
-    //plot functions
-    QVector<std::pair <double,double>> points; // the variable and value vector
-
+    points.clear(); // clear the points vector
     for (x = initial; x <= final; x += delta) // for all value points
     {
        double result = expression.value(); // evaluate the result of the function string
        std::pair <double,double> data_point = std::make_pair(x,result);
        points.push_back(data_point); // add the data point
     }
-
-    vec_points_to_plot.push_back(points); // add the points of the graph to the vector of graphs to plot
-    funstr_vec.push_back(function_str); // save the function string in a vetor
-
-    int r; int g; int b; // rgb paramaters
-    do{ // randomize
-        r = QRandomGenerator::global()->bounded(0, 255);
-        g = QRandomGenerator::global()->bounded(0, 255);
-        b = QRandomGenerator::global()->bounded(0, 255);
-    }
-    while (r+g+b<300); // if the color is too light do it again
-
-    reds.push_back(r); // save the color int to vectors
-    greens.push_back(g);
-    blues.push_back(b);
+    ++num_graph;
 }
 
 void FunctionPlot::makeplot(){
@@ -256,12 +239,9 @@ void FunctionPlot::makeplot(){
     QVector<double> var_maxs;
     QVector<double> var_mins;
 
-    ui->customPlot->clearGraphs(); // clear graph first
-    ui->customPlot->clearPlottables();
     ui->customPlot->legend->setVisible(true); // the graph has legends
-    for (size_t i = 0; i < vec_points_to_plot.size(); ++i){ // for all the saved graph data, plot
+    if (num_graph>-1){
         ui->customPlot->addGraph(); // add graph
-        QVector<std::pair <double,double>> points = vec_points_to_plot[i]; // take the saved data points
         QVector<double> var; // the vector of variables and values
         QVector<double> value;
         // transform the vector of pairs to vector of value
@@ -279,9 +259,17 @@ void FunctionPlot::makeplot(){
         double value_min = *std::min_element(value.begin(), value.end());
         value_mins.push_back(value_min);
 
-        ui->customPlot->graph(i)->setData(var, value); // set the data of the graph
-        ui->customPlot->graph(i)->setPen(QPen(QColor(reds[i],greens[i],blues[i]))); // set the color
-        ui->customPlot->graph(i)->setName(funstr_vec[i]); // set the name
+        ui->customPlot->graph(num_graph)->setData(var, value); // set the data of the graph
+
+        int r; int g; int b; // rgb paramaters
+        do{ // randomize
+            r = QRandomGenerator::global()->bounded(0, 255);
+            g = QRandomGenerator::global()->bounded(0, 255);
+            b = QRandomGenerator::global()->bounded(0, 255);
+        }
+        while (r+g+b>500); // if the color is too light do it again
+        ui->customPlot->graph(num_graph)->setPen(QPen(QColor(r,g,b))); // set the color
+        ui->customPlot->graph(num_graph)->setName(function_str); // set the name
     }
 
     // give the axes some labels
