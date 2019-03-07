@@ -11,6 +11,13 @@ It has three main functionalities:
  
 ## Screenshots
 
+### Plotting Function
+![GraphingWindow.png](https://github.com/Empyreal092/PIC10C_Final_Project-Graphic_Calc/blob/master/Screenshot/GraphingWindow.png)
+### Euler's Method
+![EulerMethod.png](https://github.com/Empyreal092/PIC10C_Final_Project-Graphic_Calc/blob/master/Screenshot/EulerMethod.png)
+### Two Point Boundary Value Problem
+![TwoPtrWindow.png](https://github.com/Empyreal092/PIC10C_Final_Project-Graphic_Calc/blob/master/Screenshot/TwoPtrWindow.png)
+
 ## Features
 
 - Plotting Function
