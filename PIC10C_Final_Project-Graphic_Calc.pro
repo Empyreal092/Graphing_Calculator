@@ -38,7 +38,8 @@ SOURCES += \
     rk4method.cpp \
     trapezoidalmethod.cpp \
     helpwindow.cpp \
-    odesolverbase.cpp
+    odesolverbase.cpp \
+    graphingwindow.cpp
 
 
 HEADERS += \
@@ -55,7 +56,8 @@ HEADERS += \
     rk4method.h \
     trapezoidalmethod.h \
     helpwindow.h \
-    odesolverbase.h
+    odesolverbase.h \
+    graphingwindow.h
 
 FORMS += \
         mainwindow.ui \

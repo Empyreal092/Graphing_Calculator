@@ -43,6 +43,7 @@
 #include "rk4method.h"
 #include "trapezoidalmethod.h"
 #include "helpwindow.h"
+#include "graphingwindow.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent), ui(new Ui::MainWindow){
@@ -128,8 +129,7 @@ MainWindow::~MainWindow(){
 }
 
 void MainWindow::MakePlotWindow(){
-    FunctionPlot *p_window = new FunctionPlot(); // make the function plot window
-    menuBar = p_window->getfplotMenuBar();
+    FunctionPlot *p_window = new GraphingWindow(); // make the function plot window
     p_window->show(); // show the window
 }
 

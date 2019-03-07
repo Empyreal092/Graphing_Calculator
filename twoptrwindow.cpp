@@ -92,7 +92,7 @@ void TwoPtrWindow::changeinicond2(double i){
 }
 
 /**
- * @fn	double hsprt2norm(QVector<QVector<double>>A, QVector<double>u, QVector<double>v, double h)
+ * @fn	double hsprt2norm(const QVector<QVector<double>>& A, const QVector<double>& u, const QVector<double>& v, double h)
  *
  * @brief	Helper function, H2 norm of (A*u-v)
  *
@@ -104,7 +104,7 @@ void TwoPtrWindow::changeinicond2(double i){
  * @return	A double that is the h,2 norm of (A*u-v).
  */
 
-double hsprt2norm(QVector<QVector<double>>A, QVector<double>u, QVector<double>v, double h){
+double hsprt2norm(const QVector<QVector<double>>& A, const QVector<double>& u, const QVector<double>& v, double h){
     int size = u.size(); // The size of all the matrix and vector
     double temp = 0; // temp for the loop
     QVector<double> result(size); // create a result vector for A*u-v
