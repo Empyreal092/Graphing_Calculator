@@ -8,8 +8,9 @@ helpWindow::helpWindow()
 {
     //Reads the instructions text file
 
-    QFile instructionsTextFile("../PIC10C_Final_Project-Graphic_Calc/Graphing_Calculator_Instructions_Text_File.txt");
+    QFile instructionsTextFile("://Graphing_Calculator_Instructions_Text_File.txt");
     //instructionsTextFile->open("Graphing Calculator Instructions Text File.txt")
+    auto i = instructionsTextFile.exists();
 
     instructionsText = new QLabel;
     instructionsReadLine = new QString;
