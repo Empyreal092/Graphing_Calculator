@@ -62,14 +62,14 @@ FunctionPlot::FunctionPlot(QWidget *parent) :
     fstrlayout -> addWidget(inputf_t);
     fstrlayout -> addWidget(functionstring);
 
-    functionstring -> setToolTip("The function you want to plot"); // set the tooltip
+    functionstring -> setToolTip("The function you want to plot (Use t as your variable)"); // set the tooltip
     input_initial = new QDoubleSpinBox(); // a double spinbox for the initial
-    input_initial -> setToolTip("In initial t"); // set the tooltip
+    input_initial -> setToolTip("The initial value of t"); // set the tooltip
     input_final = new QDoubleSpinBox(); // a double spinbox for the final
-    input_final -> setToolTip("The final t"); // set the tooltip
+    input_final -> setToolTip("The final value of t"); // set the tooltip
 
     input_nsteps_spin_box = new QSpinBox(); // a double spinbox for the nsteps value
-    input_nsteps_spin_box -> setToolTip("The number of steps"); // set the tooltip
+    input_nsteps_spin_box -> setToolTip("The number of steps to take when plotting the function"); // set the tooltip
 
     input_initial -> setMaximum(1000); // set max and min for initial and final spinbox
     input_initial -> setMinimum(-1000);
@@ -83,9 +83,9 @@ FunctionPlot::FunctionPlot(QWidget *parent) :
     input_nsteps_spin_box -> setValue(nsteps);
       
     plotbutton = new QPushButton("Plot!"); // plot button
-    plotbutton -> setToolTip("Plot the funciton");
+    plotbutton -> setToolTip("Plot the funciton (Enter)");
     clearbutton = new QPushButton("Clear!"); // clear button
-    clearbutton -> setToolTip("Clear the plots");
+    clearbutton -> setToolTip("Clear the plots (Ctrl+Enter)");
 
     QObject::connect(plotbutton, SIGNAL(clicked()), this, SLOT(changefstring()));
         // when plot pressed, change the function string

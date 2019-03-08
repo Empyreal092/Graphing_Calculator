@@ -5,11 +5,11 @@ ODESolverBase::ODESolverBase(FunctionPlot *parent) :
 
     setWindowTitle("ODE Solver Base");
     plotbutton->setText("Solve!");
-    plotbutton -> setToolTip("Solve the ODE");
+    plotbutton -> setToolTip("Graphically solving the ODE (Enter)");
 
     initial_cond = 0.1; // default value
 
-    functionstring -> setToolTip("The function to solve");
+    functionstring -> setToolTip("The function to solve (Only use y as your variables)");
 
     promp_function -> setText("Input function you want to solve here \n(Only use y as your variables):"); // some prompt to tell the user what to do
 
