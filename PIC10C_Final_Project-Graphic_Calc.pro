@@ -24,44 +24,51 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 CONFIG += c++11
 
+INCLUDEPATH += main
+INCLUDEPATH += QWidgetInterfaceWindows
+INCLUDEPATH += FunctionPlotWindows
+INCLUDEPATH += mainwindow
+INCLUDEPATH += qcustomplot
+INCLUDEPATH += exprtk
+
 SOURCES += \
-    qcustomplot.cpp \
-    functionplot.cpp \
-    diffeqsolver.cpp \
-    twoptrwindow.cpp \
-    creditswindow.cpp \
-    eulermethod.cpp \
-    RK2method.cpp \
-    Backeulermethod.cpp \
-    rk4method.cpp \
-    trapezoidalmethod.cpp \
-    helpwindow.cpp \
-    odesolverbase.cpp \
-    graphingwindow.cpp \
-    main.cpp \
-    mainwindow.cpp \
+    QWidgetInterfaceWindows/creditswindow/creditswindow.cpp \
+    FunctionPlotWindows/ODESolvingMethods/Backeulermethod/Backeulermethod.cpp \
+    QWidgetInterfaceWindows/diffeqsolver/diffeqsolver.cpp \
+    FunctionPlotWindows/ODESolvingMethods/eulermethod/eulermethod.cpp \
+    FunctionPlotWindows/functionplot/functionplot.cpp \
+    mainwindow/mainwindow.cpp \
+    FunctionPlotWindows/ODESolvingMethods/rk4method/rk4method.cpp \
+    FunctionPlotWindows/ODESolvingMethods/trapezoidalmethod/trapezoidalmethod.cpp \
+    FunctionPlotWindows/twoptrwindow/twoptrwindow.cpp \
+    FunctionPlotWindows/graphingwindow/graphingwindow.cpp \
+    QWidgetInterfaceWindows/helpwindow/helpwindow.cpp \
+    main/main.cpp \
+    FunctionPlotWindows/odesolverbase/odesolverbase.cpp \
+    qcustomplot/qcustomplot.cpp \
+    FunctionPlotWindows/ODESolvingMethods/RK2method/RK2method.cpp
 
 HEADERS += \
-    qcustomplot.h \
-    functionplot.h \
-    exprtk.hpp \
-    diffeqsolver.h \
-    twoptrwindow.h \
-    creditswindow.h \
-    eulermethod.h \
-    RK2method.h \
-    Backeulermethod.h \
-    rk4method.h \
-    trapezoidalmethod.h \
-    helpwindow.h \
-    odesolverbase.h \
-    graphingwindow.h \
-    mainwindow.h \
+    FunctionPlotWindows/ODESolvingMethods/Backeulermethod/Backeulermethod.h \
+    QWidgetInterfaceWindows/creditswindow/creditswindow.h \
+    QWidgetInterfaceWindows/diffeqsolver/diffeqsolver.h \
+    FunctionPlotWindows/ODESolvingMethods/eulermethod/eulermethod.h \
+    exprtk/exprtk.hpp \
+    FunctionPlotWindows/functionplot/functionplot.h \
+    FunctionPlotWindows/graphingwindow/graphingwindow.h \
+    QWidgetInterfaceWindows/helpwindow/helpwindow.h \
+    mainwindow/mainwindow.h \
+    FunctionPlotWindows/odesolverbase/odesolverbase.h \
+    FunctionPlotWindows/ODESolvingMethods/RK2method/RK2method.h \
+    FunctionPlotWindows/ODESolvingMethods/rk4method/rk4method.h \
+    FunctionPlotWindows/ODESolvingMethods/trapezoidalmethod/trapezoidalmethod.h \
+    FunctionPlotWindows/twoptrwindow/twoptrwindow.h \
+    qcustomplot/qcustomplot.h
 
 FORMS += \
-        mainwindow.ui \
-    functionplot.ui \
-    diffeqsolver.ui \
+    QWidgetInterfaceWindows/diffeqsolver/diffeqsolver.ui \
+    FunctionPlotWindows/functionplot/functionplot.ui \
+    mainwindow/mainwindow.ui
 
 # Prevents "fatal error C1128: number of sections exceeded object file format limit".
 win64 : QMAKE_CXXFLAGS += /bigobj
@@ -83,3 +90,5 @@ DISTFILES += \
 
 SUBDIRS += \
     PIC10C_Final_Project-Graphic_Calc.pro
+
+
