@@ -13,8 +13,8 @@ helpWindow::helpWindow()
 
     if (instructionsTextFile->open(QIODevice::ReadOnly | QIODevice::Text)){
         QTextStream stream(instructionsTextFile);
-        while (!stream.atEnd())
-        {
+        while (!stream.atEnd()){
+
             instructionsReadLine->append(stream.readLine()+"\n");
         }
         instructionsText->setText(*instructionsReadLine);
