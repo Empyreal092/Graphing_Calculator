@@ -185,6 +185,7 @@ void FunctionPlot::clearstring(){
     points.clear();
     ui->customPlot->clearGraphs(); // clear graph first
     ui->customPlot->clearPlottables();
+    min, max, ini, fin = 0.0;
     num_graph = -1;
     makeplot(); // call make plot
 }
@@ -294,11 +295,29 @@ void FunctionPlot::makeplot(){
     ui->customPlot->xAxis->setLabel("t");
     ui->customPlot->yAxis->setLabel("y");
     // set axes ranges, so we see all data
-    double min = *std::min_element(value_mins.begin(), value_mins.end());
-    double max = *std::max_element(value_maxs.begin(), value_maxs.end());
-    double ini = *std::min_element(var_mins.begin(), var_mins.end());;
-    double fin = *std::max_element(var_maxs.begin(), var_maxs.end());;
-    ui->customPlot->xAxis->setRange(ini-0.1*abs(fin-ini), fin+0.1*abs(fin-ini));
+    if (num_graph == 0){ // if it's the frist graph
+        // then set the range to be the range of the graph
+        min = *std::min_element(value_mins.begin(), value_mins.end());
+        max = *std::max_element(value_maxs.begin(), value_maxs.end());
+        ini = *std::min_element(var_mins.begin(), var_mins.end());
+        fin = *std::max_element(var_maxs.begin(), var_maxs.end());
+    }
+    else{ // if not first graph
+        // set the range if the range is larger
+        if (*std::min_element(value_mins.begin(), value_mins.end())<min){
+            min = *std::min_element(value_mins.begin(), value_mins.end());
+        }
+        if (*std::max_element(value_maxs.begin(), value_maxs.end())>max){
+            max = *std::max_element(value_maxs.begin(), value_maxs.end());
+        }
+        if (*std::min_element(var_mins.begin(), var_mins.end())<min){
+            ini = *std::min_element(var_mins.begin(), var_mins.end());
+        }
+        if (*std::max_element(var_maxs.begin(), var_maxs.end())>fin){
+            fin = *std::max_element(var_maxs.begin(), var_maxs.end());
+        }
+    }
+    ui->customPlot->xAxis->setRange(ini-0.1*abs(fin-ini), fin+0.1*abs(fin-ini)); // set the range of the graph
     ui->customPlot->yAxis->setRange(min-0.1*abs(max-min), max+0.1*abs(max-min));
     ui->customPlot->replot(); // replot
 }
