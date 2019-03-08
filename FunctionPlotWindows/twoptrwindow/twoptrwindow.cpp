@@ -42,9 +42,9 @@ TwoPtrWindow::TwoPtrWindow(FunctionPlot *parent) :
 
     setWindowTitle("Two Point Boundry Value Problem Solver"); // rename the window
     plotbutton->setText("Solve!"); // rename the button
-    plotbutton -> setToolTip("Solve the Two Point Boundry Value Problem"); // reset the tooltip
+    plotbutton -> setToolTip("Graphically solving the Two Point Boundry Value Problem (Enter)"); // reset the tooltip
 
-    functionstring -> setToolTip("The function to solve"); // reset the tooltip
+    functionstring -> setToolTip("The function to solve (Only use t as your variables)"); // reset the tooltip
 
     inputf_t -> setText("d2y/dt2 := ");
     inputf_t -> setMaximumWidth(50);
@@ -53,16 +53,18 @@ TwoPtrWindow::TwoPtrWindow(FunctionPlot *parent) :
     initial_condition1 -> setMaximum(1000); // set max and min for initial and final spinbox
     initial_condition1 -> setMinimum(-1000);
     initial_condition1 -> setValue(initial_cond1); // set value as 0
-    initial_condition1 -> setToolTip("Input the right initial condition here"); // tooltip
+    initial_condition1 -> setToolTip("Input the right initial condition here (y(t_initial))"); // tooltip
 
     initial_condition2 = new QDoubleSpinBox; // make double spinbix for left inicond
     initial_condition2 -> setMaximum(1000); // set max and min for initial and final spinbox
     initial_condition2 -> setMinimum(-1000);
     initial_condition2 -> setValue(initial_cond2); // set value as 0
-    initial_condition2 -> setToolTip("Input the left initial condition here"); // tooltip
+    initial_condition2 -> setToolTip("Input the left initial condition here (y(t_final))"); // tooltip
 
     inicprompt1 = new QLabel("Left Initial Value"); // prompt for the initial values
     inicprompt2 = new QLabel("Right Initial Value");
+
+    input_nsteps_spin_box -> setToolTip("The number of steps to take when numerically solving the function"); // set the tooltip
 
     // connect the double spinbox to the values
     QObject::connect(initial_condition1, SIGNAL(valueChanged(double)), this, SLOT(changeinicond1(double)));
@@ -153,7 +155,25 @@ void TwoPtrWindow::makepoints(){
     expression_t expression;
     expression.register_symbol_table(symbol_table);
     parser_t parser;
-    parser.compile(expr_string.toStdString(),expression);
+
+    bool iffuncvalid = parser.compile(expr_string.toStdString(),expression); // check if the parser failed
+    if (iffuncvalid){
+        error->setText("Function Parser: No Error");
+    }
+    if (!iffuncvalid) // if it failed
+    {
+        errormsg = "Function Parser: "; // save the error messages
+        for (std::size_t i = 0; i < parser.error_count(); ++i)
+              {
+                 typedef exprtk::parser_error::type error_t;
+
+                 error_t error = parser.get_error(i);
+                 errormsg.append(error.diagnostic.c_str());
+                 errormsg.append("  ");
+              }
+        error->setText(errormsg); // print the error message
+        return; // do not plot the erroruous function
+    }
 
     const double delta = (final-initial)/nsteps; // the step size
 
@@ -221,6 +241,7 @@ void TwoPtrWindow::makepoints(){
     points.push_back(data_point); // add the data point
 
     ++num_graph;
+    makeplot();
 }
 
 

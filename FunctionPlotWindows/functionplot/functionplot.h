@@ -155,6 +155,9 @@ protected:
     /** @brief  The button to see the credits */
     QMenu* helpMenuButton;
 
+    QLabel* error;
+    QString errormsg;
+
 public slots:
 
    /**

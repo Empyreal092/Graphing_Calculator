@@ -14,8 +14,6 @@ helpWindow::helpWindow()
     instructionsText = new QLabel;
     instructionsReadLine = new QString;
 
-    auto i = instructionsTextFile.exists();
-
     if (!instructionsTextFile.open(QIODevice::ReadOnly | QIODevice::Text))
         return;
 
@@ -56,9 +54,7 @@ helpWindow::helpWindow()
 
     //Sets the size of the help window
 
-    int x=new_Help_Window->width()*0.7;
-    int y=new_Help_Window->height()*0.7;
-    new_Help_Window->setMinimumSize(x,y);
+   new_Help_Window->setMinimumSize(700,900);
 
     new_Help_Window->show();
 }

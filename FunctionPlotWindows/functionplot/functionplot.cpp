@@ -38,6 +38,7 @@
 #include <algorithm>
 #include <QPalette>
 #include <QRandomGenerator>
+#include <QStatusBar>
 
 FunctionPlot::FunctionPlot(QWidget *parent) :
     QWidget(parent), ui(new Ui::FunctionPlot), function_str(){
@@ -61,14 +62,14 @@ FunctionPlot::FunctionPlot(QWidget *parent) :
     fstrlayout -> addWidget(inputf_t);
     fstrlayout -> addWidget(functionstring);
 
-    functionstring -> setToolTip("The function you want to plot"); // set the tooltip
+    functionstring -> setToolTip("The function you want to plot (Use t as your variable)"); // set the tooltip
     input_initial = new QDoubleSpinBox(); // a double spinbox for the initial
-    input_initial -> setToolTip("In initial t"); // set the tooltip
+    input_initial -> setToolTip("The initial value of t"); // set the tooltip
     input_final = new QDoubleSpinBox(); // a double spinbox for the final
-    input_final -> setToolTip("The final t"); // set the tooltip
+    input_final -> setToolTip("The final value of t"); // set the tooltip
 
     input_nsteps_spin_box = new QSpinBox(); // a double spinbox for the nsteps value
-    input_nsteps_spin_box -> setToolTip("The number of steps"); // set the tooltip
+    input_nsteps_spin_box -> setToolTip("The number of steps to take when plotting the function"); // set the tooltip
 
     input_initial -> setMaximum(1000); // set max and min for initial and final spinbox
     input_initial -> setMinimum(-1000);
@@ -82,9 +83,9 @@ FunctionPlot::FunctionPlot(QWidget *parent) :
     input_nsteps_spin_box -> setValue(nsteps);
       
     plotbutton = new QPushButton("Plot!"); // plot button
-    plotbutton -> setToolTip("Plot the funciton");
+    plotbutton -> setToolTip("Plot the funciton (Enter)");
     clearbutton = new QPushButton("Clear!"); // clear button
-    clearbutton -> setToolTip("Clear the plots");
+    clearbutton -> setToolTip("Clear the plots (Ctrl+Enter)");
 
     QObject::connect(plotbutton, SIGNAL(clicked()), this, SLOT(changefstring()));
         // when plot pressed, change the function string
@@ -103,10 +104,13 @@ FunctionPlot::FunctionPlot(QWidget *parent) :
     promp_final = new QLabel  ("t final");
     promp_nsteps = new QLabel ("Num of steps");
 
+    error = new QLabel("Function Parser: No Error");
+    error->setWordWrap(true);
 
     // set the formats into the layout
     inputlayout->addWidget(promp_function);
     inputlayout->addLayout(fstrlayout);
+    inputlayout->addWidget(error);
     paralayout->addWidget(promp_ini,0,0);
     paralayout->addWidget(promp_final,0,1);
 
@@ -139,11 +143,11 @@ FunctionPlot::FunctionPlot(QWidget *parent) :
     inputlayout->insertStretch(0);
     inputlayout->setAlignment(promp_function, Qt::AlignTop); // 1
     inputlayout->setAlignment(functionstring, Qt::AlignTop); // 2
-    // 3 is the gridboxlayout
-    inputlayout->insertStretch(4); // Space in the middle
-    inputlayout->setAlignment(plotbutton, Qt::AlignTop); // 5
-    inputlayout->setAlignment(clearbutton, Qt::AlignTop); // 6
-    inputlayout->insertStretch(7);
+    inputlayout->setAlignment(error, Qt::AlignTop); // 3
+    // 4 is the gridboxlayout
+    inputlayout->insertStretch(5); // Space in the middle
+    inputlayout->setAlignment(plotbutton, Qt::AlignTop); // 6
+    inputlayout->setAlignment(clearbutton, Qt::AlignTop); // 7
     inputlayout->insertStretch(8);
     inputlayout->insertStretch(9);
     inputlayout->insertStretch(10);
@@ -173,7 +177,6 @@ void FunctionPlot::changefstring(){
     else{
         function_str = functionstring->text(); // change the function_str according to the input
         makepoints();
-        makeplot(); // call make plot
     }
 }
 
@@ -219,7 +222,21 @@ void FunctionPlot::makepoints(){
     expression_t expression;
     expression.register_symbol_table(symbol_table);
     parser_t parser;
-    parser.compile(expr_string.toStdString(),expression);
+
+    bool iffuncvalid = parser.compile(expr_string.toStdString(),expression); // check if the parser failed
+    if (!iffuncvalid) // if it failed
+    {
+        errormsg = "Function Parser: "; // save the error messages
+        for (std::size_t i = 0; i < parser.error_count(); ++i)
+              {
+                 typedef exprtk::parser_error::type error_t;
+
+                 error_t error = parser.get_error(i);
+                 errormsg.append(error.diagnostic.c_str());
+              }
+        error->setText(errormsg); // print the error message
+        return; // do not plot the erroruous function
+    }
 
     const double delta = (final-initial)/nsteps; // the step size
 
@@ -231,6 +248,7 @@ void FunctionPlot::makepoints(){
        points.push_back(data_point); // add the data point
     }
     ++num_graph;
+    makeplot(); // call make plot
 }
 
 void FunctionPlot::makeplot(){
