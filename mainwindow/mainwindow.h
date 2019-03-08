@@ -40,6 +40,8 @@
 #include <QGridLayout>
 #include <QToolBar>
 #include <QToolButton>
+#include <QMediaPlayer>
+#include <QUrl>
 
 namespace Ui {
 class MainWindow;
@@ -103,6 +105,11 @@ private:
     QGridLayout *centerlayout;
     /** @brief	The centerpiece for mainwindow */
     QWidget *centerpiece;
+
+    /** @brief	The source of the sound in main window */
+    QMediaPlayer* sound;
+    /** @brief	Determines whether or not the sound is on or off */
+    bool soundOn = true;
 
 public slots:
 

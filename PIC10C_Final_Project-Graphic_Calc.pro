@@ -5,6 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui
+QT       += multimedia
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport
 
@@ -90,5 +91,8 @@ DISTFILES += \
 
 SUBDIRS += \
     PIC10C_Final_Project-Graphic_Calc.pro
+
+RESOURCES += \
+    resources.qrc
 
 
