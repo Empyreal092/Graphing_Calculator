@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/Music">
+        <file>SoftPianoMusic-RoyaltyFree-Summit.mp3</file>
+    </qresource>
+</RCC>
