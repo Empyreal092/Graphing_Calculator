@@ -33,6 +33,15 @@ It has three main functionalities:
 
 Tested using Qt 5.12.0 MSVC 2017 64 bits
 
+### Possible reasons why the code will not compile in other Environment
+The code might not complile because the compiler cannot read the following line in "PIC10C_Final_Project-Graphic_Calc.pro". These lines must be there because `Exprtk.hpp` exceed the default build limit of certain compiler and these lines allow us to exceed that limit. 
+```prolog
+win64 : QMAKE_CXXFLAGS += /bigobj
+win32 : QMAKE_CXXFLAGS += /bigobj
+```
+Possible fix include: comment out these lines; find other way to allow the build to exceed the builkd limit.
+ 
+
 ## Packages used
  
 - [Exprtk](https://github.com/ArashPartow/exprtk)
