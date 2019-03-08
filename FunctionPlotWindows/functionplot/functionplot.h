@@ -158,6 +158,12 @@ protected:
     QLabel* error;
     QString errormsg;
 
+    double min;
+    double max;
+    double ini;
+    double fin;
+
+
 public slots:
 
    /**
