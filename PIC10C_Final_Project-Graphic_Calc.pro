@@ -25,8 +25,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
-        main.cpp \
-        mainwindow.cpp \
     qcustomplot.cpp \
     functionplot.cpp \
     diffeqsolver.cpp \
@@ -40,31 +38,10 @@ SOURCES += \
     helpwindow.cpp \
     odesolverbase.cpp \
     graphingwindow.cpp \
-    Backeulermethod.cpp \
-    creditswindow.cpp \
-    diffeqsolver.cpp \
-    eulermethod.cpp \
-    functionplot.cpp \
-    graphingwindow.cpp \
-    helpwindow.cpp \
-    Backeulermethod.cpp \
-    creditswindow.cpp \
-    diffeqsolver.cpp \
-    eulermethod.cpp \
-    functionplot.cpp \
-    graphingwindow.cpp \
-    helpwindow.cpp \
     main.cpp \
     mainwindow.cpp \
-    odesolverbase.cpp \
-    qcustomplot.cpp \
-    RK2method.cpp \
-    rk4method.cpp \
-    trapezoidalmethod.cpp \
-    twoptrwindow.cpp
 
 HEADERS += \
-        mainwindow.h \
     qcustomplot.h \
     functionplot.h \
     exprtk.hpp \
@@ -79,29 +56,7 @@ HEADERS += \
     helpwindow.h \
     odesolverbase.h \
     graphingwindow.h \
-    Backeulermethod.h \
-    creditswindow.h \
-    diffeqsolver.h \
-    eulermethod.h \
-    exprtk.hpp \
-    functionplot.h \
-    graphingwindow.h \
-    helpwindow.h \
-    Backeulermethod.h \
-    creditswindow.h \
-    diffeqsolver.h \
-    eulermethod.h \
-    exprtk.hpp \
-    functionplot.h \
-    graphingwindow.h \
-    helpwindow.h \
     mainwindow.h \
-    odesolverbase.h \
-    qcustomplot.h \
-    RK2method.h \
-    rk4method.h \
-    trapezoidalmethod.h \
-    twoptrwindow.h
 
 FORMS += \
         mainwindow.ui \
