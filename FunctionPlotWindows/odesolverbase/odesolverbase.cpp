@@ -17,9 +17,7 @@ ODESolverBase::ODESolverBase(FunctionPlot *parent) :
     initial_condition -> setMaximum(1000); // set max and min for initial and final spinbox
     initial_condition -> setMinimum(-1000);
     initial_condition -> setValue(initial_cond); // set default value
-    initial_condition -> setToolTip("Input the initial condition here (y(t_initial))");
-
-    input_nsteps_spin_box -> setToolTip("The number of steps to take when numerically solving the function"); // set the tooltip
+    initial_condition -> setToolTip("Input the initial condition here (y(t initial))");
 
     inputf_t -> setText("dy/dt := ");
     inputf_t -> setMaximumWidth(50);
