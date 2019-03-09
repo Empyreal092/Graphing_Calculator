@@ -24,7 +24,8 @@ Main Window
 
 • On the top of the main window is a menu bar that contains two menu buttons, "Help?" and "About".
    
-   - The "Help?" button allows you to click on the "Instructions" button which will display a text file           with the instructions for this program.
+   - The "Help?" button allows you to click on the "Instructions" button which will display a text file 
+     with the instructions for this program.
 
    - The "About" buttons allows you to click on the "Credits" button which will display a credits window
      that shows the contributors of the "Graphing Calculator" program.
@@ -44,7 +45,7 @@ Plot Function
        to the left of the white box.
 
    2. Enter the initial and final values of t using the increment and decrement buttons on the "t initial" 
-       box, and the "t final" box or manually enter the initial and final values of t into the "t initial" box             and the "t final" box
+       box, and the "t final" box or manually enter the initial and final values of t into the "t initial" box and the "t final" box
 
        - This will set the range of the t axis on the graph.
 
@@ -94,7 +95,8 @@ ODE (Ordinary Differential Equation) Solver
        the graph with the text "dy/dt := " to the left of the white box.
 
    2. Enter the initial and final values of t using the increment and decrement buttons on the "t initial" 
-       box, and the "t final" box or manually enter the initial and final values of t into the "t initial" box             and the "t final" box
+       box, and the "t final" box or manually enter the initial and final values of t into the "t initial" box 
+       and the "t final" box
 
        - This will set the range of the t axis on the graph
 
@@ -103,7 +105,8 @@ ODE (Ordinary Differential Equation) Solver
        steps" box.
 
    4. Enter the initial condition used for the graph using the increment and decrement buttons on the 
-       "Initial Condition" box, or manually enter the initial condition used for the graph into the "Initial             Condition" box.
+       "Initial Condition" box, or manually enter the initial condition used for the graph into the "Initial 
+       Condition" box.
 
    5. Click on the green "Plot!" button or press "Enter" on the keyboard to plot the graph.
 
@@ -125,7 +128,8 @@ Two Point Boundary Value Problem
        the graph with the text "d2y/dt2 := " to the left of the white box.
 
    2. Enter the initial and final values of t using the increment and decrement buttons on the "t initial" 
-       box, and the "t final" box or manually enter the initial and final values of t into the "t initial" box        and the "t final" box.
+       box, and the "t final" box or manually enter the initial and final values of t into the "t initial" box
+       and the "t final" box.
 
        - This will set the range of the t axis on the graph.
 
@@ -133,7 +137,10 @@ Two Point Boundary Value Problem
        "Num of steps" box, or manually enter the number of steps used for the graph into the "Num of 
        steps" box.
 
-   4. Enter the left initial condition and right initial condition used for the graph using the increment and          decrement buttons on the "Left Initial Value" box and the "Right Initial Value" box, or manually              enter the initial conditions used for the graph into the "Left Initial Value" box and the "Right Initial         Value" box.
+   4. Enter the left initial condition and right initial condition used for the graph using the increment and 
+        decrement buttons on the "Left Initial Value" box and the "Right Initial Value" box, or manually 
+        enter the initial conditions used for the graph into the "Left Initial Value" box and the "Right Initial 
+        Value" box.
 
    5. Click on the green "Plot!" button or press "Enter" on the keyboard to plot the graph.
 
