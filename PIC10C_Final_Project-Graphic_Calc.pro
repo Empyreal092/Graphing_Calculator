@@ -72,8 +72,9 @@ FORMS += \
     mainwindow/mainwindow.ui
 
 # Prevents "fatal error C1128: number of sections exceeded object file format limit".
-win64 : QMAKE_CXXFLAGS += /bigobj
-win32 : QMAKE_CXXFLAGS += /bigobj
+win32-msvc : QMAKE_CXXFLAGS += /bigobj # for MSVC compilers
+win32-g++ : QMAKE_CXXFLAGS += -Wa,-mbig-obj # for MinGW compilers
+# but the project still does not complie for MinGW because some files exceed the hard limit for the compiler. To be solved if you want to compile using MinGW
 
 
 # Default rules for deployment.
