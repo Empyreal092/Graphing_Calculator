@@ -88,7 +88,10 @@ DISTFILES += \
     Graphing_Calculator_Instructions_Text_File.txt \
     Screenshot/EulerMethod.png \
     Screenshot/GraphingWindow.png \
-    Screenshot/TwoPtrWindow.png
+    Screenshot/TwoPtrWindow.png \
+    Screenshot/CreditWindow.png \
+    Screenshot/HelpWindow.png \
+    Screenshot/MainWindow.png
 
 SUBDIRS += \
     PIC10C_Final_Project-Graphic_Calc.pro
