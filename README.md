@@ -5,7 +5,7 @@ This application is a graphic calculator. It can solve Ordinary Differential Equ
 This project is on Github at [PIC10C_Final_Project-Graphic_Calc](https://github.com/Empyreal092/PIC10C_Final_Project-Graphic_Calc). 
 
 <!---
-This README file uses Markdown and read this on Github will give you a better exprience.)
+This README file uses Markdown and read it on Github will give you a better exprience. Link: https://github.com/Empyreal092/PIC10C_Final_Project-Graphic_Calc/blob/master/README.md
 -->
 
 ## Motivation
@@ -17,9 +17,10 @@ It has three main functionalities:
  
 ## Screenshots
 
+### Main Window
 ### Plotting Function
 ![GraphingWindow.png](https://github.com/Empyreal092/PIC10C_Final_Project-Graphic_Calc/blob/master/Screenshot/GraphingWindow.png)
-### Euler's Method
+### Solving ODE (Euler's Method)
 ![EulerMethod.png](https://github.com/Empyreal092/PIC10C_Final_Project-Graphic_Calc/blob/master/Screenshot/EulerMethod.png)
 ### Two Point Boundary Value Problem
 ![TwoPtrWindow.png](https://github.com/Empyreal092/PIC10C_Final_Project-Graphic_Calc/blob/master/Screenshot/TwoPtrWindow.png)
@@ -45,17 +46,17 @@ This section is about possible reasons for the code fail to compile in other Env
 
 ### FLAG: /bigobj
 
-If the error message mentions `bigobj` in some way, then these lines in `"PIC10C_Final_Project-Graphic_Calc.pro"` might be the source of trouble. 
+If the error message mentions `exceed limit`, `file too big` or `bigobj` in some way, then these lines in `"PIC10C_Final_Project-Graphic_Calc.pro"` might be the source of trouble. 
 ```prolog
 # Prevents "fatal error C1128: number of sections exceeded object file format limit".
 win32-msvc : QMAKE_CXXFLAGS += /bigobj
 win32-g++ : QMAKE_CXXFLAGS += -Wa,-mbig-obj
 ```
-Unfortunatly these lines must be there because `Exprtk.hpp` exceed the default build limit of certain compiler and these lines allow us to exceed that limit. Make sure to use the setting stated in **Prerequisites** avoid the error. If you are using other compilers and the error appear, try to find ways to allow the build to exceed the build limit. You could also try commenting out those lines but I am pretty confident that those commands are restricted so that they only apply to the correct situation. 
+Unfortunatly these lines must be there because `Exprtk.hpp` exceed the default build limit of certain compiler and these lines allow us to exceed that limit. Make sure to use the setting stated in **Prerequisites** to avoid the error. If you are using other compilers and the error appear, try to find ways to allow the build to exceed the build limit. You could also try commenting out those lines but I am pretty confident that those commands are restricted so that they only apply to the correct situation. 
 
 Here are some links that I found useful when I was trying to solve this problem:
 - [/bigobj Flag for MSVC](https://docs.microsoft.com/en-us/cpp/build/reference/bigobj-increase-number-of-sections-in-dot-obj-file?view=vs-2017)
-- [How to refer to certain compiler](https://doc.qt.io/qt-5/qmake-environment-reference.html)
+- [How to refer to certain compiler (the section about QMAKESPEC)](https://doc.qt.io/qt-5/qmake-environment-reference.html)
 - [Qt Documentation about QtProject file, specifically: `QMAKE_CXXFLAGS`](https://doc.qt.io/qt-5/qmake-variable-reference.html)
 - [A thread on how to add the bigobj flag for WinGW](https://stackoverflow.com/questions/16596876/object-file-has-too-many-sections)
 
@@ -69,6 +70,17 @@ You might see an error like `:-1: error: dependent '..\PIC10C_Final_Project-Grap
   - Exprtk enables us to read the function (e.g.: y = sin(t) ) user entered (as a string). When given a value (e.g.: t=2), it evaluates the value of the function at that point (e.g.: gives us sin(2) ).
 - [QCustomPlot](https://www.qcustomplot.com/)
   - Qt class for plotting function. 
+  
+## Numerical Methods
+
+The Numerical Methods used in the program is based on the Math 151B course (Winder 2019), taught by Professor [Chris Anderson](http://www.math.ucla.edu/~anderson/). The textbook used in the course is *Numerical Analysis* by Burden and Faires (10th edition).
+
+## Future Planned Features
+
+- Be able to solve system of first order ODE.
+- Be able to solve non-automonous ODE.
+- Give user more options for parameters. (E.g.: change tolerence for in Secant methods and Gauss-Seidel methods).
+- Represent error bounds on the graph.
 
 ## Authors
 
