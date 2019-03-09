@@ -2,7 +2,11 @@
 
 This application is a graphic calculator. It can solve Ordinary Differential Equations and Two Point Boundary Value Problems. 
 
-This project on Github at [PIC10C_Final_Project-Graphic_Calc](https://github.com/Empyreal092/PIC10C_Final_Project-Graphic_Calc). Clone this repository from Github. This README file uses Markdown and read this on Github will give you a better exprience.
+This project is on Github at [PIC10C_Final_Project-Graphic_Calc](https://github.com/Empyreal092/PIC10C_Final_Project-Graphic_Calc). 
+
+<!---
+This README file uses Markdown and read this on Github will give you a better exprience.)
+-->
 
 ## Motivation
 
