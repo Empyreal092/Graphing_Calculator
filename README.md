@@ -31,16 +31,32 @@ It has three main functionalities:
 
 ## Prerequisites
 
-Tested using Qt 5.12.0 MSVC 2017 64 bits
+Built and Tested using Qt-5.12.0 MSVC-2017 (64-bits)
 
-### Possible reasons why the code will not compile in other Environment
-The code might not complile because the compiler cannot read the following line in "PIC10C_Final_Project-Graphic_Calc.pro". These lines must be there because `Exprtk.hpp` exceed the default build limit of certain compiler and these lines allow us to exceed that limit. 
+## Potentian Compiling error
+
+This section is about possible reasons for the code fail to compile in other Environment and possible directions to solve them.
+
+### FLAG: /bigobj
+
+If the error message mentions `bigobj` in some way, then these lines in `"PIC10C_Final_Project-Graphic_Calc.pro"` might be the source of trouble. 
 ```prolog
-win64 : QMAKE_CXXFLAGS += /bigobj
-win32 : QMAKE_CXXFLAGS += /bigobj
+# Prevents "fatal error C1128: number of sections exceeded object file format limit".
+win32-msvc : QMAKE_CXXFLAGS += /bigobj # for MSVC compilers
+win32-g++ : QMAKE_CXXFLAGS += -Wa,-mbig-obj # for MinGW compilers
+# but the project still does not complie for MinGW because some files exceed the hard limit for the compiler. To be solved if you want to compile using MinGW
 ```
-Possible fix include: comment out these lines; find other way to allow the build to exceed the builkd limit.
- 
+Unfortunatly these lines must be there because `Exprtk.hpp` exceed the default build limit of certain compiler and these lines allow us to exceed that limit. Make sure to use the setting stated in **Prerequisites** avoid the error. If you are using other compilers and the error appear, try to find ways to allow the build to exceed the build limit. You could also try commenting out those lines but I am pretty confident that those commands are restricted so that they only apply to the correct situation. 
+
+Here are some links that I found useful when I was trying to solve this problem:
+- [/bigobj Flag for MSVC](https://docs.microsoft.com/en-us/cpp/build/reference/bigobj-increase-number-of-sections-in-dot-obj-file?view=vs-2017)
+- [How to refer to certain compiler](https://doc.qt.io/qt-5/qmake-environment-reference.html)
+- [Qt Documentation about QtProject file, specifically: `QMAKE_CXXFLAGS`](https://doc.qt.io/qt-5/qmake-variable-reference.html)
+- [A thread on how to add the bigobj flag for WinGW](https://stackoverflow.com/questions/16596876/object-file-has-too-many-sections)
+
+### Cannot find file
+
+You might see an error like `:-1: error: dependent '..\PIC10C_Final_Project-Graphic_Calc\FunctionPlotWindows\...\...\...' does not exist.` This error is because there is a certain limit on how long a file path could be. Our folder names plus file names might exceed that limit. The easiest way to solve this problem is by reducing the lenghth of the outmost folder name, e.g.: change `PIC10C_Final_Project-Graphic_Calc` to `Calc`. 
 
 ## Packages used
  
