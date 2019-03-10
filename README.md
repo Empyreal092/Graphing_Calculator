@@ -38,7 +38,7 @@ It has three main functionalities:
 
 ## Prerequisites
 
-Built and Tested using Qt-5.12.0 MSVC-2017 (64-bits)
+Developed ssing Qt Creator 4.8.0 (Community). Building using compiler Qt 5.12.0 MSVC2017 (64bit) and Qt 5.12.0 clang (64bit)
 
 ## Potential Compiling error
 
