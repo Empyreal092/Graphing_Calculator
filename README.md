@@ -62,7 +62,7 @@ Here are some links that I found useful when I was trying to solve this problem:
 
 ### Cannot find file
 
-You might see an error like `:-1: error: dependent '..\PIC10C_Final_Project-Graphic_Calc\FunctionPlotWindows\...\...\...' does not exist.` This error is because there is a certain limit on how long a file path could be. Our folder names plus file names might exceed that limit. The easiest way to solve this problem is by reducing the lenghth of the outmost folder name, e.g.: change `PIC10C_Final_Project-Graphic_Calc` to `Calc`. 
+You might see an error like `:-1: error: dependent '..\PIC10C_Final_Project-Graphic_Calc\FunctionPlotWindows\...\...\...' does not exist.` This error is because there is a certain limit on how long a file path (DOS notation) could be. Our folder names plus file names might exceed that limit. The easiest way to solve this problem is by reducing the lenghth of the outmost folder name, e.g.: change `PIC10C_Final_Project-Graphic_Calc` to `Calc`. 
 
 ## Packages used
  
