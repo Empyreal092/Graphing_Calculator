@@ -52,7 +52,7 @@ If the error message mentions `exceed limit`, `file too big` or `bigobj` in some
 win32-msvc : QMAKE_CXXFLAGS += /bigobj
 win32-g++ : QMAKE_CXXFLAGS += -Wa,-mbig-obj
 ```
-Unfortunatly these lines must be there because `Exprtk.hpp` exceed the default build limit of certain compiler and these lines allow us to exceed that limit. Make sure to use the setting stated in **Prerequisites** to avoid the error. If you are using other compilers and the error appear, try to find ways to allow the build to exceed the build limit. You could also try commenting out those lines but I am pretty confident that those commands are restricted so that they only apply to the correct situation. 
+Unfortunatly these lines must be there because `Exprtk.hpp` exceed the default build limit of certain compiler and these lines allow us to exceed that limit. Make sure to use the setting stated in **Prerequisites** to avoid the error. If you are using other compilers and the error appear, try to find ways to allow the build to exceed the build limit. You could also try commenting out those lines but we are pretty confident that those commands are restricted so that they only apply to the correct situation. 
 
 Here are some links that I found useful when I was trying to solve this problem:
 - [/bigobj Flag for MSVC](https://docs.microsoft.com/en-us/cpp/build/reference/bigobj-increase-number-of-sections-in-dot-obj-file?view=vs-2017)
@@ -90,7 +90,7 @@ The Numerical Methods used in the program is based on the Math 151B course (Wind
 
 ## Acknowledgments
 
-This project is the Final Project for PIC 10C. Advanced Programming in UCLA. 
+This project is the Final Project for PIC 10C. Advanced Programming at UCLA (Winter 2019) taught by [Claudia Falcon](http://www.math.ucla.edu/~cfalcon/) and TA by [Michael Puthawala](http://math.ucla.edu/~mputhawala/). We appreciate their help in the process of making this program.
 
 We declare that this work is our own. We did this work honestly and can fully stand behind everything that we have written. We did not copy code from anyone, student or otherwise, expect files we downloaded and have the permission to use. We pledge that we have neither given nor received unauthorized assistance on making this project.
 
