@@ -291,9 +291,9 @@ void FunctionPlot::makeplot(){
 
         int r; int g; int b; // rgb paramaters
         do{ // randomize
-            r = QRandomGenerator::global()->bounded(0, 255);
-            g = QRandomGenerator::global()->bounded(0, 255);
-            b = QRandomGenerator::global()->bounded(0, 255);
+            r = rand() % 256;
+            g = rand() % 256;
+            b = rand() % 256;
         }
         while (r+g+b>500); // if the color is too light do it again
         ui->customPlot->graph(num_graph)->setPen(QPen(QColor(r,g,b))); // set the color
