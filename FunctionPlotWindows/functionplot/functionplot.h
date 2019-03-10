@@ -154,9 +154,12 @@ protected:
     QMenuBar* menuBar;
     /** @brief  The button to see the credits */
     QMenu* helpMenuButton;
-
+    /** @brief  The error message label for statusbar of the functionplot window */
     QLabel* error;
+     /** @brief  The error message bar for the functionplot window */
     QString errormsg;
+     /** @brief  The error statusbar for the functionplot window */
+    // QStatusBar* errorStatusBar;
 
     double min;
     double max;

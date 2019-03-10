@@ -104,8 +104,12 @@ FunctionPlot::FunctionPlot(QWidget *parent) :
     promp_final = new QLabel  ("t final");
     promp_nsteps = new QLabel ("Num of steps");
 
+    // Error message at the bottom of the window
     error = new QLabel("Function Parser: No Error");
     error->setWordWrap(true);
+    error->setStyleSheet("color: black;"); // Font is black when no error
+    // errorStatusBar = new QStatusBar();
+    // errorStatusBar->addWidget(error);
 
     // set the formats into the layout
     inputlayout->addWidget(promp_function);
@@ -225,6 +229,10 @@ void FunctionPlot::makepoints(){
     parser_t parser;
 
     bool iffuncvalid = parser.compile(expr_string.toStdString(),expression); // check if the parser failed
+    if (iffuncvalid){
+        error->setText("Function Parser: No Error");
+        error->setStyleSheet("color: black;"); // Font is black when there is no error
+    }
     if (!iffuncvalid) // if it failed
     {
         errormsg = "Function Parser: "; // save the error messages
@@ -236,6 +244,7 @@ void FunctionPlot::makepoints(){
                  errormsg.append(error.diagnostic.c_str());
               }
         error->setText(errormsg); // print the error message
+        error->setStyleSheet("color: red;"); // Font is red when there is error
         return; // do not plot the erroruous function
     }
 
