@@ -85,7 +85,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 DISTFILES += \
     LICENSE.md \
     README.md \
-    Graphing_Calculator_Instructions_Text_File.txt \
     Screenshot/EulerMethod.png \
     Screenshot/GraphingWindow.png \
     Screenshot/TwoPtrWindow.png \

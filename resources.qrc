@@ -2,7 +2,7 @@
     <qresource prefix="/Music">
         <file>SoftPianoMusic-RoyaltyFree-Summit.mp3</file>
     </qresource>
-    <qresource prefix="/">
-        <file>Graphing_Calculator_Instructions_Text_File.txt</file>
+    <qresource prefix="/Instructions">
+        <file>FinalGraphingCalculatorInstructions.txt</file>
     </qresource>
 </RCC>
