@@ -29,6 +29,7 @@ void TrapezoidalMethod::makepoints(){
     bool iffuncvalid = parser.compile(expr_string.toStdString(),expression); // check if the parser failed
     if (iffuncvalid){
         error->setText("Function Parser: No Error");
+        error->setStyleSheet("color: black;"); // Font is black when there is no error
     }
     if (!iffuncvalid) // if it failed
     {
@@ -42,6 +43,7 @@ void TrapezoidalMethod::makepoints(){
                  errormsg.append("  ");
               }
         error->setText(errormsg); // print the error message
+        error->setStyleSheet("color: red;"); // Font is red when there is error
         return; // do not plot the erroruous function
     }
 
