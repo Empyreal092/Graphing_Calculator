@@ -59,6 +59,7 @@ Here are some links that I found useful when I was trying to solve this problem:
 - [How to refer to certain compiler (the section about QMAKESPEC)](https://doc.qt.io/qt-5/qmake-environment-reference.html)
 - [Qt Documentation about QtProject file, specifically: `QMAKE_CXXFLAGS`](https://doc.qt.io/qt-5/qmake-variable-reference.html)
 - [A thread on how to add the bigobj flag for WinGW](https://stackoverflow.com/questions/16596876/object-file-has-too-many-sections)
+- [But program still cannot compile using WinGW, ran into problem similar to this post](http://mingw-users.1079350.n2.nabble.com/File-too-big-too-many-sections-td7579168.html)
 
 ### Cannot find file
 
