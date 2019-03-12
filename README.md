@@ -18,12 +18,15 @@ It has three main functionalities:
 ## Screenshots
 
 ### Main Window
+![MainWindow.png](https://github.com/Empyreal092/PIC10C_Final_Project-Graphic_Calc/blob/master/Screenshot/MainWindow.png)
 ### Plotting Function
-![GraphingWindow.png](https://github.com/Empyreal092/PIC10C_Final_Project-Graphic_Calc/blob/master/Screenshot/GraphingWindow.png)
+![GraphingFunction.png](https://github.com/Empyreal092/PIC10C_Final_Project-Graphic_Calc/blob/master/Screenshot/GraphingFunction.png)
 ### Solving ODE (Euler's Method)
-![EulerMethod.png](https://github.com/Empyreal092/PIC10C_Final_Project-Graphic_Calc/blob/master/Screenshot/EulerMethod.png)
+![Euler.png](https://github.com/Empyreal092/PIC10C_Final_Project-Graphic_Calc/blob/master/Screenshot/Euler.png)
+### Solving ODE (Trapezoidal Method)
+![Trap.png](https://github.com/Empyreal092/PIC10C_Final_Project-Graphic_Calc/blob/master/Screenshot/Trap.png)
 ### Two Point Boundary Value Problem
-![TwoPtrWindow.png](https://github.com/Empyreal092/PIC10C_Final_Project-Graphic_Calc/blob/master/Screenshot/TwoPtrWindow.png)
+![Twoptr.png](https://github.com/Empyreal092/PIC10C_Final_Project-Graphic_Calc/blob/master/Screenshot/Twoptr.png)
 
 ## Features
 
