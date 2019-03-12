@@ -96,7 +96,7 @@ The Numerical Methods used in the program is based on the Math 151B course (Wind
 
 This project is the Final Project for PIC 10C. Advanced Programming at UCLA (Winter 2019) taught by [Claudia Falcon](http://www.math.ucla.edu/~cfalcon/) and TA by [Michael Puthawala](http://math.ucla.edu/~mputhawala/). We appreciate their help in the process of making this program.
 
-We declare that this work is our own. We did this work honestly and can fully stand behind everything that we have written. We did not copy code from anyone, student or otherwise, expect files we downloaded and have the permission to use. We pledge that we have neither given nor received unauthorized assistance on making this project.
+We declare that this work is our own. We did this work honestly and can fully stand behind everything that we have written. We did not copy code from anyone, student or otherwise, except files we downloaded and have the permission to use. We pledge that we have neither given nor received unauthorized assistance on making this project.
 
 
 ## License
