@@ -35,7 +35,6 @@
 
 BackEulerMethod::BackEulerMethod(ODESolverBase *parent) :
     ODESolverBase(parent){
-
 }
 
 BackEulerMethod::~BackEulerMethod(){
@@ -79,7 +78,7 @@ void BackEulerMethod::makepoints(){
         errorSound = new QMediaPlayer;
         errorSoundFile = new QUrl("qrc:/Music/Sound/Computer Error-SoundBible.com-1655839472.mp3");
         errorSound->setMedia(*errorSoundFile); //Sets the error sound file to be playable
-        if(mutePressed == false) //If the error sound was muted
+        if(muteIsPressed == false) //If the error sound was muted
         {
             errorSound->play(); //Plays the error sound when there is an actual error
         }
