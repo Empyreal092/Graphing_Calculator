@@ -46,7 +46,7 @@ TwoPtrWindow::TwoPtrWindow(FunctionPlot *parent) :
 
     functionstring -> setToolTip("The function to solve (Only use t as your variables)"); // reset the tooltip
 
-    inputf_t -> setText("d2y/dt2 := ");
+    inputf_t -> setText("d2y/dt2 := "); // change text, different problem
     inputf_t -> setMaximumWidth(50);
 
     initial_condition1 = new QDoubleSpinBox; // make double spinbix for left inicond
@@ -90,6 +90,7 @@ TwoPtrWindow::TwoPtrWindow(FunctionPlot *parent) :
     ui->gridLayout->setMenuBar(menuBar);
     menuBar->setStyleSheet("background-color:rgb(240, 240, 240);"); // Sets background color to original grey color
 
+    // set minimum size of the window but when open default maximized
     this->setMinimumSize(1080,880);
     showMaximized();
 }
@@ -122,8 +123,8 @@ double hsprt2norm(const QVector<QVector<double>>& A, const QVector<double>& u, c
     int size = u.size(); // The size of all the matrix and vector
     double temp = 0; // temp for the loop
     QVector<double> result(size); // create a result vector for A*u-v
-    for (int j = 0; j < size; ++j){ // calculate A*u
-        for(int k = 0; k < size; ++k)
+    for (size_t j = 0; j < size; ++j){ // calculate A*u
+        for(size_t k = 0; k < size; ++k)
         {
             temp += u[k] * A[k][j];
         }
@@ -174,7 +175,7 @@ void TwoPtrWindow::makepoints(){
               }
 
         errorSound = new QMediaPlayer;
-        errorSoundFile = new QUrl("qrc:/Music/Computer Error-SoundBible.com-1655839472.mp3");
+        errorSoundFile = new QUrl("qrc:/Music/Sound/Computer Error-SoundBible.com-1655839472.mp3");
         errorSound->setMedia(*errorSoundFile); //Sets the error sound file to be playable
         errorSound->play(); //Plays the error sound when there is an actual error
 
@@ -194,19 +195,19 @@ void TwoPtrWindow::makepoints(){
     MatrixA[0][1] = 1*fac;
     MatrixA[nsteps-2][nsteps-2] = -2*fac;
     MatrixA[nsteps-2][nsteps-3] = 1*fac;
-    for (int i = 1; i < nsteps-2; ++i){
+    for (size_t i = 1; i < nsteps-2; ++i){
         MatrixA[i][i] = -2*fac;
         MatrixA[i][i-1] = 1*fac;
         MatrixA[i][i+1] = 1*fac;
     }
 
     QVector<double> vec_x; // vector of value of x
-    for (int i = 0; i<nsteps-1; ++i){ // set the value of vec_x
+    for (size_t i = 0; i<nsteps-1; ++i){ // set the value of vec_x
         vec_x.push_back(initial+(i+1)*delta);
     }
 
     QVector<double> vec_f; // vector of value of f
-    for (int i = 0; i<nsteps-1; ++i){ // set the value of vec_f
+    for (size_t i = 0; i<nsteps-1; ++i){ // set the value of vec_f
         x = vec_x[i];
         vec_f.push_back(expression.value()); // evaluated at x in the right position
     }
@@ -223,12 +224,12 @@ void TwoPtrWindow::makepoints(){
     while (hsprt2norm(MatrixA, results, vec_f, delta)>TOLERANCE && count <MAX_ITER){
         // if the hnorn is large the the interation number is not exceeding the max
         QVector<double> results_prev = results; // save the previous result
-        for (int i = 0; i < nsteps-1; ++i){ // do the Gauss–Seidel iteration
+        for (size_t i = 0; i < nsteps-1; ++i){ // do the Gauss–Seidel iteration
             results[i] = vec_f[i];
-            for (int j = 0; j < i; ++j){
+            for (size_t j = 0; j < i; ++j){
                 results[i] -= MatrixA[i][j]*results[j];
             }
-            for (int j = i+1; j < nsteps-1; ++j){
+            for (size_t j = i+1; j < nsteps-1; ++j){
                 results[i] -= MatrixA[i][j]*results_prev[j];
             }
             results[i] = results[i]/MatrixA[i][i];
@@ -241,15 +242,15 @@ void TwoPtrWindow::makepoints(){
     std::pair <double,double> data_point;
     data_point = std::make_pair(initial,initial_cond1); // make the initial point
     points.push_back(data_point); // add the data point
-    for (int i = 0; i < nsteps-1; ++i){
+    for (size_t i = 0; i < nsteps-1; ++i){
         data_point = std::make_pair(vec_x[i],results[i]); // make the points in the middle
         points.push_back(data_point); // add the data point
     }
     data_point = std::make_pair(final,initial_cond2); // make the final point
     points.push_back(data_point); // add the data point
 
-    ++num_graph;
-    makeplot();
+    ++num_graph; // add in number of plot
+    makeplot(); // call makeplot
 }
 
 

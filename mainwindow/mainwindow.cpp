@@ -20,7 +20,7 @@
  * We pledge that we have neither given nor received unauthorized assistance on making this project.
 
  * @file mainwindow.cpp
- * @brief The implimentation file for the entry main window.
+ * @brief The file for the main entry of the program.
  *
  * This is the entry window for the project.
  *
@@ -69,8 +69,7 @@ MainWindow::MainWindow(QWidget *parent) :
     setCentralWidget(centerpiece);
 
     // Changes the font size, colors, or boldness of items in the main window
-
-    QFont arialTitle( "Arial", 30, QFont::Bold); // Font size underlined and in Arial format
+    QFont arialTitle("Arial", 30, QFont::Bold); // Font size underlined and in Arial format
     arialTitle.setUnderline(true);
 
     title1->setFont(arialTitle); // Set the font style of titles 1 and 2
@@ -103,11 +102,9 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(button_2ptr, SIGNAL(clicked()), this, SLOT(Make2ptrcWindow())); // connect bisec button to make bisec window when pressed
 
     //Changes the size of the mainwindow
-
     this->setMinimumSize(600,400);
 
     //Added instructions button, credits button, and sound button in QMenu
-
     menuBar = new QMenuBar();
     helpMenu = new QMenu("Help?");
     creditsButton = new QMenu("About");
@@ -125,8 +122,9 @@ MainWindow::MainWindow(QWidget *parent) :
     creditsButton->addAction("Credits");
     soundMenu->addAction(mute);
 
+    // add sound in the window
     sound = new QMediaPlayer;
-    QUrl* q = new QUrl("qrc:/Music/SoftPianoMusic-RoyaltyFree-Summit.mp3");
+    QUrl* q = new QUrl("qrc:/Music/Sound/SoftPianoMusic-RoyaltyFree-Summit.mp3");
     sound->setMedia(*q);
     sound->play();
 
@@ -142,7 +140,7 @@ MainWindow::~MainWindow(){
 }
 
 void MainWindow::MakePlotWindow(){
-    FunctionPlot *p_window = new GraphingWindow(); // make the function plot window
+    GraphingWindow *p_window = new GraphingWindow(); // make the function plot window
     p_window->show(); // show the window
 }
 
@@ -169,19 +167,19 @@ void MainWindow::MakeCreditsWindow()
 void MainWindow::MakeHelpWindow()
 {
     QWidget* h_window = new helpWindow();
-    //c_window->show();
+    //h_window->show();
 }
 
 void MainWindow::changeSound()
 {
-    if(soundOn == false)
+    if(soundOn == false) // play sound
     {
         sound->play();
-        soundOn = true;
+        soundOn = true; // change button
     }
-    else
+    else // mute sound
     {
         sound->stop();
-        soundOn = false;
+        soundOn = false; // change button
     }
 }

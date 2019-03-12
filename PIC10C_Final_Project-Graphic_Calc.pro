@@ -67,7 +67,6 @@ HEADERS += \
     qcustomplot/qcustomplot.h
 
 FORMS += \
-    QWidgetInterfaceWindows/diffeqsolver/diffeqsolver.ui \
     FunctionPlotWindows/functionplot/functionplot.ui \
     mainwindow/mainwindow.ui
 
@@ -85,12 +84,15 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 DISTFILES += \
     LICENSE.md \
     README.md \
-    Screenshot/EulerMethod.png \
     Screenshot/GraphingWindow.png \
     Screenshot/TwoPtrWindow.png \
     Screenshot/CreditWindow.png \
     Screenshot/HelpWindow.png \
-    Screenshot/MainWindow.png
+    Screenshot/MainWindow.png \
+    Screenshot/Euler.png \
+    Screenshot/GraphingFunction.png \
+    Screenshot/Trap.png \
+    Screenshot/Twoptr.png
 
 SUBDIRS += \
     PIC10C_Final_Project-Graphic_Calc.pro
