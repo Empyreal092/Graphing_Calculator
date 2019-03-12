@@ -134,8 +134,8 @@ MainWindow::MainWindow(QWidget *parent) :
     sound->play();
 
     QObject::connect(creditsButton, SIGNAL(triggered(QAction*)), this, SLOT(MakeCreditsWindow())); // connect credits button to make credits window when pressed
-    QObject::connect(license, SIGNAL(triggered()), this, SLOT(MakeCreditsWindow())); // connect credits button to make credits window when pressed
-    QObject::connect(helpMenu, SIGNAL(triggered(QAction*)), this, SLOT(MakeHelpWindow())); // connect help button to make help window when pressed    
+    QObject::connect(license, SIGNAL(triggered()), this, SLOT(MakeLicenseWindow())); // connect credits button to make credits window when pressed
+    QObject::connect(helpMenu, SIGNAL(triggered(QAction*)), this, SLOT(MakeHelpWindow())); // connect help button to make help window when pressed
     QObject::connect(mute, SIGNAL(triggered()), this, SLOT(changeSound())); // connects mute button to mute the sound
     QObject::connect(licenseMenuButton, SIGNAL(triggered(QAction*)), this, SLOT(MakeLicenseWindow())); // connect license button to make license window when pressed
 
@@ -175,6 +175,12 @@ void MainWindow::MakeHelpWindow()
 {
     QWidget* h_window = new helpWindow();
     //h_window->show();
+}
+
+void MainWindow::MakeLicenseWindow()
+{
+    QWidget* l_window = new licensewindow();
+    //c_window->show();
 }
 
 void MainWindow::changeSound()
