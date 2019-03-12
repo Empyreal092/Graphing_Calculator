@@ -89,10 +89,10 @@ DISTFILES += \
     Screenshot/CreditWindow.png \
     Screenshot/HelpWindow.png \
     Screenshot/MainWindow.png \
-    Screenshot/Euler.png \
     Screenshot/GraphingFunction.png \
-    Screenshot/Trap.png \
-    Screenshot/Twoptr.png
+    Screenshot/Twoptr.png \
+    Screenshot/EulerMethod.png \
+    Screenshot/TrapMethod.png
 
 SUBDIRS += \
     PIC10C_Final_Project-Graphic_Calc.pro
