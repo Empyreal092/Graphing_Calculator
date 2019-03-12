@@ -1,4 +1,4 @@
-# Graphic Calculator
+# Graphing Calculator
 
 This application is a graphic calculator. It can solve Ordinary Differential Equations and Two Point Boundary Value Problems. 
 
