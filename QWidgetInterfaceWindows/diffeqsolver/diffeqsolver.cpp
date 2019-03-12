@@ -65,6 +65,21 @@ diffeqsolver::diffeqsolver(QWidget *parent) :
     odeMenuBar->addMenu(helpButtonODE);
     odeMenuBar->setStyleSheet("background-color:rgb(240, 240, 240);");
 
+    //Sets the sound menu button
+    soundMenuButtonODE = new QMenu("Sound");
+
+    mute = new QAction("Mute");
+    mute->setCheckable(true);
+    mute->setChecked(false);
+    odeMenuBar->addMenu(soundMenuButtonODE);
+    soundMenuButtonODE->addAction(mute);
+
+    QObject::connect(mute, SIGNAL(triggered()), myEulerMethod, SLOT(muteErrorSound())); // connects mute button to mute the error sound
+    QObject::connect(mute, SIGNAL(triggered()), myBackEulerMethod, SLOT(muteErrorSound())); // connects mute button to mute the error sound
+    QObject::connect(mute, SIGNAL(triggered()), myRK2Method, SLOT(muteErrorSound())); // connects mute button to mute the error sound
+    QObject::connect(mute, SIGNAL(triggered()), myRK4Method, SLOT(muteErrorSound())); // connects mute button to mute the error sound
+    QObject::connect(mute, SIGNAL(triggered()), myTrapezoidalMethod, SLOT(muteErrorSound())); // connects mute button to mute the error sound
+
     // Creates the actions for each solving method and sets the checkmark
     QAction* eul = new QAction("Euler's Method");
     eul->setCheckable(true);
