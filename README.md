@@ -41,7 +41,7 @@ It has three main functionalities:
 
 ## Prerequisites
 
-Developed ssing Qt Creator 4.8.0 (Community). Building using compiler Qt 5.12.0 MSVC2017 (64bit) and Qt 5.12.0 clang (64bit)
+Developed using Qt Creator 4.8.0 (Community). Building using compiler Qt 5.12.0 MSVC2017 (64bit) and Qt 5.12.0 clang (64bit)
 
 ## Potential Compiling error
 
