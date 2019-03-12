@@ -37,6 +37,9 @@
 #include <QWidget>
 #include <QLabel>
 #include <QFile>
+#include <QGridLayout>
+#include <QTextStream>
+#include <QScrollArea>
 
 /**
  * @class	helpWindow
@@ -60,10 +63,18 @@ public:
     helpWindow();
 
 private:
-
-QFile* instructionsTextFile;
-QLabel* instructionsText;
-QString* instructionsReadLine;
+    /** @brief Reads the instructions text file */
+    QFile* instructionsTextFile;
+    /** @brief Contains the contents of the instructions text file */
+    QLabel* instructionsText;
+    /** @brief Copies the instructions text file line by line */
+    QString* instructionsReadLine;
+    /** @brief The newly created help window that shows the instructions for this program */
+    QWidget* new_Help_Window = new QWidget;
+    /** @brief The grid layout used to contain the help window */
+    QGridLayout* centerLayout = new QGridLayout;
+    /** @brief Allows the help window to have a scroll bar */
+    QScrollArea* scrollArea = new QScrollArea(this);
 };
 
 #endif // HELPWINDOW_H

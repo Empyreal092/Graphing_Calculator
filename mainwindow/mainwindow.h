@@ -101,12 +101,18 @@ private:
     QMenu* creditsButton;
     /** @brief  The button to see the instructions */
     QMenu* helpMenu;
+    /** @brief  The button to control the main music */
+    QMenu* soundMenu;
+    /** @brief  Mutes the main music */
+    QAction* mute;
 
     /** @brief	The centerlayout */
     QGridLayout *centerlayout;
     /** @brief	The centerpiece for mainwindow */
     QWidget *centerpiece;
 
+    /** @brief Reads the main music mp3 file */
+    QUrl* mainMusic;
     /** @brief	The source of the sound in main window */
     QMediaPlayer* sound;
     /** @brief	Determines whether or not the sound is on or off */

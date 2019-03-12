@@ -22,22 +22,29 @@ Main Window
 
    - After selecting one of these buttons, a new window corresponding to the selected feature will appear.
 
-• On the top of the main window is a menu bar that contains two menu buttons, "Help?" and "About".
+• On the top of the main window is a menu bar that contains three menu buttons, "Help?", "About", and "Sound."
    
    - The "Help?" button allows you to click on the "Instructions" button which will display a text file 
      with the instructions for this program.
 
    - The "About" buttons allows you to click on the "Credits" button which will display a credits window
      that shows the contributors of the "Graphing Calculator" program.
+   
+   - The "Sound" button allows you to click on the "Mute" button which will mute the main music of the
+      program.
 ------------------------------------------------
 Plot Function
 
 • The "Plotting Function" window allows users to plot a regular function in terms of t.
 
-• On the top of the "Plotting Function" window is a menu bar that contains the menu button, "Help?"
+• On the top of the "Plotting Function" window is a menu bar that contains the menu buttons "Help?"
+  and "Sound."
 
   - The "Help?" button in the menu bar allows you to click on the "Instructions" button which will 
     display a text file with the instructions for this program.
+
+  - The "Sound" button allows you to click on the "Mute" button which will mute the error sound created 
+     when the user inputs a function with an incorrect format.
 
 • In order to plot a function, follow the steps below:
 
@@ -45,7 +52,8 @@ Plot Function
        to the left of the white box.
 
    2. Enter the initial and final values of t using the increment and decrement buttons on the "t initial" 
-       box, and the "t final" box or manually enter the initial and final values of t into the "t initial" box and the "t final" box
+       box, and the "t final" box or manually enter the initial and final values of t into the "t initial" box and 
+       the "t final" box.
 
        - This will set the range of the t axis on the graph.
 
@@ -79,14 +87,17 @@ ODE (Ordinary Differential Equation) Solver
 
 • The ODE solver starts with the "Euler's Method" window
 
-• On the top of the "Euler's Method" window is a menu bar that contains two menu buttons, "Method
-  Selection" and "Help?"
+• On the top of the "Euler's Method" window is a menu bar that contains three menu buttons, "Method
+  Selection", "Help?", and "Sound."
 
    - The "Method Selection" button contains the five different methods used to plot an ordinary
       differential equation and users can select one of the five different methods to use the chosen method. 
      
    - The "Help?" button in the menu bar allows you to click on the "Instructions" button which will 
      display a text file with the instructions for this program.
+
+   - The "Sound" button allows you to click on the "Mute" button which will mute the error sound created 
+     when the user inputs a function with an incorrect format.
 
 • After selecting one of the methods to plot a first-order ordinary differential equation, follow the steps 
   below:
@@ -121,6 +132,15 @@ Two Point Boundary Value Problem
 
 • The "Two Point Boundary Value Problem Solver" window allows users to plot a second-order ordinary
    differential equation in terms of t.
+
+• On the top of the "Two Point Boundary Value Problem Solver" window is a menu bar that contains the 
+  menu buttons "Help?" and "Sound."
+
+   - The "Help?" button in the menu bar allows you to click on the "Instructions" button which will 
+     display a text file with the instructions for this program.
+
+   - The "Sound" button allows you to click on the "Mute" button which will mute the error sound created 
+     when the user inputs a function with an incorrect format.
 
 • In order to plot a second-order ordinary differential equation, follow the steps below:
 

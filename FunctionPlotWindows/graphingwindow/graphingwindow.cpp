@@ -47,13 +47,14 @@ GraphingWindow::GraphingWindow(FunctionPlot *parent) : FunctionPlot(parent)
     //Sets the sound menu button
     soundMenuButton = new QMenu("Sound");
 
-    QAction* mute = new QAction("Mute");
+    mute = new QAction("Mute");
     mute->setCheckable(true);
     mute->setChecked(false);
     menuBar->addMenu(soundMenuButton);
     soundMenuButton->addAction(mute);
 
     QObject::connect(mute, SIGNAL(triggered()), this, SLOT(muteErrorSound())); // connects mute button to mute the error sound
+
     // set minimum size of the window but when open default maximized
     this->setMinimumSize(1080,880);
     showMaximized();
