@@ -19,10 +19,10 @@
  * We did not copy code from anyone, student or otherwise, expect files we downloaded and have the permission to use.
  * We pledge that we have neither given nor received unauthorized assistance on making this project.
 
- * @file diffeqsolver.h
- * @brief The header file for the ODE solver window.
+ * @file helpwindow.h
+ * @brief The header file for the help window.
  *
- * This is the ODE solver window for the project.
+ * This is the help window for the project.
  *
  * @author Ryan Du (Empyreal092)
  * @author Firat Taxpulat (FT-1984)
@@ -30,7 +30,6 @@
  *
  * @bug No known bugs, but more features to be added
  */
-
 
 #ifndef DIFFEQSOLVER_H
 #define DIFFEQSOLVER_H

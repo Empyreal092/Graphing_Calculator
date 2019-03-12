@@ -2,7 +2,7 @@
 
 This application is a graphic calculator. It can solve Ordinary Differential Equations and Two Point Boundary Value Problems. 
 
-This project is on Github at [PIC10C_Final_Project-Graphic_Calc](https://github.com/Empyreal092/PIC10C_Final_Project-Graphic_Calc). 
+This project is on Github at [Graphing_Calculator](https://github.com/Empyreal092/Graphing_Calculator). 
 
 <!---
 This README file uses Markdown and read it on Github will give you a better exprience. Link: https://github.com/Empyreal092/PIC10C_Final_Project-Graphic_Calc/blob/master/README.md
@@ -18,12 +18,15 @@ It has three main functionalities:
 ## Screenshots
 
 ### Main Window
+![MainWindow.png](https://github.com/Empyreal092/PIC10C_Final_Project-Graphic_Calc/blob/master/Screenshot/MainWindow.png)
 ### Plotting Function
-![GraphingWindow.png](https://github.com/Empyreal092/PIC10C_Final_Project-Graphic_Calc/blob/master/Screenshot/GraphingWindow.png)
+![GraphingFunction.png](https://github.com/Empyreal092/PIC10C_Final_Project-Graphic_Calc/blob/master/Screenshot/GraphingFunction.png)
 ### Solving ODE (Euler's Method)
 ![EulerMethod.png](https://github.com/Empyreal092/PIC10C_Final_Project-Graphic_Calc/blob/master/Screenshot/EulerMethod.png)
+### Solving ODE (Trapezoidal Method)
+![TrapMethod.png](https://github.com/Empyreal092/PIC10C_Final_Project-Graphic_Calc/blob/master/Screenshot/TrapMethod.png)
 ### Two Point Boundary Value Problem
-![TwoPtrWindow.png](https://github.com/Empyreal092/PIC10C_Final_Project-Graphic_Calc/blob/master/Screenshot/TwoPtrWindow.png)
+![Twoptr.png](https://github.com/Empyreal092/PIC10C_Final_Project-Graphic_Calc/blob/master/Screenshot/Twoptr.png)
 
 ## Features
 
@@ -59,6 +62,7 @@ Here are some links that I found useful when I was trying to solve this problem:
 - [How to refer to certain compiler (the section about QMAKESPEC)](https://doc.qt.io/qt-5/qmake-environment-reference.html)
 - [Qt Documentation about QtProject file, specifically: `QMAKE_CXXFLAGS`](https://doc.qt.io/qt-5/qmake-variable-reference.html)
 - [A thread on how to add the bigobj flag for WinGW](https://stackoverflow.com/questions/16596876/object-file-has-too-many-sections)
+- [But program still cannot compile using WinGW, ran into problem similar to this post](http://mingw-users.1079350.n2.nabble.com/File-too-big-too-many-sections-td7579168.html)
 
 ### Cannot find file
 

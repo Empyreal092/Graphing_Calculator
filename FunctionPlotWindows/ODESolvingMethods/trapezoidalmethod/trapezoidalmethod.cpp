@@ -2,7 +2,6 @@
 
 TrapezoidalMethod::TrapezoidalMethod(ODESolverBase *parent) :
     ODESolverBase(parent){
-    setWindowTitle("Trapezoidal Method"); // rename the window
 }
 
 TrapezoidalMethod::~TrapezoidalMethod(){
@@ -34,7 +33,7 @@ void TrapezoidalMethod::makepoints(){
     if (!iffuncvalid) // if it failed
     {
         errormsg = "Function Parser: "; // save the error messages
-        for (std::size_t i = 0; i < parser.error_count(); ++i)
+        for (size_t i = 0; i < parser.error_count(); ++i)
               {
                  typedef exprtk::parser_error::type error_t;
 
@@ -44,7 +43,7 @@ void TrapezoidalMethod::makepoints(){
               }
 
         errorSound = new QMediaPlayer;
-        errorSoundFile = new QUrl("qrc:/Music/Computer Error-SoundBible.com-1655839472.mp3");
+        errorSoundFile = new QUrl("qrc:/Music/Sound/Computer Error-SoundBible.com-1655839472.mp3");
         errorSound->setMedia(*errorSoundFile); //Sets the error sound file to be playable
         errorSound->play(); //Plays the error sound when there is an actual error
 
@@ -66,7 +65,7 @@ void TrapezoidalMethod::makepoints(){
 
     std::pair <double,double> data_point = std::make_pair(initial,result); // initial point
     points.push_back(data_point); // add the data point
-    for (double t = initial; t <= final; t += delta) // for all value points
+    for (double t = initial+delta; t <= final; t += delta) // for all value points
     {
         int iter_num = 1; // initialize the iteration counter
         prev = result; // copy the previous result
@@ -98,6 +97,6 @@ void TrapezoidalMethod::makepoints(){
         points.push_back(data_point); // add the data point
     }
 
-    ++num_graph;
-    makeplot();
+    ++num_graph; // add in number of plot
+    makeplot(); // call makeplot
 }

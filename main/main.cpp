@@ -20,7 +20,7 @@
  * We pledge that we have neither given nor received unauthorized assistance on making this project.
 
  * @file main.cpp
- * @brief The implimentation file for the main function.
+ * @brief The file for the main entry of the program.
  *
  * This is the entry point for the project.
  *
