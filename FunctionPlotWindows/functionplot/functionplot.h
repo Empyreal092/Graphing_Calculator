@@ -174,6 +174,8 @@ protected:
     double ini;
     /** @brief  the final value of the t, for adjusting the plot size */
     double fin;
+    /** @brief Determines if error sound was muted */
+    bool mutePressed = false;
 
 
 public slots:
@@ -229,7 +231,12 @@ public slots:
     * @brief    Makes the help window
     */
    void MakeHelpWindow();
-
+   /**
+    * @fn	void GraphingWindow::changeSound();
+    *
+    * @brief	Mutes or unmutes the program's error sound
+    */
+   void muteErrorSound();
 };
 
 #endif // FUNCTIONPLOT_H

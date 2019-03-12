@@ -101,6 +101,13 @@ public slots:
 
     void changeinicond2(double);
 
+    /**
+    * @fn	void GraphingWindow::changeSound();
+    *
+    * @brief	Mutes or unmutes the program's error sound
+    */
+    void muteErrorSound();
+
 protected:
     /** @brief	The left initial condition DoubleSpinBox */
     QDoubleSpinBox * initial_condition1;
@@ -110,10 +117,13 @@ protected:
     QLabel * inicprompt1;
 	/** @brief	The right initial condition prompt */
     QLabel * inicprompt2;
+    /** @brief The sound menu button */
+    QMenu* soundMenuButton;
     /** @brief	The left initial condition value */
     double initial_cond1;
     /** @brief	The right initial condition value */
     double initial_cond2;
+
 };
 
 #endif // TWOPTRWINDOW_H

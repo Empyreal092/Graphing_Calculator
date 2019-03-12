@@ -78,7 +78,6 @@ public:
     *
     * @brief	Make the points in the graph
     */
-
    void makepoints() override;
 };
 

@@ -91,6 +91,5 @@ class ODESolverBase : public FunctionPlot{
      QLabel * inicprompt;
      /** @brief	The initial condition number */
      double initial_cond;
-
  };
 #endif // ODESOLVERBASE_H

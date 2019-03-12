@@ -79,6 +79,10 @@ public:
 
     void makepoints() override;
 
+protected:
+    /** @brief The sound menu button */
+    QMenu* soundMenuButton;
+
 };
 
 #endif // GRAPHINGWINDOW_H

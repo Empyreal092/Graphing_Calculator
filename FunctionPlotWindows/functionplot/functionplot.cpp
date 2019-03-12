@@ -297,3 +297,15 @@ void FunctionPlot::MakeHelpWindow()
     QWidget* h_window = new helpWindow();
     //h_window->show();
 }
+
+void FunctionPlot::muteErrorSound()
+{
+    if(mutePressed == false)
+    {
+        mutePressed = true;
+    }
+    else
+    {
+        mutePressed = false;
+    }
+}
