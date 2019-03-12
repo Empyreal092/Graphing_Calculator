@@ -96,7 +96,7 @@ void BackEulerMethod::makepoints(){
 
     std::pair <double,double> data_point = std::make_pair(initial,result); // initial point
     points.push_back(data_point); // add the data point
-    for (double t = initial; t <= final; t += delta) // for all value points
+    for (double t = initial+delta; t <= final; t += delta) // for all value points
     {
         int iter_num = 1; // initialize the iteration counter
         prev = result; // copy the previous result

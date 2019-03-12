@@ -93,7 +93,7 @@ void EulerMethod::makepoints(){
 
     std::pair <double,double> data_point = std::make_pair(initial,result); // initial point
     points.push_back(data_point); // add the data point
-    for (double t = initial; t <= final; t += delta) // for all value points
+    for (double t = initial+delta; t <= final; t += delta) // for all value points
     {
        x = result; // set x as result
        double deri = expression.value(); // evaluate the derivative at x = result
