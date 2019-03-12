@@ -15,6 +15,17 @@ It has three main functionalities:
  - Graphically solving (Autonomous) Ordinary Differential Equation (ODE)
  - Graphically solving Two Point Boundary Value Problem
  
+## Features
+
+- Plotting Function
+- Graphically solving (Autonomous) Ordinary Differential Equation (ODE) with the folloing methods
+  - Euler’s Method
+  - Backward Euler Method
+  - 2nd Order Runge-Kutta Method
+  - 4th Order Runge-Kutta Method
+  - Trapezoidal Method
+- Graphically solving Two Point Boundary Value Problem (with  Dirichlet boundary conditions)
+ 
 ## Screenshots
 
 ### Main Window
@@ -27,17 +38,6 @@ It has three main functionalities:
 ![TrapMethod.png](https://github.com/Empyreal092/PIC10C_Final_Project-Graphic_Calc/blob/master/Screenshot/TrapMethod.png)
 ### Two Point Boundary Value Problem
 ![Twoptr.png](https://github.com/Empyreal092/PIC10C_Final_Project-Graphic_Calc/blob/master/Screenshot/Twoptr.png)
-
-## Features
-
-- Plotting Function
-- Graphically solving (Autonomous) Ordinary Differential Equation (ODE) with the folloing methods
-  - Euler’s Method
-  - Backward Euler Method
-  - 2nd Order Runge-Kutta Method
-  - 4th Order Runge-Kutta Method
-  - Trapezoidal Method
-- Graphically solving Two Point Boundary Value Problem (with  Dirichlet boundary conditions)
 
 ## Prerequisites
 
