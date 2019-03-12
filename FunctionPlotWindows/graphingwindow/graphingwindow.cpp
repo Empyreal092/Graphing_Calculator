@@ -34,7 +34,7 @@
 #include "FunctionPlotWindows/graphingwindow/graphingwindow.h"
 
 GraphingWindow::GraphingWindow(FunctionPlot *parent) : FunctionPlot(parent)
-{
+{      
     //Sets the helpMenuButton for QMenuBar
     menuBar = new QMenuBar();
     helpMenuButton = new QMenu("Help?");
@@ -44,6 +44,16 @@ GraphingWindow::GraphingWindow(FunctionPlot *parent) : FunctionPlot(parent)
     ui->gridLayout->setMenuBar(menuBar);
     menuBar->setStyleSheet("background-color:rgb(240, 240, 240);"); // Sets background color to original grey color
 
+    //Sets the sound menu button
+    soundMenuButton = new QMenu("Sound");
+
+    QAction* mute = new QAction("Mute");
+    mute->setCheckable(true);
+    mute->setChecked(false);
+    menuBar->addMenu(soundMenuButton);
+    soundMenuButton->addAction(mute);
+
+    QObject::connect(mute, SIGNAL(triggered()), this, SLOT(muteErrorSound())); // connects mute button to mute the error sound
     // set minimum size of the window but when open default maximized
     this->setMinimumSize(1080,880);
     showMaximized();
@@ -90,7 +100,11 @@ void GraphingWindow::makepoints(){
         errorSound = new QMediaPlayer;
         errorSoundFile = new QUrl("qrc:/Music/Sound/Computer Error-SoundBible.com-1655839472.mp3");
         errorSound->setMedia(*errorSoundFile); //Sets the error sound file to be playable
-        errorSound->play(); //Plays the error sound when there is an actual error
+        if(mutePressed == false) //If the error sound was muted
+        {
+            errorSound->play(); //Plays the error sound when there is an actual error
+        }
+
 
         error->setText(errormsg); // print the error message
         error->setStyleSheet("color: red;"); // Font is red when there is error
@@ -109,3 +123,4 @@ void GraphingWindow::makepoints(){
     ++num_graph; // add in number of plot
     makeplot(); // call makeplot
 }
+

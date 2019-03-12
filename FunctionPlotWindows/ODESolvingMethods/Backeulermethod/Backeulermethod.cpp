@@ -35,6 +35,7 @@
 
 BackEulerMethod::BackEulerMethod(ODESolverBase *parent) :
     ODESolverBase(parent){
+
 }
 
 BackEulerMethod::~BackEulerMethod(){
@@ -78,7 +79,10 @@ void BackEulerMethod::makepoints(){
         errorSound = new QMediaPlayer;
         errorSoundFile = new QUrl("qrc:/Music/Sound/Computer Error-SoundBible.com-1655839472.mp3");
         errorSound->setMedia(*errorSoundFile); //Sets the error sound file to be playable
-        errorSound->play(); //Plays the error sound when there is an actual error
+        if(mutePressed == false) //If the error sound was muted
+        {
+            errorSound->play(); //Plays the error sound when there is an actual error
+        }
 
         error->setText(errormsg); // print the error message
         error->setStyleSheet("color: red;"); // Font is red when there is error
@@ -128,3 +132,4 @@ void BackEulerMethod::makepoints(){
     ++num_graph; // add in number of plot
     makeplot(); // call makeplot
 }
+
