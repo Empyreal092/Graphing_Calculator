@@ -109,18 +109,23 @@ MainWindow::MainWindow(QWidget *parent) :
     helpMenu = new QMenu("Help?");
     creditsButton = new QMenu("About");
     QMenu* soundMenu = new QMenu("Sound");
+    QMenu* licenseMenuButton = new QMenu("License");
 
     QAction* mute = new QAction("Mute");
+    QAction* license = new QAction("License");
     mute->setCheckable(true);
     mute->setChecked(false);
 
     menuBar->addMenu(helpMenu);
     menuBar->addMenu(creditsButton);
     menuBar->addMenu(soundMenu);
+    menuBar->addMenu(licenseMenuButton);
 
     helpMenu->addAction("Instructions");
+    helpMenu->addAction(license);
     creditsButton->addAction("Credits");
     soundMenu->addAction(mute);
+    licenseMenuButton->addAction("License");
 
     // add sound in the window
     sound = new QMediaPlayer;
@@ -129,8 +134,10 @@ MainWindow::MainWindow(QWidget *parent) :
     sound->play();
 
     QObject::connect(creditsButton, SIGNAL(triggered(QAction*)), this, SLOT(MakeCreditsWindow())); // connect credits button to make credits window when pressed
+    QObject::connect(license, SIGNAL(triggered()), this, SLOT(MakeCreditsWindow())); // connect credits button to make credits window when pressed
     QObject::connect(helpMenu, SIGNAL(triggered(QAction*)), this, SLOT(MakeHelpWindow())); // connect help button to make help window when pressed    
     QObject::connect(mute, SIGNAL(triggered()), this, SLOT(changeSound())); // connects mute button to mute the sound
+    QObject::connect(licenseMenuButton, SIGNAL(triggered(QAction*)), this, SLOT(MakeLicenseWindow())); // connect license button to make license window when pressed
 
     this->setMenuBar(menuBar);
 }

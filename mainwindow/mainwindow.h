@@ -145,6 +145,12 @@ public slots:
      */
     void MakeHelpWindow();
     /**
+     * @fn	void MainWindow::MakeLicenseWindow();
+     *
+     * @brief	Makes the license window
+     */
+    void MakeLicenseWindow();
+    /**
      * @fn	void MainWindow::changeSound();
      *
      * @brief	Mutes or unmutes the program's sound
