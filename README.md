@@ -15,6 +15,17 @@ It has three main functionalities:
  - Graphically solving (Autonomous) Ordinary Differential Equation (ODE)
  - Graphically solving Two Point Boundary Value Problem
  
+## Features
+
+- Plotting Function
+- Graphically solving (Autonomous) Ordinary Differential Equation (ODE) with the folloing methods
+  - Euler’s Method
+  - Backward Euler Method
+  - 2nd Order Runge-Kutta Method
+  - 4th Order Runge-Kutta Method
+  - Trapezoidal Method
+- Graphically solving Two Point Boundary Value Problem (with  Dirichlet boundary conditions)
+ 
 ## Screenshots
 
 ### Main Window
@@ -28,20 +39,9 @@ It has three main functionalities:
 ### Two Point Boundary Value Problem
 ![Twoptr.png](https://github.com/Empyreal092/PIC10C_Final_Project-Graphic_Calc/blob/master/Screenshot/Twoptr.png)
 
-## Features
-
-- Plotting Function
-- Graphically solving (Autonomous) Ordinary Differential Equation (ODE) with the folloing methods
-  - Euler’s Method
-  - Backward Euler Method
-  - 2nd Order Runge-Kutta Method
-  - 4th Order Runge-Kutta Method
-  - Trapezoidal Method
-- Graphically solving Two Point Boundary Value Problem (with  Dirichlet boundary conditions)
-
 ## Prerequisites
 
-Developed ssing Qt Creator 4.8.0 (Community). Building using compiler Qt 5.12.0 MSVC2017 (64bit) and Qt 5.12.0 clang (64bit)
+Developed using Qt Creator 4.8.0 (Community). Building using compiler Qt 5.12.0 MSVC2017 (64bit) and Qt 5.12.0 clang (64bit)
 
 ## Potential Compiling error
 
@@ -96,7 +96,7 @@ The Numerical Methods used in the program is based on the Math 151B course (Wind
 
 This project is the Final Project for PIC 10C. Advanced Programming at UCLA (Winter 2019) taught by [Claudia Falcon](http://www.math.ucla.edu/~cfalcon/) and TA by [Michael Puthawala](http://math.ucla.edu/~mputhawala/). We appreciate their help in the process of making this program.
 
-We declare that this work is our own. We did this work honestly and can fully stand behind everything that we have written. We did not copy code from anyone, student or otherwise, expect files we downloaded and have the permission to use. We pledge that we have neither given nor received unauthorized assistance on making this project.
+We declare that this work is our own. We did this work honestly and can fully stand behind everything that we have written. We did not copy code from anyone, student or otherwise, except files we downloaded and have the permission to use. We pledge that we have neither given nor received unauthorized assistance on making this project.
 
 
 ## License
