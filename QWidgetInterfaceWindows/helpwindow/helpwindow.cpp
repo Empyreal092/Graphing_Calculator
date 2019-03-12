@@ -48,7 +48,7 @@ helpWindow::helpWindow()
     if (!instructionsTextFile.open(QIODevice::ReadOnly | QIODevice::Text)) // if cannot readfile, end
         return;
 
-    QTextStream stream(&instructionsTextFile); // read the file onw line at a time
+    QTextStream stream(&instructionsTextFile); // read the file one line at a time
     while (!stream.atEnd()){
 
         instructionsReadLine->append(stream.readLine()+"\n");

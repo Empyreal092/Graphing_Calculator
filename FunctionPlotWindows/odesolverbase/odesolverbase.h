@@ -84,6 +84,14 @@ class ODESolverBase : public FunctionPlot{
 
      void changeinicond(double);
 
+     /**
+      * @fn	void ODESolverBase::muteErrorSound();
+      *
+      * @brief	Mutes the error sound
+      */
+
+     void muteErrorSound();
+
  protected:
      /** @brief	The initial condition input double spinbox */
      QDoubleSpinBox * initial_condition;
@@ -91,5 +99,7 @@ class ODESolverBase : public FunctionPlot{
      QLabel * inicprompt;
      /** @brief	The initial condition number */
      double initial_cond;
+     /** @brief Indicates if the mute button is pressed */
+     bool muteIsPressed = false;
  };
 #endif // ODESOLVERBASE_H

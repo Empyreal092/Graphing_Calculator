@@ -141,6 +141,10 @@ private:
     Ui::diffeqsolver *ui;
     /** @brief  The differential equation solver drop-down menu bar */
     QMenuBar* odeMenuBar;
+    /** @brief  Controls error sound*/
+    QMenu* soundMenuButtonODE;
+    /** @brief  Mutes error sound after ODE sound menu button is pressed */
+    QAction* mute;
 };
 
 #endif // DIFFEQSOLVER_H

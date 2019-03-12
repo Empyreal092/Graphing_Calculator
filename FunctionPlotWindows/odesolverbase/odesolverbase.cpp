@@ -3,7 +3,6 @@
 ODESolverBase::ODESolverBase(FunctionPlot *parent) :
     FunctionPlot(parent){
 
-
     setWindowTitle("ODE Solver Base"); // set window title
     plotbutton->setText("Solve!"); // set the button name
     plotbutton -> setToolTip("Graphically solving the ODE (Enter)"); // change tooltip
@@ -39,4 +38,16 @@ ODESolverBase::~ODESolverBase(){
 
 void ODESolverBase::changeinicond(double i){
     initial_cond = i; // change final
+}
+
+void ODESolverBase::muteErrorSound()
+{
+    if(muteIsPressed == false)
+    {
+        muteIsPressed = true;
+    }
+    else
+    {
+        muteIsPressed = false;
+    }
 }
