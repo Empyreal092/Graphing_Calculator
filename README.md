@@ -22,9 +22,9 @@ It has three main functionalities:
 ### Plotting Function
 ![GraphingFunction.png](https://github.com/Empyreal092/PIC10C_Final_Project-Graphic_Calc/blob/master/Screenshot/GraphingFunction.png)
 ### Solving ODE (Euler's Method)
-![Euler.png](https://github.com/Empyreal092/PIC10C_Final_Project-Graphic_Calc/blob/master/Screenshot/Euler.png)
+![EulerMethod.png](https://github.com/Empyreal092/PIC10C_Final_Project-Graphic_Calc/blob/master/Screenshot/EulerMethod.png)
 ### Solving ODE (Trapezoidal Method)
-![Trap.png](https://github.com/Empyreal092/PIC10C_Final_Project-Graphic_Calc/blob/master/Screenshot/Trap.png)
+![TrapMethod.png](https://github.com/Empyreal092/PIC10C_Final_Project-Graphic_Calc/blob/master/Screenshot/TrapMethod.png)
 ### Two Point Boundary Value Problem
 ![Twoptr.png](https://github.com/Empyreal092/PIC10C_Final_Project-Graphic_Calc/blob/master/Screenshot/Twoptr.png)
 
