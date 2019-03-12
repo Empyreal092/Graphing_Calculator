@@ -1,6 +1,7 @@
 <RCC>
     <qresource prefix="/Music">
         <file>SoftPianoMusic-RoyaltyFree-Summit.mp3</file>
+        <file>Computer Error-SoundBible.com-1655839472.mp3</file>
     </qresource>
     <qresource prefix="/Instructions">
         <file>FinalGraphingCalculatorInstructions.txt</file>

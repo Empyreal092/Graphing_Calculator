@@ -37,6 +37,8 @@
 
 #include <QWidget>
 #include "FunctionPlotWindows/odesolverbase/odesolverbase.h"
+#include <QMediaPlayer>
+#include <QUrl>
 
 namespace Ui {
 class BackEulerMethod;
