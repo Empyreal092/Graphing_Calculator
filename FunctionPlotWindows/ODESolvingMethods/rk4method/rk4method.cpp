@@ -35,7 +35,6 @@
 
 RK4method::RK4method(ODESolverBase *parent) :
     ODESolverBase(parent){
-    setWindowTitle("4th order Runge-Kutta Method"); // rename the window
 }
 
 RK4method::~RK4method(){
@@ -67,7 +66,7 @@ void RK4method::makepoints(){
     if (!iffuncvalid) // if it failed
     {
         errormsg = "Function Parser: "; // save the error messages
-        for (std::size_t i = 0; i < parser.error_count(); ++i)
+        for (size_t i = 0; i < parser.error_count(); ++i)
               {
                  typedef exprtk::parser_error::type error_t;
 
@@ -77,7 +76,7 @@ void RK4method::makepoints(){
               }
 
         errorSound = new QMediaPlayer;
-        errorSoundFile = new QUrl("qrc:/Music/Computer Error-SoundBible.com-1655839472.mp3");
+        errorSoundFile = new QUrl("qrc:/Music/Sound/Computer Error-SoundBible.com-1655839472.mp3");
         errorSound->setMedia(*errorSoundFile); //Sets the error sound file to be playable
         errorSound->play(); //Plays the error sound when there is an actual error
 
@@ -88,7 +87,6 @@ void RK4method::makepoints(){
 
     const double delta = (final-initial)/nsteps; // the step size
 
-    //plot functions
     points.clear(); // clear the points vector
 
     double result = initial_cond; // initialize the result first as the initial condition
@@ -111,7 +109,6 @@ void RK4method::makepoints(){
        std::pair <double,double> data_point = std::make_pair(t,result); // make the data point
        points.push_back(data_point); // add the data point
     }
-
-    ++num_graph;
-    makeplot();
+    ++num_graph; // add in number of plot
+    makeplot(); // call makeplot
 }

@@ -22,7 +22,7 @@
  * @file functionplot.cpp
  * @brief The implimentation file for the function plot window.
  *
- * This is the function plot window for the project.
+ * This is the base of all function plot window for the project.
  *
  * @author Ryan Du (Empyreal092)
  * @author Firat Taxpulat (FT-1984)
@@ -95,11 +95,11 @@ FunctionPlot::FunctionPlot(QWidget *parent) :
         // when user input new initial, change the initial value
     QObject::connect(input_final, SIGNAL(valueChanged(double)), this, SLOT(changefinal(double)));
         // when user input new final, change the final value
-
     QObject::connect(input_nsteps_spin_box, SIGNAL(valueChanged(int)), this, SLOT(changensteps(int)));
         // when user input new number of steps, change the nsteps value
 
-    promp_function = new QLabel ("Input the function you want to plot here \n(Only use t as your variables):"); // some prompt to tell the user what to do
+    // some prompt to tell the user what to do
+    promp_function = new QLabel ("Input the function you want to plot here \n(Only use t as your variables):");
     promp_ini = new QLabel  ("t initial");
     promp_final = new QLabel  ("t final");
     promp_nsteps = new QLabel ("Num of steps");
@@ -108,8 +108,6 @@ FunctionPlot::FunctionPlot(QWidget *parent) :
     error = new QLabel("Function Parser: No Error");
     error->setWordWrap(true);
     error->setStyleSheet("color: black;"); // Font is black when no error
-    // errorStatusBar = new QStatusBar();
-    // errorStatusBar->addWidget(error);
 
     // set the formats into the layout
     inputlayout->addWidget(promp_function);
@@ -168,103 +166,7 @@ FunctionPlot::FunctionPlot(QWidget *parent) :
 
     input->setLayout(inputlayout);
     input->setMaximumWidth(250); // so that the input is not too big when the window is big
-
-    //makepoints();
-    //makeplot(); // call the make pot to plot the default graph
     ui->gridLayout->addWidget(input,0,0); // add input in the left of the window
-}
-
-void FunctionPlot::changefstring(){
-    if (initial >= final){ // if initial is larger than final, do nothing
-        return; // here should be error handeling
-    }
-    else{
-        function_str = functionstring->text(); // change the function_str according to the input
-        makepoints();
-    }
-}
-
-void FunctionPlot::clearstring(){
-    // clear all the data saved
-    points.clear();
-    ui->customPlot->clearGraphs(); // clear graph first
-    ui->customPlot->clearPlottables();
-    min, max, ini, fin = 0.0;
-    num_graph = -1;
-    makeplot(); // call make plot
-}
-
-void FunctionPlot::changeini(double i){
-    initial = i; // change initial
-}
-
-void FunctionPlot::changefinal(double i){
-    final = i; // change final
-}
-
-void FunctionPlot::changensteps(int i){
-    nsteps = i; // change nsteps
-}
-
-FunctionPlot::~FunctionPlot(){
-    delete ui;
-}
-
-void FunctionPlot::makepoints(){
-    // exprtk commands
-    typedef exprtk::symbol_table<double> symbol_table_t;
-    typedef exprtk::expression<double>     expression_t;
-    typedef exprtk::parser<double>             parser_t;
-
-    QString expr_string = function_str; // the function string
-
-    double x = initial; // initialize x
-
-    symbol_table_t symbol_table;
-    symbol_table.add_variable("t",x); // add x as a variable
-
-    // exprtk commands to parse the function
-    expression_t expression;
-    expression.register_symbol_table(symbol_table);
-    parser_t parser;
-
-    bool iffuncvalid = parser.compile(expr_string.toStdString(),expression); // check if the parser failed
-    if (iffuncvalid){
-        error->setText("Function Parser: No Error");
-        error->setStyleSheet("color: black;"); // Font is black when there is no error
-    }
-    if (!iffuncvalid) // if it failed
-    {
-        errormsg = "Function Parser: "; // save the error messages
-        for (std::size_t i = 0; i < parser.error_count(); ++i)
-              {
-                 typedef exprtk::parser_error::type error_t;
-
-                 error_t error = parser.get_error(i);
-                 errormsg.append(error.diagnostic.c_str());
-              }
-
-        errorSound = new QMediaPlayer;
-        errorSoundFile = new QUrl("qrc:/Music/Computer Error-SoundBible.com-1655839472.mp3");
-        errorSound->setMedia(*errorSoundFile); //Sets the error sound file to be playable
-        errorSound->play(); //Plays the error sound when there is an actual error
-
-        error->setText(errormsg); // print the error message
-        error->setStyleSheet("color: red;"); // Font is red when there is error
-        return; // do not plot the erroruous function
-    }
-
-    const double delta = (final-initial)/nsteps; // the step size
-
-    points.clear(); // clear the points vector
-    for (x = initial; x <= final; x += delta) // for all value points
-    {
-       double result = expression.value(); // evaluate the result of the function string
-       std::pair <double,double> data_point = std::make_pair(x,result);
-       points.push_back(data_point); // add the data point
-    }
-    ++num_graph;
-    makeplot(); // call make plot
 }
 
 void FunctionPlot::makeplot(){
@@ -337,6 +239,41 @@ void FunctionPlot::makeplot(){
     ui->customPlot->replot(); // replot
 }
 
+void FunctionPlot::changefstring(){
+    if (initial >= final){ // if initial is larger than final, do nothing
+        return; // here should be error handeling
+    }
+    else{
+        function_str = functionstring->text(); // change the function_str according to the input
+        makepoints();
+    }
+}
+
+void FunctionPlot::clearstring(){
+    // clear all the data saved
+    points.clear();
+    ui->customPlot->clearGraphs(); // clear graph first
+    ui->customPlot->clearPlottables();
+    num_graph = -1;
+    makeplot(); // call make plot
+}
+
+void FunctionPlot::changeini(double i){
+    initial = i; // change initial
+}
+
+void FunctionPlot::changefinal(double i){
+    final = i; // change final
+}
+
+void FunctionPlot::changensteps(int i){
+    nsteps = i; // change nsteps
+}
+
+FunctionPlot::~FunctionPlot(){
+    delete ui;
+}
+
 void FunctionPlot::keyPressEvent(QKeyEvent* event)
 {
     if (event->key() == Qt::Key_Return) // When the return key is pressed, change and plot the string.
@@ -358,5 +295,5 @@ QMenuBar* FunctionPlot::getfplotMenuBar()
 void FunctionPlot::MakeHelpWindow()
 {
     QWidget* h_window = new helpWindow();
-    //c_window->show();
+    //h_window->show();
 }
