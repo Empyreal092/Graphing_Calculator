@@ -20,7 +20,7 @@
  * We pledge that we have neither given nor received unauthorized assistance on making this project.
 
  * @file diffeqsolver.cpp
- * @brief The header file for the ODE solver window.
+ * @brief The implimentation file for the ODE solver window.
  *
  * This is the ODE solver window for the project.
  *
@@ -30,14 +30,12 @@
  *
  * @bug No known bugs, but more features to be added
  */
+
 #include "QWidgetInterfaceWindows/diffeqsolver/diffeqsolver.h"
-// #include "ui_diffeqsolver.h"
 
 diffeqsolver::diffeqsolver(QWidget *parent) :
     QWidget(parent)
 {
-    // ui->setupUi(this);
-
     setWindowTitle("Euler's Method");
 
     // Creates the widgets for each method
@@ -112,12 +110,14 @@ diffeqsolver::diffeqsolver(QWidget *parent) :
     setLayout(menuLayout);
     menuLayout->setMargin(0);
 
+    // set minimum size but show maximized
     this->setMinimumSize(1080,900);
     showMaximized();
 }
 
 void diffeqsolver::goToMethod0()
 {
+    // go to Euler Method window
     solverStackedWidget->setCurrentIndex(0);
     setWindowTitle("Euler's Method");
 }
@@ -125,6 +125,7 @@ void diffeqsolver::goToMethod0()
 
 void diffeqsolver::goToMethod1()
 {
+    // go to Backward Euler Method window
     solverStackedWidget->setCurrentIndex(1);
     setWindowTitle("Backward Euler Method");
 }
@@ -132,6 +133,7 @@ void diffeqsolver::goToMethod1()
 
 void diffeqsolver::goToMethod2()
 {
+    // go to RK2 Method window
     solverStackedWidget->setCurrentIndex(2);
     setWindowTitle("2nd Order Runge-Kutta Method");
 }
@@ -139,6 +141,7 @@ void diffeqsolver::goToMethod2()
 
 void diffeqsolver::goToMethod3()
 {
+    // go to Rk4 Method window
     solverStackedWidget->setCurrentIndex(3);
     setWindowTitle("4th Order Runge-Kutta Method");
 }
@@ -146,22 +149,23 @@ void diffeqsolver::goToMethod3()
 
 void diffeqsolver::goToMethod4()
 {
+    // go to Trapezoidal Method window
     solverStackedWidget->setCurrentIndex(4);
     setWindowTitle("Trapezoidal Method");
 }
 
 QMenuBar* diffeqsolver::getodeMenuBar()
 {
+    // show method selection menu bar
     return odeMenuBar;
 }
 
 void diffeqsolver::MakeHelpWindow()
 {
+    // show help window
     QWidget* h_window = new helpWindow();
-    //c_window->show();
+    //h_window->show();
 }
 
-diffeqsolver::~diffeqsolver()
-{
-    // delete ui;
+diffeqsolver::~diffeqsolver(){
 }

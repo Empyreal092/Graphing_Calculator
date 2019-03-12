@@ -37,6 +37,8 @@
 
 #include <QWidget>
 #include "FunctionPlotWindows/odesolverbase/odesolverbase.h"
+#include <QMediaPlayer>
+#include <QUrl>
 
 namespace Ui {
 class BackEulerMethod;
@@ -76,7 +78,6 @@ public:
     *
     * @brief	Make the points in the graph
     */
-
    void makepoints() override;
 };
 

@@ -45,7 +45,7 @@ class RK2method;
 /**
  * @class	RK2method
  *
- * @brief	The RK4 Method window.
+ * @brief	The RK2 Method window.
  */
 
 class RK2method : public ODESolverBase{

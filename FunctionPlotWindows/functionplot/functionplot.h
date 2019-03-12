@@ -22,7 +22,7 @@
  * @file functionplot.h
  * @brief The header file for the function plot window.
  *
- * This is the function plot window for the project.
+ * This is the base of all function plot window for the project.
  *
  * @author Ryan Du (Empyreal092)
  * @author Firat Taxpulat (FT-1984)
@@ -44,6 +44,7 @@
 #include <QDoubleSpinBox>
 #include <utility>
 #include <QKeyEvent>
+#include <QMediaPlayer>
 
 namespace Ui {
 class FunctionPlot;
@@ -52,7 +53,7 @@ class FunctionPlot;
 /**
  * @class	FunctionPlot
  *
- * @brief	A function plot window.
+ * @brief	A base of all function plot window, abstract class.
  */
 
 class FunctionPlot : public QWidget{
@@ -81,15 +82,15 @@ public:
     /**
      * @fn	virtual void makepoints();
      *
-     * @brief	Make the points for the graph
+     * @brief	Make the points for the graph, purw virtual, to be implimented in inherited classes
      */
 
-    virtual void makepoints();
+    virtual void makepoints() = 0;
 
     /**
      * @fn	void makeplot();
      *
-     * @brief	Plot the graph from the points from makepoints()
+     * @brief	Plot the graph from the points from makepoints(), same for all child class
      */
 
     void makeplot();
@@ -103,9 +104,10 @@ public:
     void keyPressEvent(QKeyEvent* event);
 
 protected:
+    /** @brief	Number of graphs in the plot */
     int num_graph;
+    /** @brief	the points to be plotted */
     QVector<std::pair <double,double>> points;
-
     /** @brief	The user interface */
     Ui::FunctionPlot *ui;
     /** @brief	The function string */
@@ -125,7 +127,9 @@ protected:
     QGridLayout * paralayout;
     /** @brief	The the function str input box */
     QLineEdit * functionstring;
+    /** @brief	The layout for the function input */
     QHBoxLayout * fstrlayout;
+    /** @brief	The line infront of the LineEdit */
     QLabel * inputf_t;
     /** @brief	The plot button */
     QPushButton * plotbutton;
@@ -136,7 +140,6 @@ protected:
     /** @brief	The final double spinbox */
     QDoubleSpinBox * input_final;
     /** @brief	The nsteps double spin box */
-
     QSpinBox * input_nsteps_spin_box;
     /** @brief	Tell user to input function str */
     QLabel * promp_function;
@@ -144,7 +147,6 @@ protected:
     QLabel * promp_ini;
     /** @brief	Tell user to input final value */
     QLabel * promp_final;
-
     /** @brief	Tell user to input nsteps value */
     QLabel * promp_nsteps;
     /** @brief	Changes nsteps value */
@@ -156,15 +158,24 @@ protected:
     QMenu* helpMenuButton;
     /** @brief  The error message label for statusbar of the functionplot window */
     QLabel* error;
-     /** @brief  The error message bar for the functionplot window */
+    /** @brief  The error message for the functionplot window */
     QString errormsg;
-     /** @brief  The error statusbar for the functionplot window */
-    // QStatusBar* errorStatusBar;
 
+    /** @brief  The error sound that is made when an error occurs */
+    QMediaPlayer* errorSound;
+    /** @brief  The actual error sound mp3 file */
+    QUrl* errorSoundFile;
+
+    /** @brief  the minimum of the function values, for adjusting the plot size */
     double min;
+    /** @brief  the maximum of the function values, for adjusting the plot size */
     double max;
+    /** @brief  the initial value of the t, for adjusting the plot size */
     double ini;
+    /** @brief  the final value of the t, for adjusting the plot size */
     double fin;
+    /** @brief Determines if error sound was muted */
+    bool mutePressed = false;
 
 
 public slots:
@@ -220,7 +231,12 @@ public slots:
     * @brief    Makes the help window
     */
    void MakeHelpWindow();
-
+   /**
+    * @fn	void GraphingWindow::changeSound();
+    *
+    * @brief	Mutes or unmutes the program's error sound
+    */
+   void muteErrorSound();
 };
 
 #endif // FUNCTIONPLOT_H

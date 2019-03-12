@@ -35,7 +35,6 @@
 
 EulerMethod::EulerMethod(ODESolverBase *parent) :
     ODESolverBase(parent){
-    setWindowTitle("Euler's Method"); // rename the window
 }
 
 EulerMethod::~EulerMethod(){
@@ -67,7 +66,7 @@ void EulerMethod::makepoints(){
     if (!iffuncvalid) // if it failed
     {
         errormsg = "Function Parser: "; // save the error messages
-        for (std::size_t i = 0; i < parser.error_count(); ++i)
+        for (size_t i = 0; i < parser.error_count(); ++i)
               {
                  typedef exprtk::parser_error::type error_t;
 
@@ -75,6 +74,15 @@ void EulerMethod::makepoints(){
                  errormsg.append(error.diagnostic.c_str());
                  errormsg.append("  ");
               }
+
+        errorSound = new QMediaPlayer;
+        errorSoundFile = new QUrl("qrc:/Music/Sound/Computer Error-SoundBible.com-1655839472.mp3");
+        errorSound->setMedia(*errorSoundFile); //Sets the error sound file to be playable
+        if(mutePressed == false) //If the error sound was muted
+        {
+            errorSound->play(); //Plays the error sound when there is an actual error
+        }
+
         error->setText(errormsg); // print the error message
         error->setStyleSheet("color: red;"); // Font is red when there is error
         return; // do not plot the erroruous function
@@ -82,14 +90,13 @@ void EulerMethod::makepoints(){
 
     const double delta = (final-initial)/nsteps; // the step size
 
-    //plot functions
     points.clear(); // clear the points vector
 
     double result = initial_cond; // initialize the result first as the initial condition
 
     std::pair <double,double> data_point = std::make_pair(initial,result); // initial point
     points.push_back(data_point); // add the data point
-    for (double t = initial; t <= final; t += delta) // for all value points
+    for (double t = initial+delta; t <= final; t += delta) // for all value points
     {
        x = result; // set x as result
        double deri = expression.value(); // evaluate the derivative at x = result
@@ -97,6 +104,6 @@ void EulerMethod::makepoints(){
        std::pair <double,double> data_point = std::make_pair(t,result); // make the data point
        points.push_back(data_point); // add the data point
     }
-    ++num_graph;
-    makeplot();
+    ++num_graph; // add in number of plot
+    makeplot(); // call makeplot
 }

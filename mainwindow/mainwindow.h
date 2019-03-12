@@ -18,6 +18,7 @@
  * We did this work honestly and can fully stand behind everything that we have written.
  * We did not copy code from anyone, student or otherwise, expect files we downloaded and have the permission to use.
  * We pledge that we have neither given nor received unauthorized assistance on making this project.
+
  * @file mainwindow.h
  * @brief The header file for the entry main window.
  *
