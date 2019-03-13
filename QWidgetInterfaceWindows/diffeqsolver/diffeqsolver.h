@@ -145,6 +145,33 @@ private:
     QMenu* soundMenuButtonODE;
     /** @brief  Mutes error sound after ODE sound menu button is pressed */
     QAction* mute;
+    /** @brief Creates Euler method window */
+    EulerMethod* myEulerMethod;
+    /** @brief Creates back Euler method window */
+    BackEulerMethod* myBackEulerMethod;
+    /** @brief Creates rk2 method window */
+    RK2method* myRK2Method;
+    /** @brief Creates rk4 method window */
+    RK4method* myRK4Method;
+    /** @brief Creates trapezoid method window */
+    TrapezoidalMethod* myTrapezoidalMethod;
+    /** @brief The grid layout containing the QStackedWidget*/
+    QGridLayout* menuLayout;
+    /** @brief the help button for the ODE solver */
+    QMenu* helpButtonODE;
+    /** @brief the button to switch to Euler's method window */
+    QAction* eul;
+    /** @brief the button to switch to back Euler method window */
+    QAction* backEul;
+    /** @brief the button to switch to rk2 method window */
+    QAction* rk2;
+    /** @brief the button to switch to rk4 method window */
+    QAction* rk4;
+    /** @brief the button to switch to trapezoid method window */
+    QAction* trap;
+    /** @brief the QActionGroup for the solver so only one method shows */
+    QActionGroup* methodsGroup;
+
 };
 
 #endif // DIFFEQSOLVER_H

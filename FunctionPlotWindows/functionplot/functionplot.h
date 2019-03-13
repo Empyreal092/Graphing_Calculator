@@ -45,6 +45,10 @@
 #include <utility>
 #include <QKeyEvent>
 #include <QMediaPlayer>
+#include <algorithm>
+#include <QPalette>
+#include <QRandomGenerator>
+#include <QStatusBar>
 
 namespace Ui {
 class FunctionPlot;

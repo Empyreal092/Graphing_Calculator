@@ -32,7 +32,6 @@
  */
 
 #include "QWidgetInterfaceWindows/helpwindow/helpwindow.h"
-#include <QScrollBar>
 
 helpWindow::helpWindow()
 {

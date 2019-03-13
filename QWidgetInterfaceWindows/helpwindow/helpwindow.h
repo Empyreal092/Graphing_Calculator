@@ -40,6 +40,7 @@
 #include <QGridLayout>
 #include <QTextStream>
 #include <QScrollArea>
+#include <QScrollBar>
 
 /**
  * @class	helpWindow

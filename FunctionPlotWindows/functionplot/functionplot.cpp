@@ -35,10 +35,6 @@
 #include "FunctionPlotWindows/functionplot/functionplot.h"
 #include "qcustomplot/qcustomplot.h"
 #include "ui_functionplot.h"
-#include <algorithm>
-#include <QPalette>
-#include <QRandomGenerator>
-#include <QStatusBar>
 
 FunctionPlot::FunctionPlot(QWidget *parent) :
     QWidget(parent), ui(new Ui::FunctionPlot), function_str(){
@@ -301,10 +297,10 @@ void FunctionPlot::muteErrorSound()
 {
     if(mutePressed == false)
     {
-        mutePressed = true;
+        mutePressed = true; // Mutes sound if unmuted.
     }
     else
     {
-        mutePressed = false;
+        mutePressed = false; // Unmutes sound if muted.
     }
 }

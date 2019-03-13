@@ -32,7 +32,6 @@
  */
 
 #include "FunctionPlotWindows/twoptrwindow/twoptrwindow.h"
-#include <cmath>
 
 TwoPtrWindow::TwoPtrWindow(FunctionPlot *parent) :
     FunctionPlot(parent){
@@ -272,11 +271,11 @@ void TwoPtrWindow::muteErrorSound()
 {
     if(mutePressed == false)
     {
-        mutePressed = true;
+        mutePressed = true; // Mutes sound if unmuted.
     }
     else
     {
-        mutePressed = false;
+        mutePressed = false; // Unmutes sound if muted.
     }
 }
 
