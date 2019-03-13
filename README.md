@@ -5,7 +5,7 @@ This application is a graphic calculator. It can solve Ordinary Differential Equ
 This project is on Github at [Graphing_Calculator](https://github.com/Empyreal092/Graphing_Calculator). 
 
 <!---
-This README file uses Markdown and read it on Github will give you a better exprience. Link: https://github.com/Empyreal092/PIC10C_Final_Project-Graphic_Calc/blob/master/README.md
+This README file uses Markdown and read it on Github will give you a better exprience. Link: https://github.com/Empyreal092/Graphing_Calculator/blob/master/README.md
 -->
 
 ## Motivation
@@ -29,15 +29,15 @@ It has three main functionalities:
 ## Screenshots
 
 ### Main Window
-![MainWindow.png](https://github.com/Empyreal092/PIC10C_Final_Project-Graphic_Calc/blob/master/Screenshot/MainWindow.png)
+![MainWindow.png](https://github.com/Empyreal092/Graphing_Calculator/blob/master/Screenshot/MainWindow.png)
 ### Plotting Function
-![GraphingFunction.png](https://github.com/Empyreal092/PIC10C_Final_Project-Graphic_Calc/blob/master/Screenshot/GraphingFunction.png)
+![GraphingFunction.png](https://github.com/Empyreal092/Graphing_Calculator/blob/master/Screenshot/GraphingFunction.png)
 ### Solving ODE (Euler's Method)
-![EulerMethod.png](https://github.com/Empyreal092/PIC10C_Final_Project-Graphic_Calc/blob/master/Screenshot/EulerMethod.png)
+![EulerMethod.png](https://github.com/Empyreal092/Graphing_Calculator/blob/master/Screenshot/EulerMethod.png)
 ### Solving ODE (Trapezoidal Method)
-![TrapMethod.png](https://github.com/Empyreal092/PIC10C_Final_Project-Graphic_Calc/blob/master/Screenshot/TrapMethod.png)
+![TrapMethod.png](https://github.com/Empyreal092/Graphing_Calculator/blob/master/Screenshot/TrapMethod.png)
 ### Two Point Boundary Value Problem
-![Twoptr.png](https://github.com/Empyreal092/PIC10C_Final_Project-Graphic_Calc/blob/master/Screenshot/Twoptr.png)
+![Twoptr.png](https://github.com/Empyreal092/Graphing_Calculator/blob/master/Screenshot/Twoptr.png)
 
 ## Prerequisites
 
@@ -49,7 +49,7 @@ This section is about possible reasons for the code fail to compile in other Env
 
 ### FLAG: /bigobj
 
-If the error message mentions `exceed limit`, `file too big` or `bigobj` in some way, then these lines in `"PIC10C_Final_Project-Graphic_Calc.pro"` might be the source of trouble. 
+If the error message mentions `exceed limit`, `file too big` or `bigobj` in some way, then these lines in `"Graphing_Calculator.pro"` might be the source of trouble. 
 ```prolog
 # Prevents "fatal error C1128: number of sections exceeded object file format limit".
 win32-msvc : QMAKE_CXXFLAGS += /bigobj
@@ -66,7 +66,7 @@ Here are some links that I found useful when I was trying to solve this problem:
 
 ### Cannot find file
 
-You might see an error like `:-1: error: dependent '..\PIC10C_Final_Project-Graphic_Calc\FunctionPlotWindows\...\...\...' does not exist.` This error is because there is a certain limit on how long a file path (DOS notation) could be. Our folder names plus file names might exceed that limit. The easiest way to solve this problem is by reducing the lenghth of the outmost folder name, e.g.: change `PIC10C_Final_Project-Graphic_Calc` to `Calc`. 
+You might see an error like `:-1: error: dependent '..\Graphing_Calculator-master\FunctionPlotWindows\...\...\...' does not exist.` This error is because there is a certain limit on how long a file path (DOS notation) could be. Our folder names plus file names might exceed that limit. The easiest way to solve this problem is by reducing the lenghth of the outmost folder name, e.g.: change `Graphing_Calculator-master` to `GC_m`. 
 
 ## Packages used
  
