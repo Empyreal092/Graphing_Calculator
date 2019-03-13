@@ -45,10 +45,10 @@ void ODESolverBase::muteErrorSound()
 {
     if(muteIsPressed == false)
     {
-        muteIsPressed = true;
+        muteIsPressed = true;  // Mutes sound if unmuted.
     }
     else
     {
-        muteIsPressed = false;
+        muteIsPressed = false; // Unmutes sound if muted.
     }
 }
