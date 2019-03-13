@@ -68,6 +68,29 @@ Here are some links that I found useful when I was trying to solve this problem:
 
 You might see an error like `:-1: error: dependent '..\Graphing_Calculator-master\FunctionPlotWindows\...\...\...' does not exist.` This error is because there is a certain limit on how long a file path (DOS notation) could be. Our folder names plus file names might exceed that limit. The easiest way to solve this problem is by reducing the lenghth of the outmost folder name, e.g.: change `Graphing_Calculator-master` to `GC_m`. 
 
+### Compiling Taking A Long Time
+
+Because we used `Exprtk.hpp`, it is pretty costly to compile the program. So it is normal that compiling takes more than a minute in a avergare computer.
+
+## Sample input
+
+### Plotting Function
+
+- Function: sin(t), t initial: 0, t final: 10, num of steps: 1000
+- Function: t, t initial: 0, t final: 10, num of steps: 1000
+- Function: 0.5sin(2t-1), t initial: 0, t final: 10, num of steps: 1000
+
+### Solving ODE (All Methods)
+
+- Function: y-y^3, t initial: 0, t final: 10, num of steps: 100, Initial Condition: 0.1
+- Function: y-2y^3, t initial: 0, t final: 5, num of steps: 100, Initial Condition: 0.2
+- Function: 10(y-y^3), t initial: 0, t final: 10, num of steps: 100, Initial Condition: 0.1
+
+### Two Point Boundary Value Problem
+
+- Function: sin(t), t initial: 0, t final: 10, num of steps: 50, Left Initial Value: 0.0, Right Initial Value: 0.0
+- Function: cos(2t), t initial: 0, t final: 5, num of steps: 50, Left Initial Value: 1.0, Right Initial Value: 0.0
+
 ## Packages used
  
 - [Exprtk](https://github.com/ArashPartow/exprtk)
