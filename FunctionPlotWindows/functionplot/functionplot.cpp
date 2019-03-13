@@ -295,7 +295,6 @@ QMenuBar* FunctionPlot::getfplotMenuBar()
 void FunctionPlot::MakeHelpWindow()
 {
     QWidget* h_window = new helpWindow();
-    //h_window->show();
 }
 
 void FunctionPlot::muteErrorSound()

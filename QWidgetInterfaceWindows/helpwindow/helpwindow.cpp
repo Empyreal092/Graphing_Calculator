@@ -32,9 +32,6 @@
  */
 
 #include "QWidgetInterfaceWindows/helpwindow/helpwindow.h"
-#include <QGridLayout>
-#include <QTextStream>
-#include <QScrollArea>
 #include <QScrollBar>
 
 helpWindow::helpWindow()
@@ -58,9 +55,9 @@ helpWindow::helpWindow()
     instructionsTextFile.close(); // close the file
 
     // Creates the help window and the names seen on the help window
-    QWidget* new_Help_Window = new QWidget;
+    new_Help_Window = new QWidget;
 
-    QGridLayout* centerLayout = new QGridLayout; // layout
+    centerLayout = new QGridLayout; // layout
 
     new_Help_Window->setStyleSheet("background-color:rgb(200, 220, 250);"); // Menu background is light blue
 
@@ -72,7 +69,7 @@ helpWindow::helpWindow()
     new_Help_Window->setLayout(centerLayout);
 
     // Adds a scrollbar to the help window
-    QScrollArea* scrollArea = new QScrollArea(this);
+    scrollArea = new QScrollArea(this);
     scrollArea->setWidget(instructionsText);
     scrollArea->verticalScrollBar()->setSingleStep(new_Help_Window->width() / 24);
 

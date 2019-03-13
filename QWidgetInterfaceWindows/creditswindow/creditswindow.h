@@ -35,6 +35,9 @@
 #define CREDITSWINDOW_H
 
 #include <QWidget>
+#include <QLabel>
+#include <QLabel>
+#include <QGridLayout>
 
 /**
  * @class	creditsWindow
@@ -56,6 +59,21 @@ public:
      */
 
     creditsWindow();
+
+private:
+
+    /** @brief	Credits window */
+    QWidget* new_Credits_Window;
+    /** @brief	Ryan's name */
+    QLabel* name_Ryan;
+    /** @brief	Anita's name */
+    QLabel* name_Anita;
+    /** @brief	Firat's name */
+    QLabel* name_Firat;
+    /** @brief	Title of credits window */
+    QLabel* contributors;
+    /** @brief	Center layout for credits window */
+    QGridLayout* centerlayout;
 };
 
 

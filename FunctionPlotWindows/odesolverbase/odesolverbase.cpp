@@ -27,6 +27,7 @@ ODESolverBase::ODESolverBase(FunctionPlot *parent) :
     inicprompt = new QLabel("Initial Condition"); // tell user to input ini condition
 
     QObject::connect(initial_condition, SIGNAL(valueChanged(double)), this, SLOT(changeinicond(double)));
+
     // connect the double spinbox to the value of initial condition
 
     paralayout->addWidget(initial_condition, 3, 1);
