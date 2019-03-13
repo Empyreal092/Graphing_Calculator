@@ -35,10 +35,6 @@
 #include "FunctionPlotWindows/functionplot/functionplot.h"
 #include "qcustomplot/qcustomplot.h"
 #include "ui_functionplot.h"
-#include <algorithm>
-#include <QPalette>
-#include <QRandomGenerator>
-#include <QStatusBar>
 
 FunctionPlot::FunctionPlot(QWidget *parent) :
     QWidget(parent), ui(new Ui::FunctionPlot), function_str(){

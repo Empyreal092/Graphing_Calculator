@@ -32,7 +32,6 @@
  */
 
 #include "FunctionPlotWindows/twoptrwindow/twoptrwindow.h"
-#include <cmath>
 
 TwoPtrWindow::TwoPtrWindow(FunctionPlot *parent) :
     FunctionPlot(parent){

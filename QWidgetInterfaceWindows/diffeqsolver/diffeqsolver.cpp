@@ -39,11 +39,11 @@ diffeqsolver::diffeqsolver(QWidget *parent) :
     setWindowTitle("Euler's Method");
 
     // Creates the widgets for each method
-    EulerMethod* myEulerMethod = new EulerMethod;
-    BackEulerMethod* myBackEulerMethod = new BackEulerMethod;
-    RK2method* myRK2Method = new RK2method;
-    RK4method* myRK4Method = new RK4method;
-    TrapezoidalMethod* myTrapezoidalMethod = new TrapezoidalMethod;
+    myEulerMethod = new EulerMethod;
+    myBackEulerMethod = new BackEulerMethod;
+    myRK2Method = new RK2method;
+    myRK4Method = new RK4method;
+    myTrapezoidalMethod = new TrapezoidalMethod;
 
     // Adds the method pages to the solverStackedWidget
     solverStackedWidget = new QStackedWidget;
@@ -54,12 +54,12 @@ diffeqsolver::diffeqsolver(QWidget *parent) :
     solverStackedWidget->addWidget(myTrapezoidalMethod); // Page 4
 
     // Adds the solverStackedWidget to the layout
-    QGridLayout* menuLayout = new QGridLayout;
+    menuLayout = new QGridLayout;
     menuLayout->addWidget(solverStackedWidget,0,0);
 
     // Creates new menus odeSolver and helpButtonODE in new menu bar odeMenuBar
-    QMenuBar* odeMenuBar = new QMenuBar;
-    QMenu* helpButtonODE = new QMenu("Help?");
+    odeMenuBar = new QMenuBar;
+    helpButtonODE = new QMenu("Help?");
     odeSolver = new QMenu("Method Selection");
     odeMenuBar->addMenu(odeSolver);
     odeMenuBar->addMenu(helpButtonODE);
@@ -81,19 +81,19 @@ diffeqsolver::diffeqsolver(QWidget *parent) :
     QObject::connect(mute, SIGNAL(triggered()), myTrapezoidalMethod, SLOT(muteErrorSound())); // connects mute button to mute the error sound
 
     // Creates the actions for each solving method and sets the checkmark
-    QAction* eul = new QAction("Euler's Method");
+    eul = new QAction("Euler's Method");
     eul->setCheckable(true);
-    QAction* backEul = new QAction("Backward Euler Method");
+    backEul = new QAction("Backward Euler Method");
     backEul->setCheckable(true);
-    QAction* rk2 = new QAction("2nd Order Runge-Kutta Method");
+    rk2 = new QAction("2nd Order Runge-Kutta Method");
     rk2->setCheckable(true);
-    QAction* rk4 = new QAction("4th Order Runge-Kutta Method");
+    rk4 = new QAction("4th Order Runge-Kutta Method");
     rk4->setCheckable(true);
-    QAction* trap = new QAction("Trapezoidal Method");
+    trap = new QAction("Trapezoidal Method");
     trap->setCheckable(true);
 
     // Adds the actions to a methodsGroup so only one method is checked at a time
-    QActionGroup* methodsGroup = new QActionGroup(this);
+    methodsGroup = new QActionGroup(this);
     methodsGroup->addAction(eul);
     methodsGroup->addAction(backEul);
     methodsGroup->addAction(rk2);

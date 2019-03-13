@@ -36,6 +36,7 @@
 #define TWOPTRWINDOW_H
 
 #include <QWidget>
+#include <cmath>
 #include "FunctionPlotWindows/functionplot/functionplot.h"
 
 namespace Ui {

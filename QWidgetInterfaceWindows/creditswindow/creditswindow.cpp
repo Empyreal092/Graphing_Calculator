@@ -33,7 +33,6 @@
 
 #include "QWidgetInterfaceWindows/creditswindow/creditswindow.h"
 
-
 creditsWindow::creditsWindow()
 {
     //Creates the credits window and the names seen on the credits window
