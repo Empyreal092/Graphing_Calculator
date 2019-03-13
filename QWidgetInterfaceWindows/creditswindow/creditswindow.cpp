@@ -32,20 +32,19 @@
  */
 
 #include "QWidgetInterfaceWindows/creditswindow/creditswindow.h"
-#include <QLabel>
-#include <QGridLayout>
+
 
 creditsWindow::creditsWindow()
 {
     //Creates the credits window and the names seen on the credits window
 
-    QWidget* new_Credits_Window = new QWidget;
-    QLabel* name_Ryan = new QLabel("Ryan Du");
-    QLabel* name_Anita = new QLabel("Anita Chen");
-    QLabel* name_Firat = new QLabel("Firat Taxpulat");
-    QLabel* contributors = new QLabel("Contributors:");
+    new_Credits_Window = new QWidget;
+    name_Ryan = new QLabel("Ryan Du");
+    name_Anita = new QLabel("Anita Chen");
+    name_Firat = new QLabel("Firat Taxpulat");
+    contributors = new QLabel("Contributors:");
 
-    QGridLayout* centerlayout = new QGridLayout; // layout
+    centerlayout = new QGridLayout; // layout
 
     //Adds the different widgets to the centerlayout
 

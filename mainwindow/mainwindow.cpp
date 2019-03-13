@@ -108,9 +108,9 @@ MainWindow::MainWindow(QWidget *parent) :
     menuBar = new QMenuBar();
     helpMenu = new QMenu("Help?");
     creditsButton = new QMenu("About");
-    QMenu* soundMenu = new QMenu("Sound");
+    soundMenu = new QMenu("Sound");
 
-    QAction* mute = new QAction("Mute");
+    mute = new QAction("Mute");
     mute->setCheckable(true);
     mute->setChecked(false);
 
@@ -124,8 +124,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     // add sound in the window
     sound = new QMediaPlayer;
-    QUrl* q = new QUrl("qrc:/Music/Sound/SoftPianoMusic-RoyaltyFree-Summit.mp3");
-    sound->setMedia(*q);
+    mainMusic= new QUrl("qrc:/Music/Sound/SoftPianoMusic-RoyaltyFree-Summit.mp3");
+    sound->setMedia(*mainMusic);
     sound->play();
 
     QObject::connect(creditsButton, SIGNAL(triggered(QAction*)), this, SLOT(MakeCreditsWindow())); // connect credits button to make credits window when pressed
@@ -161,13 +161,11 @@ void MainWindow::Make2ptrcWindow()
 void MainWindow::MakeCreditsWindow()
 {
     QWidget* c_window = new creditsWindow();
-    //c_window->show();
 }
 
 void MainWindow::MakeHelpWindow()
 {
     QWidget* h_window = new helpWindow();
-    //h_window->show();
 }
 
 void MainWindow::changeSound()

@@ -82,7 +82,8 @@ public:
 protected:
     /** @brief The sound menu button */
     QMenu* soundMenuButton;
-
+    /** @brief Mutes the error sound */
+    QAction* mute;
 };
 
 #endif // GRAPHINGWINDOW_H

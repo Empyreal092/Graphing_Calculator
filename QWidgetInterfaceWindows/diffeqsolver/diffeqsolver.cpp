@@ -179,7 +179,6 @@ void diffeqsolver::MakeHelpWindow()
 {
     // show help window
     QWidget* h_window = new helpWindow();
-    //h_window->show();
 }
 
 diffeqsolver::~diffeqsolver(){
