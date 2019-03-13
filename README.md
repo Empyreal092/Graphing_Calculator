@@ -70,7 +70,7 @@ You might see an error like `:-1: error: dependent '..\Graphing_Calculator-maste
 
 ### Compiling Taking A Long Time
 
-Because we used `Exprtk.hpp`, it is pretty costly to compile the program. So it is normal that compiling takes more than a minute in a avergare computer.
+Because we used `Exprtk.hpp`, it is pretty costly to compile the program. So it is normal that compiling takes more than a minute on an avergare computer.
 
 ## Sample input
 
