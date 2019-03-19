@@ -108,6 +108,7 @@ The Numerical Methods used in the program is based on the Math 151B course (Wind
 - Be able to solve non-automonous ODE.
 - Give user more options for parameters. (E.g.: change tolerence for in Secant methods and Gauss-Seidel methods).
 - Represent error bounds on the graph.
+- Optimize the Gauss Jacobi and Gauss Seidel by skipping zeros in the matrix.
 
 ## Authors
 
